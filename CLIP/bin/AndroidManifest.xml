@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <application
@@ -21,6 +21,26 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".CurrEducation"
+            android:label="@string/title_activity_curr_education" >
+        </activity>
+        <activity
+            android:name=".GradPlan"
+            android:label="@string/title_activity_grad_plan" >
+        </activity>
+        <activity
+            android:name=".GradSchools"
+            android:label="@string/title_activity_grad_schools" >
+        </activity>
+        <activity
+            android:name=".Financial"
+            android:label="@string/title_activity_financial" >
+        </activity>
+        <activity
+            android:name=".Others"
+            android:label="@string/title_activity_others" >
         </activity>
     </application>
 
