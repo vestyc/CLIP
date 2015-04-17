@@ -8,4 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.clip.career.CareerGoal" >
 
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/label"
+        android:textSize="30px" />
+
 </RelativeLayout>

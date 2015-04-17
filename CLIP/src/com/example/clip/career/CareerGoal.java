@@ -23,9 +23,9 @@ public class CareerGoal extends ListActivity {
 		//setContentView(R.layout.activity_career_goal);
 		
 		String[] goals = new String[] {"Internship", "Graduate",
-				"CEO of Google"};
+				"CEO of Google", "Add Goal"};
 		
-		adapter = new ArrayAdapter<String>(this, R.layout.rowlayout,
+		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goals);
 		setListAdapter(adapter);
 	}
