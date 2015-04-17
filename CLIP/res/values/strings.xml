@@ -11,5 +11,9 @@
     <string name="financial_ed">Financial</string>
     <string name="other">Other..</string>
     <string name="title_activity_curr_education">CurrEducation</string>
+    <string name="title_activity_grad_plan">GradPlan</string>
+    <string name="title_activity_grad_schools">GradSchools</string>
+    <string name="title_activity_financial">Financial</string>
+    <string name="title_activity_others">Others</string>
 
 </resources>

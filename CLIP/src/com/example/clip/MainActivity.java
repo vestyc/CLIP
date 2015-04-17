@@ -14,6 +14,10 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
 	Button currEducation;
+	Button gradPlan;
+	Button gradSchools;
+	Button financial;
+	Button others;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,46 @@ public class MainActivity extends Activity {
 			
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this, CurrEducation.class);
+				startActivity(i);
+			//	finish();
+	         }
+		});
+		
+		gradPlan = (Button) findViewById(R.id.gradPlan);
+		gradPlan.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, GradPlan.class);
+				startActivity(i);
+			//	finish();
+	         }
+		});
+		
+		gradSchools = (Button) findViewById(R.id.gradSchool);
+		gradSchools.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, GradSchools.class);
+				startActivity(i);
+			//	finish();
+	         }
+		});
+		
+		financial = (Button) findViewById(R.id.financial);
+		financial.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, Financial.class);
+				startActivity(i);
+			//	finish();
+	         }
+		});
+		
+		others = (Button) findViewById(R.id.others);
+		others.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, Others.class);
 				startActivity(i);
 			//	finish();
 	         }

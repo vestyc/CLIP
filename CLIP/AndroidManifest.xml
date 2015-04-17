@@ -26,6 +26,22 @@
             android:name=".CurrEducation"
             android:label="@string/title_activity_curr_education" >
         </activity>
+        <activity
+            android:name=".GradPlan"
+            android:label="@string/title_activity_grad_plan" >
+        </activity>
+        <activity
+            android:name=".GradSchools"
+            android:label="@string/title_activity_grad_schools" >
+        </activity>
+        <activity
+            android:name=".Financial"
+            android:label="@string/title_activity_financial" >
+        </activity>
+        <activity
+            android:name=".Others"
+            android:label="@string/title_activity_others" >
+        </activity>
     </application>
 
 </manifest>
