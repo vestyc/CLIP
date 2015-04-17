@@ -4,5 +4,16 @@
     <string name="app_name">CLIP</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="education_title">EDUCATION</string>
+    <string name="cur_Ed">Current Education</string>
+    <string name="grad_Plan">Graduation Plans</string>
+    <string name="grad_school">Graduate Schools</string>
+    <string name="financial_ed">Financial</string>
+    <string name="other">Other..</string>
+    <string name="title_activity_curr_education">CurrEducation</string>
+    <string name="title_activity_grad_plan">GradPlan</string>
+    <string name="title_activity_grad_schools">GradSchools</string>
+    <string name="title_activity_financial">Financial</string>
+    <string name="title_activity_others">Others</string>
 
 </resources>
