@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.clip.career.CareerMenu"
+            android:name=".career.CareerMenu"
             android:label="@string/title_activity_career_menu"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -31,12 +31,20 @@
                 android:value="com.example.clip.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.clip.career.CareerGoal"
-            android:label="@string/title_activity_career_goal"
-            androcom.example.clip.career.CareerMenutivityName=".CareerMenu" >
+            android:name=".career.CareerGoal"
+            androcom.example.clip.career.CareerMenutivityName=".CareerMenu"
+            android:label="@string/title_activity_career_goal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.CareerMenu" />
+        </activity>
+        <activity
+            android:name="com.example.clip.career.CareerGoalDetail"
+            android:label="@string/title_activity_career_goal_detail"
+            android:parentActivityName=".career.CareerGoal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerGoal" />
         </activity>
     </application>
 

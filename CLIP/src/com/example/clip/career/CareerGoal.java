@@ -12,8 +12,11 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.content.Intent;
 
-public class CareerGoal extends ListActivity {
+public class CareerGoal extends ListActivity implements OnItemClickListener{
 
 	ArrayAdapter<String> adapter;
 	
@@ -28,6 +31,8 @@ public class CareerGoal extends ListActivity {
 		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goals);
 		setListAdapter(adapter);
+		
+		getListView().setOnItemClickListener(this);
 	}
 
 	@Override
@@ -48,4 +53,11 @@ public class CareerGoal extends ListActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        // your code is here on item click
+		Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);
+		startActivity(i);		
+    }
 }

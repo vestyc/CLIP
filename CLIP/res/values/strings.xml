@@ -11,5 +11,6 @@
     <string name="button_eId">Electronic ID</string>
     <string name="button_contact">Contacts</string>
     <string name="title_activity_career_goal">CareerGoal</string>
+    <string name="title_activity_career_goal_detail">CareerGoalDetail</string>
 
 </resources>
