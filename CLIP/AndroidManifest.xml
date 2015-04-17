@@ -22,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.clip.career.CareerMenu"
+            android:label="@string/title_activity_career_menu"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.clip.career.CareerGoal"
+            android:label="@string/title_activity_career_goal"
+            androcom.example.clip.career.CareerMenutivityName=".CareerMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.CareerMenu" />
+        </activity>
     </application>
 
 </manifest>

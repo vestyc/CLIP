@@ -1,27 +1,39 @@
-package com.example.clip;
+package com.example.clip.career;
 
-import com.example.clip.career.*;
-import android.app.Activity;
+import com.example.clip.R;
+import com.example.clip.R.id;
+import com.example.clip.R.layout;
+import com.example.clip.R.menu;
+
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.view.View;
 
-public class MainActivity extends Activity {
+public class CareerGoal extends ListActivity {
 
+	ArrayAdapter<String> adapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		//setContentView(R.layout.activity_career_goal);
 		
-		Intent i = new Intent(MainActivity.this, CareerMenu.class);
-		startActivity(i);
+		String[] goals = new String[] {"Internship", "Graduate",
+				"CEO of Google"};
+		
+		adapter = new ArrayAdapter<String>(this, R.layout.rowlayout,
+				R.id.label, goals);
+		setListAdapter(adapter);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.career_goal, menu);
 		return true;
 	}
 

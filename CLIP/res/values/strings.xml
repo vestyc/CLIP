@@ -4,5 +4,12 @@
     <string name="app_name">CLIP</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_career_menu">CareerMenu</string>
+    <string name="button_goal">Goals</string>
+    <string name="button_jobApp">Job Applications</string>
+    <string name="button_compInfo">Company Information</string>
+    <string name="button_eId">Electronic ID</string>
+    <string name="button_contact">Contacts</string>
+    <string name="title_activity_career_goal">CareerGoal</string>
 
 </resources>
