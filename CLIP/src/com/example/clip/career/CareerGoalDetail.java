@@ -5,17 +5,34 @@ import com.example.clip.R.id;
 import com.example.clip.R.layout;
 import com.example.clip.R.menu;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.widget.TextView;
 
 public class CareerGoalDetail extends Activity {
 
+	String[] data;
+	Bundle bundle;
+	TextView goalType, goalDate;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_goal_detail);
+		
+		goalType = (TextView) findViewById(R.id.goalType);
+		goalDate = (TextView) findViewById(R.id.dateToComplete);
+		
+		bundle = getIntent().getBundleExtra("data");
+		data = (String[]) bundle.get("data");
+		
+		goalType.setText(data[0]);
+		goalDate.setText(data[1]);
 	}
 
 	@Override

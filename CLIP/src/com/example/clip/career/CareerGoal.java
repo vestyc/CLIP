@@ -6,6 +6,7 @@ import com.example.clip.R.layout;
 import com.example.clip.R.menu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -19,8 +20,11 @@ import android.content.Intent;
 
 public class CareerGoal extends ListActivity implements OnItemClickListener{
 
+	HashMap<String, String[]> dataMap;	//<goalName, goalData>
+	String[] goalData;					//{goalType, goalDate}
 	ArrayAdapter<String> adapter;
 	ArrayList<String> goalList = new ArrayList<String>();
+	Bundle bundle;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,15 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
 		goalList.add("Graduate");
 		goalList.add("CEO of Google");
 		
+		//build goalData			
+		goalData = new String[] {"Short term goal.", "Summer 2015"};
+		dataMap.put(goalList.get(0), goalData);
+		
+		goalData = new String[] {"Short term goal.", "Spring 2016"};
+		dataMap.put(goalList.get(1), goalData);
+		
+		goalData = new String[] {"Long term goal.", "2032"};
+		dataMap.put(goalList.get(2), goalData);
 		
 		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goalList);
@@ -65,6 +78,10 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         // your code is here on item click
 		Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);
+		bundle = new Bundle();
+		
+		bundle.putStringArray("data", dataMap.get(goalList.get(position)));
+		i.putExtra("data", bundle);
 		startActivity(i);		
     }
 }

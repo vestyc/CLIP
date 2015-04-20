@@ -77,6 +77,7 @@ public final class R {
         public static final int button_register=0x7f050013;
         public static final int checkcontent=0x7f05000f;
         public static final int hello_world=0x7f050001;
+        public static final int none=0x7f050016;
         public static final int password_title=0x7f050012;
         public static final int title_activity_career_goal=0x7f05000c;
         public static final int title_activity_career_goal_detail=0x7f05000d;
