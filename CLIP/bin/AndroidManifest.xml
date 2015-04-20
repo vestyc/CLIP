@@ -3,7 +3,8 @@
     package="com.example.clip"
     android:versionCode="1"
     android:versionName="1.0" >
-
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="19" />
@@ -32,7 +33,7 @@
         </activity>
         <activity
             android:name=".career.CareerGoal"
-            androcom.example.clip.career.CareerMenutivityName=".CareerMenu"
+            android:parentActivityName=".CareerMenu"
             android:label="@string/title_activity_career_goal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
