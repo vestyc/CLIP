@@ -1,6 +1,6 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,6 +14,8 @@
         android:id="@+id/goalType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
         android:text="@string/hello_world"
         android:textSize="25sp" />
@@ -22,8 +24,10 @@
         android:id="@+id/dateToComplete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/goalType"
         android:layout_marginTop="5dp"
         android:text="@string/hello_world"
         android:textSize="25sp" />
 
-</LinearLayout>
+</RelativeLayout>

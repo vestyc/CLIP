@@ -12,5 +12,13 @@
     <string name="button_contact">Contacts</string>
     <string name="title_activity_career_goal">CareerGoal</string>
     <string name="title_activity_career_goal_detail">CareerGoalDetail</string>
+    <string name="button_login">Login</string>
+    <string name="checkcontent">Check Content</string>
+    <string name="title_activity_entry">Entry</string>
+    <string name="username_title">Username:</string>
+    <string name="password_title">Password:</string>
+    <string name="button_register">Register</string>
+    <string name="title_activity_register">Register</string>
+    <string name="button_career">Career</string>
 
 </resources>
