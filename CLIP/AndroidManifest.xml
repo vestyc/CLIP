@@ -39,12 +39,16 @@
                 android:value="com.example.clip.CareerMenu" />
         </activity>
         <activity
-            android:name="com.example.clip.career.CareerGoalDetail"
+            android:name=".career.CareerGoalDetail"
             android:label="@string/title_activity_career_goal_detail"
             android:parentActivityName=".career.CareerGoal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.career.CareerGoal" />
+        </activity>
+        <activity
+            android:name=".Entry"
+            android:label="@string/title_activity_entry" >
         </activity>
     </application>
 

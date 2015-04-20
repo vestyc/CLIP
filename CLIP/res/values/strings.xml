@@ -12,5 +12,8 @@
     <string name="button_contact">Contacts</string>
     <string name="title_activity_career_goal">CareerGoal</string>
     <string name="title_activity_career_goal_detail">CareerGoalDetail</string>
+    <string name="button_login">Login</string>
+    <string name="checkcontent">Check Content</string>
+    <string name="title_activity_entry">Entry</string>
 
 </resources>
