@@ -5,6 +5,8 @@ import com.example.clip.R.id;
 import com.example.clip.R.layout;
 import com.example.clip.R.menu;
 
+import java.util.ArrayList;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,17 +20,22 @@ import android.content.Intent;
 public class CareerGoal extends ListActivity implements OnItemClickListener{
 
 	ArrayAdapter<String> adapter;
+	ArrayList<String> goalList = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_career_goal);
+				
+		goalList.add("Internship");
+		goalList.add("Graduate");
+		goalList.add("CEO of Google");
 		
-		String[] goals = new String[] {"Internship", "Graduate",
-			"CEO of Google", "Add Goal"};
 		
 		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
-				R.id.label, goals);
+				R.id.label, goalList);
+				
+		
 		setListAdapter(adapter);
 		
 		getListView().setOnItemClickListener(this);
@@ -47,7 +54,8 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_add) {
+			
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
