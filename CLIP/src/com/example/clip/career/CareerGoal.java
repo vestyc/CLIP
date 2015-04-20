@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,7 +25,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
 		//setContentView(R.layout.activity_career_goal);
 		
 		String[] goals = new String[] {"Internship", "Graduate",
-				"CEO of Google", "Add Goal"};
+			"CEO of Google", "Add Goal"};
 		
 		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goals);
