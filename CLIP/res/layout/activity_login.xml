@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.clip.Login" >
+
+    <EditText
+        android:id="@+id/passWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:inputType="textPassword" >
+    </EditText>
+
+    <Button
+        android:id="@+id/Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LoginButton"
+        android:layout_alignBottom="@+id/LoginButton"
+        android:layout_alignRight="@+id/passWord"
+        android:onClick="Register"
+        android:text="@string/button_register" />
+
+    <Button
+        android:id="@+id/LoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passWord"
+        android:layout_marginTop="28dp"
+        android:layout_toLeftOf="@+id/TextView01"
+        android:onClick="LoginButton"
+        android:text="@string/button_login" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/TextView01"
+        android:layout_below="@+id/userName"
+        android:layout_marginTop="14dp"
+        android:text="@string/password_title" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="118dp"
+        android:ems="10"
+        android:inputType="text|textPersonName" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/userName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:text="@string/username_title" />
+
+</RelativeLayout>
