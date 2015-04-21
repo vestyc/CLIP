@@ -16,22 +16,25 @@ import android.widget.TextView;
 
 public class CareerGoalDetail extends Activity {
 
-	String[] data = new String[2];
-	TextView goalType, goalDate;
+	String name;
+	String[] data;
+	TextView goalType, goalDate, goalName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_goal_detail);
 		
+		goalName = (TextView) findViewById(R.id.goalName);
 		goalType = (TextView) findViewById(R.id.goalType);
-		goalDate = (TextView) findViewById(R.id.dateToComplete);
+		goalDate = (TextView) findViewById(R.id.dateToComplete);		
 		
-		Intent i = getIntent();
-		data = i.getStringArrayExtra("data");
-				
+		name = getIntent().getStringExtra("name");
+		data = getIntent().getStringArrayExtra("data");
+			
+		goalName.setText(name);
 		goalType.setText(data[0]);
-		goalDate.setText(data[1]);
+		goalDate.setText("Complete by: " + data[1]);
 	}
 
 	@Override
