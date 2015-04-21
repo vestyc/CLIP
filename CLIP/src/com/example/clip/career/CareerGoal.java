@@ -13,9 +13,9 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.*;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.content.Intent;
@@ -46,19 +46,21 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUpItems = new ArrayList<String>();
 		popUpItems.add("Edit");
 		popUpItems.add("Remove");
-		popUpAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
-				R.id.label, popUpItems);
+		popUpAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal_popup,
+				R.id.label2, popUpItems);
 		popUp.setAdapter(popUpAdapter);
 		popUp.setModal(true);
-		popUp.setOnItemClickListener(this);
+		popUp.setWidth(ListPopupWindow.WRAP_CONTENT);
+		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
+		//popUp.setOnItemClickListener(this);
 		
 		//initiate list view
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goalList);		
 		setListAdapter(listViewAdapter);
 		
-		getListView().setOnItemClickListener(this);
-		getListView().setOnItemLongClickListener(this);
+		this.getListView().setOnItemClickListener(this);
+		this.getListView().setOnItemLongClickListener(this);
 	}
 
 	@Override
@@ -104,21 +106,23 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			//update screen
 			this.onContentChanged();
 			getListView().setOnItemClickListener(this);
+			popUp.setOnItemClickListener(this);
 		}
 	}
 	
 	@Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
        
-		if(adapterView.equals(this.listViewAdapter)) {
+		//if(view.getId() == R.id.label) {
 			
 			Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
 			this.goalData = dataMap.get(goalList.get(position));
 			i.putExtra("name", goalList.get(position));
 			i.putExtra("data", this.goalData);
 			startActivity(i);	
-		}
-		else if(adapterView.equals(this.popUpAdapter)) {
+		//}
+		/*
+		else if(view.getId() == R.id.label2) {
 			
 			//edit is clicked
 			if(this.popUpItems.get(position).equals("Edit")) {
@@ -127,12 +131,15 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 				startActivity(i);
 			}
 		}
+		*/
     }
 	
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 		
-		this.popUp.setAnchorView(view);
+		popUp.setAnchorView(view);
+		popUp.show();
+		popUp.getListView().setOnItemClickListener(this);
 		return true;
 	}
 }
