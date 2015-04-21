@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
     <application
@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name=".career.CareerGoal"
-            androcom.example.clip.career.CareerMenutivityName=".CareerMenu"
+            android:parentActivityName="career.CareerMenu"
             android:label="@string/title_activity_career_goal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -53,6 +53,14 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.example.clip.career.CareerGoalEdit"
+            android:label="@string/title_activity_career_goal_edit"
+            android:parentActivityName=".career.CareerGoal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerGoal" />
         </activity>
     </application>
 

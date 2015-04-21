@@ -21,35 +21,22 @@ import android.content.Intent;
 public class CareerGoal extends ListActivity implements OnItemClickListener{
 
 	HashMap<String, String[]> dataMap;	//<goalName, goalData>
-	String[] goalData;					//{goalType, goalDate}
+	String[] goalData;					//{goalLength, goalDate}
 	ArrayAdapter<String> adapter;
-	ArrayList<String> goalList = new ArrayList<String>();
+	ArrayList<String> goalList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_career_goal);
-				
-		goalList.add("Internship");
-		goalList.add("Graduate");
-		goalList.add("CEO of Google");
 		
-		//build goalData			
-		
-		goalData = new String[] {"Short term goal.", "Summer 2015"};
-		dataMap.put(goalList.get(0), goalData);
-		
-		goalData = new String[] {"Short term goal.", "Spring 2016"};
-		dataMap.put(goalList.get(1), goalData);
-		
-		goalData = new String[] {"Long term goal.", "2032"};
-		dataMap.put(goalList.get(2), goalData);
-		
+		//build goalData	
+		goalList = new ArrayList<String>();
+		goalList.add("None");
+		dataMap = new HashMap<String, String[]>();
 		
 		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
-				R.id.label, goalList);
-				
-		
+				R.id.label, goalList);		
 		setListAdapter(adapter);
 		
 		getListView().setOnItemClickListener(this);
@@ -70,17 +57,43 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
 		int id = item.getItemId();
 		if (id == R.id.action_add) {
 			
-			return true;
+			Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
+			startActivityForResult(i, 0, null);
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
 	@Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        // your code is here on item click
-		Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		i.putExtra("data", dataMap.get(goalList.get(position)));
+		//action_add
+		if(requestCode == 0) {
+			
+			if(goalList.get(0).equals("None")) {
+			
+				goalList.remove(0);
+			}
+			
+			//goalLength, goalDate
+			goalData = data.getStringArrayExtra("data");		
+			//goalName -- add to list
+			goalList.add(data.getStringExtra("name"));
+			//save data to dataMap
+			dataMap.put(data.getStringExtra("name"), goalData);
+			//update screen
+			this.onContentChanged();
+			getListView().setOnItemClickListener(this);
+		}
+	}
+	
+	@Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+       
+		// your code is here on item click
+		Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
+		this.goalData = dataMap.get(goalList.get(position));
+		i.putExtra("name", goalList.get(position));
+		i.putExtra("data", this.goalData);
 		startActivity(i);		
     }
 }

@@ -34,7 +34,7 @@ public class CareerGoalDetail extends Activity {
 			
 		goalName.setText(name);
 		goalType.setText(data[0]);
-		goalDate.setText("Complete by: " + data[1]);
+		goalDate.setText("Complete by:\n" + data[1]);
 	}
 
 	@Override

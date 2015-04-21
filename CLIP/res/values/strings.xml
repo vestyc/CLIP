@@ -24,5 +24,6 @@
     <string name="title_activity_register">Register</string>
     <string name="button_career">Career</string>
     <string name="none">none</string>
+    <string name="title_activity_career_goal_edit">CareerGoalEdit</string>
 
 </resources>
