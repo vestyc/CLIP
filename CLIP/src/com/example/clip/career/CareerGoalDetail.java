@@ -16,8 +16,7 @@ import android.widget.TextView;
 
 public class CareerGoalDetail extends Activity {
 
-	String[] data;
-	Bundle bundle;
+	String[] data = new String[2];
 	TextView goalType, goalDate;
 	
 	@Override
@@ -28,9 +27,9 @@ public class CareerGoalDetail extends Activity {
 		goalType = (TextView) findViewById(R.id.goalType);
 		goalDate = (TextView) findViewById(R.id.dateToComplete);
 		
-		bundle = getIntent().getBundleExtra("data");
-		data = (String[]) bundle.get("data");
-		
+		Intent i = getIntent();
+		data = i.getStringArrayExtra("data");
+				
 		goalType.setText(data[0]);
 		goalDate.setText(data[1]);
 	}
