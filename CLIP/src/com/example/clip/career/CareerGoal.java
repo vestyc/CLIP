@@ -1,5 +1,6 @@
 package com.example.clip.career;
 
+import com.example.clip.Entry;
 import com.example.clip.R;
 import com.example.clip.R.id;
 import com.example.clip.R.layout;
@@ -12,34 +13,52 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.widget.*;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.content.Intent;
 
-public class CareerGoal extends ListActivity implements OnItemClickListener{
+public class CareerGoal extends ListActivity implements OnItemClickListener, OnItemLongClickListener{
 
 	HashMap<String, String[]> dataMap;	//<goalName, goalData>
 	String[] goalData;					//{goalLength, goalDate}
-	ArrayAdapter<String> adapter;
-	ArrayList<String> goalList;
+	ArrayAdapter<String> listViewAdapter, popUpAdapter;
+	ArrayList<String> goalList, popUpItems;
+	ListPopupWindow popUp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		
-		//build goalData	
+		//build initial goalData	
 		goalList = new ArrayList<String>();
-		goalList.add("None");
 		dataMap = new HashMap<String, String[]>();
 		
-		adapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
+		goalList.add("None");
+		goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
+		dataMap.put(goalList.get(0), goalData);
+		
+		//initiate the pop-up list
+		popUp = new ListPopupWindow(this);
+		popUpItems = new ArrayList<String>();
+		popUpItems.add("Edit");
+		popUpItems.add("Remove");
+		popUpAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
+				R.id.label, popUpItems);
+		popUp.setAdapter(popUpAdapter);
+		popUp.setModal(true);
+		popUp.setOnItemClickListener(this);
+		
+		//initiate list view
+		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goalList);		
-		setListAdapter(adapter);
+		setListAdapter(listViewAdapter);
 		
 		getListView().setOnItemClickListener(this);
+		getListView().setOnItemLongClickListener(this);
 	}
 
 	@Override
@@ -69,9 +88,11 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
 		//action_add
 		if(requestCode == 0) {
 			
+			//clears any initial data
 			if(goalList.get(0).equals("None")) {
 			
 				goalList.remove(0);
+				dataMap.remove("None");
 			}
 			
 			//goalLength, goalDate
@@ -89,11 +110,29 @@ public class CareerGoal extends ListActivity implements OnItemClickListener{
 	@Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
        
-		// your code is here on item click
-		Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
-		this.goalData = dataMap.get(goalList.get(position));
-		i.putExtra("name", goalList.get(position));
-		i.putExtra("data", this.goalData);
-		startActivity(i);		
+		if(adapterView.equals(this.listViewAdapter)) {
+			
+			Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
+			this.goalData = dataMap.get(goalList.get(position));
+			i.putExtra("name", goalList.get(position));
+			i.putExtra("data", this.goalData);
+			startActivity(i);	
+		}
+		else if(adapterView.equals(this.popUpAdapter)) {
+			
+			//edit is clicked
+			if(this.popUpItems.get(position).equals("Edit")) {
+				
+				Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
+				startActivity(i);
+			}
+		}
     }
+	
+	@Override
+	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+		
+		this.popUp.setAnchorView(view);
+		return true;
+	}
 }

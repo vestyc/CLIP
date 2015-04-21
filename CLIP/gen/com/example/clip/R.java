@@ -30,8 +30,8 @@ public final class R {
         public static final int Register=0x7f080012;
         public static final int TextView01=0x7f080014;
         public static final int action_add=0x7f080016;
-        public static final int action_edit=0x7f080018;
-        public static final int action_remove=0x7f080017;
+        public static final int action_edit=0x7f080017;
+        public static final int action_remove=0x7f080018;
         public static final int action_settings=0x7f080019;
         public static final int buttonSave=0x7f080009;
         public static final int button_career=0x7f08000f;

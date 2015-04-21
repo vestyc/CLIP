@@ -17,7 +17,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Goal Title" >
+        android:hint="Goal Title" >
         <requestFocus />
     </EditText>
 
@@ -50,7 +50,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Completion Date" >
+        android:hint="Completion Date" >
     </EditText>
 
     <Button
