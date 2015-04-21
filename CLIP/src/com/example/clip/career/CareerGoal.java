@@ -113,16 +113,16 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	@Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
        
-		//if(view.getId() == R.id.label) {
+		if(adapterView.equals(listViewAdapter)) {
 			
 			Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
 			this.goalData = dataMap.get(goalList.get(position));
 			i.putExtra("name", goalList.get(position));
 			i.putExtra("data", this.goalData);
 			startActivity(i);	
-		//}
-		/*
-		else if(view.getId() == R.id.label2) {
+		}
+		
+		else if(adapterView.equals(popUpAdapter)) {
 			
 			//edit is clicked
 			if(this.popUpItems.get(position).equals("Edit")) {
@@ -131,7 +131,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 				startActivity(i);
 			}
 		}
-		*/
+		
     }
 	
 	@Override
@@ -139,7 +139,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		
 		popUp.setAnchorView(view);
 		popUp.show();
-		popUp.getListView().setOnItemClickListener(this);
+		popUp.getListView().setOnItemClickListener(this); 
 		return true;
 	}
 }
