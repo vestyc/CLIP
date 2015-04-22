@@ -1,31 +1,20 @@
 package com.example.clip;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.File;
-
-import com.example.clip.career.CareerGoal;
-import com.example.clip.career.CareerMenu;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import 	android.view.Gravity;
+import com.parse.ParseObject;
 
 
 public class Login extends Activity {
@@ -45,6 +34,9 @@ public class Login extends Activity {
 		userName.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
 		passWord.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
 		myData = new DataStorage(getApplicationContext());
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
 
 	}
 
