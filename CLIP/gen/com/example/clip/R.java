@@ -86,6 +86,8 @@ public final class R {
         public static final int button_login=0x7f05000e;
         public static final int button_register=0x7f050013;
         public static final int checkcontent=0x7f05000f;
+        public static final int goal_long=0x7f050018;
+        public static final int goal_short=0x7f050019;
         public static final int hello_world=0x7f050001;
         public static final int none=0x7f050016;
         public static final int password_title=0x7f050012;

@@ -24,6 +24,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 
 	HashMap<String, String[]> dataMap;	//<goalName, goalData>
 	String[] goalData;					//{goalLength, goalDate}
+	String goalName;
 	ArrayAdapter<String> listViewAdapter, popUpAdapter;
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
@@ -79,7 +80,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		if (id == R.id.action_add) {
 			
 			Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
-			startActivityForResult(i, 0, null);
+			startActivityForResult(i, 0);
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -98,13 +99,38 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			}
 			
 			//goalLength, goalDate
-			goalData = data.getStringArrayExtra("data");		
+			goalData = data.getStringArrayExtra("data");
+			
 			//goalName -- add to list
 			goalList.add(data.getStringExtra("name"));
+			
 			//save data to dataMap
 			dataMap.put(data.getStringExtra("name"), goalData);
+			
 			//update screen
 			this.onContentChanged();
+			getListView().setOnItemClickListener(this);
+			popUp.setOnItemClickListener(this);
+		}
+		else if(requestCode == 1) {	//edit goal
+			
+			//goalLength, goalDate
+			goalData = data.getStringArrayExtra("data");	
+			
+			//goalName -- add to list
+			goalList.add(data.getStringExtra("name"));
+			
+			//save data to dataMap
+			dataMap.put(data.getStringExtra("name"), goalData);
+			
+			//remove old data
+			dataMap.remove(data.getStringExtra("oldName"));
+			goalList.remove(data.getStringExtra("oldName"));
+			
+			//update screen
+			this.onContentChanged();
+			
+			//reset listeners
 			getListView().setOnItemClickListener(this);
 			popUp.setOnItemClickListener(this);
 		}
@@ -113,30 +139,47 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	@Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
        
-		if(adapterView.equals(listViewAdapter)) {
+		if(popUp.isShowing()) {
+			
+			popUp.dismiss();
+			
+			//edit is clicked
+			if(this.popUpItems.get(position).equals("Edit")) {
+											
+				Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
+				i.putExtra("name", goalName);
+				i.putExtra("data", dataMap.get(goalName));
+				this.startActivityForResult(i, 1);
+			}
+			//remove is clicked
+			else if(this.popUpItems.get(position).equals("Remove")) {
+				
+				goalList.remove(goalName);
+				dataMap.remove(goalName);
+				
+				if(goalList.isEmpty()) {
+				
+					goalList.add("None");
+					goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
+					dataMap.put(goalList.get(0), goalData);
+				}
+				this.onContentChanged();
+			}
+		}
+		else {		
 			
 			Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
 			this.goalData = dataMap.get(goalList.get(position));
 			i.putExtra("name", goalList.get(position));
 			i.putExtra("data", this.goalData);
 			startActivity(i);	
-		}
-		
-		else if(adapterView.equals(popUpAdapter)) {
-			
-			//edit is clicked
-			if(this.popUpItems.get(position).equals("Edit")) {
-				
-				Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
-				startActivity(i);
-			}
-		}
-		
+		}		
     }
 	
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 		
+		this.goalName = goalList.get(position);
 		popUp.setAnchorView(view);
 		popUp.show();
 		popUp.getListView().setOnItemClickListener(this); 

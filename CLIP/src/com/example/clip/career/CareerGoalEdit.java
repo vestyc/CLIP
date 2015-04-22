@@ -20,18 +20,43 @@ public class CareerGoalEdit extends Activity {
 	EditText goalName, goalDate;
 	Button save;
 	String[] data;
+	Intent i;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_goal_edit);
 		
+		i = new Intent();
+		
 		goalName = (EditText) findViewById(R.id.goalName);
 		goalDate = (EditText) findViewById(R.id.goalDate);
 		save = (Button) findViewById(R.id.buttonSave);
 		
-		data = new String[2];			//{goalLength, goalDate}
-		data[0] = "Short term goal.";	//selected by default
+		data = new String[2];						//{goalLength, goalDate}
+		data[0] = getString(R.string.goal_short);	//selected by default
+		
+		//edit option
+		if(getIntent().getStringExtra("name") != null) {
+			
+			//Display current goalName
+			goalName.setText(getIntent().getStringExtra("name"));
+			i.putExtra("oldName", goalName.getText().toString());
+			
+			//display current goalDate
+			data = getIntent().getStringArrayExtra("data");
+			goalDate.setText(data[1]);
+			
+			if(data[0].equals(getString(R.string.goal_long))) {
+				
+				//check long term, uncheck short term
+				RadioButton temp = (RadioButton) findViewById(R.id.goalLengthLong);
+				temp.setChecked(true);
+				temp = (RadioButton) findViewById(R.id.goalLengthShort);
+				temp.setChecked(false);
+			}
+			//by default, short term radio button is already selected
+		}
 	}
 
 	@Override
@@ -55,10 +80,9 @@ public class CareerGoalEdit extends Activity {
 	
 	public void saveClicked(View view) {
 		
-		Intent i = new Intent();
+		data[1] = goalDate.getText().toString();
 		i.putExtra("data", this.data);
 		i.putExtra("name", this.goalName.getText().toString());
-		
 		this.setResult(RESULT_OK, i);
 		
 		this.finish();
@@ -76,7 +100,7 @@ public class CareerGoalEdit extends Activity {
 			
 			if(checked) {
 				
-				data[0] = "Long term goal.";
+				data[0] = getString(R.string.goal_long);
 			}
 			break;
 			
@@ -84,7 +108,7 @@ public class CareerGoalEdit extends Activity {
 			
 			if(checked) {
 				
-				data[0] = "Short term goal.";
+				data[0] = getString(R.string.goal_short);
 			}
 			break;
 		}
