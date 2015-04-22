@@ -1,8 +1,6 @@
 package com.example.clip;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 
 public class Login extends Activity {
@@ -22,81 +25,86 @@ public class Login extends Activity {
 	EditText userName;
 	EditText passWord;
 	File fileCheck;
-	DataStorage myData;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+
 		
 		userName = (EditText)findViewById(R.id.userName);
 		passWord = (EditText)findViewById(R.id.passWord);
 		userName.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
 		passWord.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-		myData = new DataStorage(getApplicationContext());
-		ParseObject testObject = new ParseObject("TestObject");
-		testObject.put("foo", "bar");
-		testObject.saveInBackground();
 
 	}
 
 	
 	public void LoginButton(View v) 
 	{
+		String usernametxt = userName.getText().toString();
+		String passwordtxt = passWord.getText().toString();
+
+		// Send data to Parse.com for verification
+		ParseUser.logInInBackground(usernametxt, passwordtxt,
+				new LogInCallback() {
+					public void done(ParseUser user, ParseException e) {
+						if (user != null) {
+							// If user exist and authenticated, send user to Welcome.class
+							Intent intent = new Intent(
+									Login.this,
+									Entry.class);
+							startActivity(intent);
+							Toast.makeText(getApplicationContext(),
+									"Successfully Logged in",
+									Toast.LENGTH_LONG).show();
+							finish();
+						} else {
+							Toast.makeText(
+									getApplicationContext(),
+									"No such user exist, please signup",
+									Toast.LENGTH_LONG).show();
+						}
+					}
+				});
 		// add-write text into file
 		
-		try 
-		{
-			if(myData.checkUserName(userName.getText().toString()))
-			{
-				if(myData.getPassword(userName.getText().toString()).equals(passWord.getText().toString()))
-				{
-					Toast.makeText(getBaseContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
-					Intent i = new Intent(this, Entry.class);
-					startActivity(i);
-				}
-				else
-				{
-					Toast.makeText(getBaseContext(), "Invalid Username/Password", Toast.LENGTH_SHORT).show();
-				}
-			}
-			else
-			{
-				Toast.makeText(getBaseContext(), "Invalid Username/Password", Toast.LENGTH_SHORT).show();
-			}	
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}	
 	}
 	
 	public void Register(View v)
 	{
+		String usernametxt = userName.getText().toString();
+		String passwordtxt = passWord.getText().toString();
 		
-		try 
-		{
-			FileOutputStream fileout=openFileOutput(userName.getText().toString()+".txt", MODE_PRIVATE);
-			OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
-			outputWriter.write(passWord.getText().toString());
-			outputWriter.write("\n");
-			outputWriter.close();
-			
-			//display file saved message
-			Toast.makeText(getBaseContext(), "Registered Successfully",
-			Toast.LENGTH_SHORT).show();
-			
-		
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		} 
-		finally
-		{
-			Intent i = new Intent(this, Entry.class);
-			startActivity(i);
+		// Force user to fill up the form
+		if (usernametxt.equals("") && passwordtxt.equals("")) {
+			Toast.makeText(getApplicationContext(),
+					"Please complete the sign up form",
+					Toast.LENGTH_LONG).show();
+
+		} else {
+			// Save new user data into Parse.com Data Storage
+			ParseUser user = new ParseUser();
+			user.setUsername(usernametxt);
+			user.setPassword(passwordtxt);
+			user.signUpInBackground(new SignUpCallback() {
+				public void done(ParseException e) {
+					if (e == null) {
+						// Show a simple Toast message upon successful registration
+						Toast.makeText(getApplicationContext(),
+								"Successfully Signed up, please log in.",
+								Toast.LENGTH_LONG).show();
+					} else {
+						Toast.makeText(getApplicationContext(),
+								"Sign up Error", Toast.LENGTH_LONG)
+								.show();
+					}
+				}
+			});
 		}
+		
+
 	}
 
 	
