@@ -13,11 +13,14 @@
         android:id="@+id/passWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView1"
+        android:layout_alignTop="@+id/testreturn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:ems="10"
         android:inputType="textPassword" >
+
+        <requestFocus />
+
     </EditText>
 
     <Button
@@ -27,8 +30,8 @@
         android:layout_alignBaseline="@+id/LoginButton"
         android:layout_alignBottom="@+id/LoginButton"
         android:layout_alignRight="@+id/passWord"
-        android:onClick="Register"
-        android:text="@string/button_register" />
+        android:text="@string/button_register" 
+        android:onClick="Register"/>
 
     <Button
         android:id="@+id/LoginButton"
@@ -37,11 +40,11 @@
         android:layout_below="@+id/passWord"
         android:layout_marginTop="28dp"
         android:layout_toLeftOf="@+id/TextView01"
-        android:onClick="LoginButton"
-        android:text="@string/button_login" />
+        android:text="@string/button_login" 
+        android:onClick="LoginButton"/>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/testreturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/TextView01"
@@ -57,7 +60,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="118dp"
         android:ems="10"
-        android:inputType="text|textPersonName" />
+        android:inputType="text|textPersonName" >
+        <requestFocus />
+
+    </EditText>
 
     <TextView
         android:id="@+id/TextView01"

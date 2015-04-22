@@ -4,24 +4,27 @@
     android:versionCode="1"
     android:versionName="1.0" >
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
     <application
+        android:name="ParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Login" >
         </activity>
         <activity
             android:name=".career.CareerMenu"
@@ -33,7 +36,7 @@
         </activity>
         <activity
             android:name=".career.CareerGoal"
-            android:parentActivityName=".CareerMenu"
+            android:parentActivityName="career.CareerMenu"
             android:label="@string/title_activity_career_goal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,6 +57,14 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.example.clip.career.CareerGoalEdit"
+            android:label="@string/title_activity_career_goal_edit"
+            android:parentActivityName=".career.CareerGoal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerGoal" />
         </activity>
     </application>
 
