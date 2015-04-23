@@ -31,5 +31,11 @@
     <string name="title_activity_career_job_app">CareerJobApp</string>
     <string name="title_activity_career_job_app_edit">CareerJobAppEdit</string>
     <string name="title_activity_career_job_app_detail">CareerJobAppDetail</string>
+    <string-array name="job_status">
+        <item>Pending</item>
+        <item>Interview Granted</item>
+        <item>Accepted</item>
+        <item>Rejected</item>
+    </string-array>
 
 </resources>
