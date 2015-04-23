@@ -13,7 +13,6 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.*;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,8 +46,8 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUpItems = new ArrayList<String>();
 		popUpItems.add("Edit");
 		popUpItems.add("Remove");
-		popUpAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal_popup,
-				R.id.label2, popUpItems);
+		popUpAdapter = new ArrayAdapter<String>(this, R.layout.edit_remove_popup,
+				R.id.label_popUp, popUpItems);
 		popUp.setAdapter(popUpAdapter);
 		popUp.setModal(true);
 		popUp.setWidth(200);

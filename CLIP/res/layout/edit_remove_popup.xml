@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-
     <TextView
-        android:id="@+id/label2"
+        android:id="@+id/label_popUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="7dp"
-        android:text="@+id/label2"
+        android:text="@+id/label_popUp"
         android:textSize="30px" />
-    
+
 </RelativeLayout>

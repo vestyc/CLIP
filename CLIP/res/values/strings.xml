@@ -28,5 +28,8 @@
     <string name="goal_long">Long term goal.</string>
     <string name="goal_short">Short term goal.</string>
     <string name="action_logout">Log Out</string>
+    <string name="title_activity_career_job_app">CareerJobApp</string>
+    <string name="title_activity_career_job_app_edit">CareerJobAppEdit</string>
+    <string name="title_activity_career_job_app_detail">CareerJobAppDetail</string>
 
 </resources>
