@@ -2,7 +2,9 @@ package com.example.clip;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -11,7 +13,6 @@ import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -23,6 +24,7 @@ public class Login extends Activity {
 	String passwordtxt;
 	EditText password;
 	EditText username;
+
 	Intent intent;
 	Boolean newUser = false;
 	
@@ -34,7 +36,9 @@ public class Login extends Activity {
 		// Locate EditTexts in main.xml
 		username = (EditText) findViewById(R.id.userName);
 		password = (EditText) findViewById(R.id.passWord);
-
+		
+		password.setTypeface(Typeface.DEFAULT);
+		password.setTransformationMethod(new PasswordTransformationMethod());
 		// Locate Buttons in main.xml
 		loginbutton = (Button) findViewById(R.id.LoginButton);
 		signup = (Button) findViewById(R.id.Register);
