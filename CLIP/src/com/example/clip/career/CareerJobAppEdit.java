@@ -61,6 +61,17 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 			
 		}
 	}
+	
+	public void saveClicked(View view) {
+			
+		// data = {dateApplied, appStatus, comments}
+		//data[0] = 
+		//i.putExtra("data", this.data);
+		//i.putExtra("name", this.goalName.getText().toString());
+		//this.setResult(RESULT_OK, i);
+		
+		this.finish();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
