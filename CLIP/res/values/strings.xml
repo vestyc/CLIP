@@ -23,7 +23,7 @@
     <string name="button_register">Register</string>
     <string name="title_activity_register">Register</string>
     <string name="button_career">Career</string>
-    <string name="none">none</string>
+    <string name="none">None</string>
     <string name="title_activity_career_goal_edit">CareerGoalEdit</string>
     <string name="goal_long">Long term goal.</string>
     <string name="goal_short">Short term goal.</string>

@@ -19,9 +19,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class CareerJobApp extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
 
-	ArrayAdapter<String> listViewAdapter;
-	ArrayList<String> jobList;
+	ArrayAdapter<String> listViewAdapter, popUpAdapter;
+	ArrayList<String> jobList, popUpItems;
 	ListPopupWindow popUp;
+	String jobName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +30,22 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		
 		//initiate list
 		jobList = new ArrayList<String>();
-		jobList.add("None");		
+		jobList.add(getString(R.string.none));		
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_job_app,
 				R.id.label_jobList, jobList);
 		this.setListAdapter(listViewAdapter);
+		
+		//initiate the pop-up list
+		popUp = new ListPopupWindow(this);
+		popUpItems = new ArrayList<String>();
+		popUpItems.add(getString(R.string.action_edit));
+		popUpItems.add(getString(R.string.action_remove));
+		popUpAdapter = new ArrayAdapter<String>(this, R.layout.edit_remove_popup,
+				R.id.label_popUp, popUpItems);
+		popUp.setAdapter(popUpAdapter);
+		popUp.setModal(true);
+		popUp.setWidth(200);
+		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
 		
 		//listeners
 		this.getListView().setOnItemClickListener(this);
@@ -63,12 +76,44 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	@Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
        
+		if(popUp.isShowing()) {
+			
+			popUp.dismiss();
+			
+			//edit is clicked
+			if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
+											
+				Intent i = new Intent(CareerJobApp.this, CareerJobAppEdit.class);
+				this.startActivityForResult(i, 1);
+			}
+			//remove is clicked
+			else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
+				
+				jobList.remove(jobName);
+				//dataMap.remove(goalName);
+				
+				if(jobList.isEmpty()) {
+				
+					jobList.add(getString(R.string.none));
+					//goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
+					//dataMap.put(goalList.get(0), goalData);
+				}
+				this.onContentChanged();
+			}
+		}
+		else {
+			
+			
+		}
     }
 	
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 		
-		
+		this.jobName = jobList.get(position);
+		popUp.setAnchorView(view);
+		popUp.show();
+		popUp.getListView().setOnItemClickListener(this); 
 		return true;
 	}
 }
