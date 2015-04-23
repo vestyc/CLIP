@@ -27,5 +27,6 @@
     <string name="title_activity_career_goal_edit">CareerGoalEdit</string>
     <string name="goal_long">Long term goal.</string>
     <string name="goal_short">Short term goal.</string>
+    <string name="action_logout">Log Out</string>
 
 </resources>
