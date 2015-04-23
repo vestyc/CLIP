@@ -6,6 +6,7 @@ import com.example.clip.R.layout;
 import com.example.clip.R.menu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -24,13 +25,20 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	ListPopupWindow popUp;
 	String jobName;
 	
+	HashMap<String, String[]> dataMap;	//<jobName, jobData>
+	String[] jobData;					//{dateApplied, appStatus, comments}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		//initiate list
 		jobList = new ArrayList<String>();
-		jobList.add(getString(R.string.none));		
+		jobList.add(getString(R.string.none));	
+		jobData = new String[] {getString(R.string.none),getString(R.string.none),
+				getString(R.string.none)};
+		dataMap = new HashMap<String, String[]>();
+		dataMap.put(jobList.get(0), jobData);
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_job_app,
 				R.id.label_jobList, jobList);
 		this.setListAdapter(listViewAdapter);
@@ -50,6 +58,20 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		//listeners
 		this.getListView().setOnItemClickListener(this);
 		this.getListView().setOnItemLongClickListener(this);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+		//action_add
+		if(requestCode == 0) {
+			
+			
+		}
+		else if(requestCode == 1) {	//edit goal
+			
+			
+		}
 	}
 
 	@Override
@@ -103,7 +125,11 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		}
 		else {
 			
-			
+			Intent i = new Intent(CareerJobApp.this, CareerJobAppDetail.class);		
+			this.jobData = dataMap.get(jobList.get(position));
+			i.putExtra("name", jobList.get(position));
+			i.putExtra("data", this.jobData);
+			startActivity(i);
 		}
     }
 	
