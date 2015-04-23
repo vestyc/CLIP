@@ -51,9 +51,8 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 				R.id.label2, popUpItems);
 		popUp.setAdapter(popUpAdapter);
 		popUp.setModal(true);
-		popUp.setWidth(ListPopupWindow.WRAP_CONTENT);
+		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
-		//popUp.setOnItemClickListener(this);
 		
 		//initiate list view
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
