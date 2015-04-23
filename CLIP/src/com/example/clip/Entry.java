@@ -31,7 +31,7 @@ public class Entry extends Activity {
 		btnsave = (Button) findViewById(R.id.testbtn);
 		txtreturn = (TextView) findViewById(R.id.testreturn1);
 		career = (Button) findViewById(R.id.button_career);
-		txtreturn.setText(currentUser.get("testfield").toString());
+		//txtreturn.setText(currentUser.get("testfield").toString());
 		btnsave.setOnClickListener(new OnClickListener() {
 					
 					public void onClick(View v) {
