@@ -2,10 +2,12 @@ package com.example.clip.career;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +18,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListPopupWindow;
 
 import com.example.clip.R;
+import com.parse.FindCallback;
+import com.parse.ParseAnalytics;
+import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseRelation;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class CareerGoal extends ListActivity implements OnItemClickListener, OnItemLongClickListener{
@@ -28,18 +33,14 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	ArrayAdapter<String> listViewAdapter, popUpAdapter;
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
-
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		
-		// get current User
-
-		
-		// build Object for Goal in general
-		
+		 
 		//build initial goalData	
 		goalList = new ArrayList<String>();
 		dataMap = new HashMap<String, String[]>();
@@ -61,6 +62,37 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
 		//popUp.setOnItemClickListener(this);
 		
+		ParseAnalytics.trackAppOpened(getIntent());
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
+		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+		
+		// Create query for objects of type "Post"
+
+			// Restrict to cases where the author is the current user.
+			// Note that you should pass in a ParseUser and not the
+			// String reperesentation of that user
+			// Run the query
+			query.findInBackground(new FindCallback<ParseObject>() {
+
+				@Override
+				public void done(List<ParseObject> postList, ParseException e) {
+					if (e == null) {
+						// If there are results, update the list of posts
+						// and notify the adapter
+						goalList.clear();
+						for (ParseObject post : postList) {
+							goalList.add(post.getString("textContent"));
+						}
+						((ArrayAdapter<String>) getListAdapter())
+								.notifyDataSetChanged();
+					} else {
+						Log.d("Post retrieval", "Error: " + e.getMessage());
+					}
+
+				}
+
+			});
+			
 		//initiate list view
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
 				R.id.label, goalList);		

@@ -11,15 +11,20 @@ import android.widget.Button;
 
 import com.example.clip.R;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 public class CareerMenu extends Activity {
 	
 	Button goal, jobApp, compInfo, eId, contact;
 
+	Boolean newUser = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_menu);
+		
+		Intent intent = getIntent();
+		newUser = intent.getBooleanExtra("newUser", false);
 		
 		//button assignments
 		goal = (Button) findViewById(R.id.button_goal);
@@ -32,9 +37,25 @@ public class CareerMenu extends Activity {
 		goal.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				
-				Intent i = new Intent(CareerMenu.this, CareerGoal.class);
-				startActivity(i);
+				if(newUser)
+				{
+					ParseObject careerGoal = new ParseObject("careerGoal");
+					careerGoal.put("Owner", ParseUser.getCurrentUser());
+					careerGoal.put("goalNameDefault", "None");
+					careerGoal.put("goalType", "None");
+					careerGoal.put("goalDate", "None");
+					careerGoal.saveInBackground();
+
+					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
+					startActivity(i);
+					finish();
+				}
+				else
+				{
+					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
+					startActivity(i);
+					finish();
+				}
 	         }
 		});
 	}

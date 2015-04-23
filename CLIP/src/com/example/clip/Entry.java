@@ -22,34 +22,27 @@ public class Entry extends Activity {
 	TextView txtreturn;
 	Button btnsave;
 	Boolean newUser;
-	Intent intent;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_entry);
-		
-		newUser = intent.getExtras().getBoolean("newUser");
 
+		Intent intent = getIntent();
+		newUser = intent.getBooleanExtra("newUser", false);
 		career = (Button) findViewById(R.id.button_career);
 
 
 		career.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				if (newUser)
-				{
-					ParseObject careerGoal = new ParseObject("careerGoal");
-					careerGoal.put("Owner", ParseUser.getCurrentUser());
-					careerGoal.put("goalNameDefault", "None");
-					careerGoal.put("goalType", "None");
-					careerGoal.put("goalDate", "None");
-					careerGoal.saveInBackground();
+
 					Intent i = new Intent(Entry.this, CareerMenu.class);
+					i.putExtra("newUser",newUser);
 					startActivity(i);
+					finish();
 				}
-				
-				
-	         }
+
 		});
 	}
 	
