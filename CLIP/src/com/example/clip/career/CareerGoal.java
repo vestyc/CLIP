@@ -1,24 +1,24 @@
 package com.example.clip.career;
 
-import com.example.clip.Entry;
-import com.example.clip.R;
-import com.example.clip.R.id;
-import com.example.clip.R.layout;
-import com.example.clip.R.menu;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.*;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.content.Intent;
+import android.widget.ArrayAdapter;
+import android.widget.ListPopupWindow;
+
+import com.example.clip.R;
+import com.parse.ParseObject;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
 
 public class CareerGoal extends ListActivity implements OnItemClickListener, OnItemLongClickListener{
 
@@ -28,16 +28,22 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	ArrayAdapter<String> listViewAdapter, popUpAdapter;
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		
+		// get current User
+
+		
+		// build Object for Goal in general
+		
 		//build initial goalData	
 		goalList = new ArrayList<String>();
 		dataMap = new HashMap<String, String[]>();
-		
+
 		goalList.add("None");
 		goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
 		dataMap.put(goalList.get(0), goalData);
@@ -62,6 +68,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		
 		this.getListView().setOnItemClickListener(this);
 		this.getListView().setOnItemLongClickListener(this);
+
 	}
 
 	@Override

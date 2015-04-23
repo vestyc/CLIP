@@ -1,18 +1,16 @@
 package com.example.clip.career;
 
-import com.example.clip.R;
-import com.example.clip.R.id;
-import com.example.clip.R.layout;
-import com.example.clip.R.menu;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.content.Intent;
+import android.widget.Button;
+
+import com.example.clip.R;
+import com.parse.ParseObject;
 
 public class CareerMenu extends Activity {
 	

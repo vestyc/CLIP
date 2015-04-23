@@ -30,8 +30,7 @@
         android:layout_alignBaseline="@+id/LoginButton"
         android:layout_alignBottom="@+id/LoginButton"
         android:layout_alignRight="@+id/passWord"
-        android:text="@string/button_register" 
-        android:onClick="Register"/>
+        android:text="@string/button_register" />
 
     <Button
         android:id="@+id/LoginButton"
@@ -40,8 +39,7 @@
         android:layout_below="@+id/passWord"
         android:layout_marginTop="28dp"
         android:layout_toLeftOf="@+id/TextView01"
-        android:text="@string/button_login" 
-        android:onClick="LoginButton"/>
+        android:text="@string/button_login" />
 
     <TextView
         android:id="@+id/testreturn"
