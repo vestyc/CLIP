@@ -3,6 +3,7 @@ package com.example.clip.career;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -34,20 +35,20 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
 	
-
+	ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(false);
 		 
 		//build initial goalData	
 		goalList = new ArrayList<String>();
 		dataMap = new HashMap<String, String[]>();
-
-		goalList.add("None");
-		goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
-		dataMap.put(goalList.get(0), goalData);
+		goalData = new String[3];
+		
+		
 		
 		//initiate the pop-up list
 		popUp = new ListPopupWindow(this);
@@ -77,14 +78,18 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 				@Override
 				public void done(List<ParseObject> postList, ParseException e) {
 					if (e == null) {
+						goalList.clear();
+						dataMap.clear();
 						// If there are results, update the list of posts
 						// and notify the adapter
-						goalList.clear();
-						for (ParseObject post : postList) {
-							goalList.add(post.getString("textContent"));
+						for (ParseObject goal : postList) {
+							goalData[0] = goal.getString("goalType");
+							goalData[1] = goal.getString("goalDate");
+							goalList.add(goal.getString("goalName"));
+							dataMap.put(goal.getString("goalName"), goalData);
 						}
-						((ArrayAdapter<String>) getListAdapter())
-								.notifyDataSetChanged();
+						((ArrayAdapter<String>)getListAdapter()).notifyDataSetChanged();
+
 					} else {
 						Log.d("Post retrieval", "Error: " + e.getMessage());
 					}
@@ -100,9 +105,46 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		
 		this.getListView().setOnItemClickListener(this);
 		this.getListView().setOnItemLongClickListener(this);
+		
+
 
 	}
+	
+	@Override
+	protected void onStop()
+	{
+		super.onStop(); 
+		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+		query.findInBackground(new FindCallback<ParseObject>() {
 
+			@Override
+			public void done(List<ParseObject> postList, ParseException e) {
+				if (e == null) {
+					// If there are results, update the list of posts
+					// and notify the adapter
+					for (ParseObject goal : postList) {
+						goal.deleteInBackground();
+					}
+					
+				} else {
+					Log.d("Post retrieval", "Error: " + e.getMessage());
+				}
+
+			}
+
+		});
+		
+		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
+			ParseObject careerGoal = new ParseObject("careerGoal");
+			careerGoal.put("Owner", ParseUser.getCurrentUser());
+			careerGoal.put("goalName", entry.getKey());
+			careerGoal.put("goalType", entry.getValue()[0]);
+			careerGoal.put("goalDate", entry.getValue()[1]);
+			careerGoal.saveInBackground();
+		 }
+	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

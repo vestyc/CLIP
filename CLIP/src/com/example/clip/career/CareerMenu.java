@@ -22,7 +22,7 @@ public class CareerMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_menu);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(false);
 		Intent intent = getIntent();
 		newUser = intent.getBooleanExtra("newUser", false);
 		
@@ -41,20 +41,20 @@ public class CareerMenu extends Activity {
 				{
 					ParseObject careerGoal = new ParseObject("careerGoal");
 					careerGoal.put("Owner", ParseUser.getCurrentUser());
-					careerGoal.put("goalName", "None");
+					careerGoal.put("goalName", "AddYourGoalHere");
 					careerGoal.put("goalType", "None");
 					careerGoal.put("goalDate", "None");
 					careerGoal.saveInBackground();
 
 					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
 					startActivity(i);
-					finish();
+
 				}
 				else
 				{
 					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
 					startActivity(i);
-					finish();
+
 				}
 	         }
 		});
