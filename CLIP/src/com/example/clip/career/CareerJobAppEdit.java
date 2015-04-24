@@ -14,15 +14,18 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.view.View;
 import android.content.Intent;
 
+
 public class CareerJobAppEdit extends Activity implements OnItemSelectedListener {
 
 	ArrayAdapter<CharSequence> spinnerAdapter;
-	EditText jobName;
+	EditText jobName, jobComments;
 	Button saveButton;
 	Spinner status;
+	//DatePickerDialog datePicker;
 
 	String name;
 	String[] data;
+	int[] dataDate;
 	
 	Intent iReturn;
 	
@@ -34,9 +37,10 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 		iReturn = new Intent();
 		
 		jobName = (EditText) findViewById(R.id.jobName);
-		saveButton = (Button) findViewById(R.id.job_buttonSave);
-		
+		jobComments = (EditText) findViewById(R.id.jobComments);
+		saveButton = (Button) findViewById(R.id.job_buttonSave);		
 		status = (Spinner) findViewById(R.id.job_statusSpinner);
+		
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		spinnerAdapter = ArrayAdapter.createFromResource(this,
 		        R.array.job_status, android.R.layout.simple_spinner_item);
@@ -44,6 +48,8 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 		spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		status.setAdapter(spinnerAdapter);
+		
+		//datePicker = new DatePickerDialog(this, )
 		
 		//edit option
 		if(getIntent().getStringExtra("name") != null) {
@@ -59,6 +65,11 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 			//--------
 			
 			
+		}
+		else {
+			
+			data = new String[3];
+			dataDate = new int[3];	//{month, day, year}
 		}
 	}
 	
@@ -96,11 +107,27 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 	public void onItemSelected(AdapterView<?> parent, View view, 
             int pos, long id) {
         // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
+        data[1] = (String) parent.getItemAtPosition(pos);
     }
 
 	@Override
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
+	
+	/*
+	@Override
+	public void onDateSet(DatePicker view, int year, int month, int day) {
+	  
+		dataDate[0] = month;
+		dataDate[1] = day;
+		dataDate[2] = year;
+	}
+	
+	public void showDatePickerDialog(View view) {
+	
+		DialogFragment newFragment = new DialogFragment();
+		newFragment.show(new FragmentTransaction(), "datePicker");
+	}
+	*/
 }

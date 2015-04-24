@@ -23,14 +23,37 @@
 
     <Spinner
     android:id="@+id/job_statusSpinner"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/jobComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Comments (optional)" />
+    
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <!-- 
+    <Button
+        android:id="@+id/job_buttonSetDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="showDatePickerDialog"
+        android:text="Set Date" />
+         -->
 
     <Button
         android:id="@+id/job_buttonSave"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="bottom|center_horizontal"
         android:onClick="saveClicked"
         android:text="Save" />
