@@ -223,34 +223,47 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			
 			//edit is clicked
 			if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
-											
-				Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
-				i.putExtra("name", goalName);
-				i.putExtra("data", dataMap.get(goalName));
-				this.startActivityForResult(i, 1);
+									
+				//goal != none
+				if(!goalName.equals(getString(R.string.none))) {
+				
+					Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
+					i.putExtra("name", goalName);
+					i.putExtra("data", dataMap.get(goalName));
+					this.startActivityForResult(i, 1);
+				}
 			}
 			//remove is clicked
 			else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
 				
-				goalList.remove(goalName);
-				dataMap.remove(goalName);
+				//goal != none
+				if(!goalName.equals(getString(R.string.none))) {
 				
-				if(goalList.isEmpty()) {
-				
-					goalList.add(getString(R.string.none));
-					goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
-					dataMap.put(goalList.get(0), goalData);
+					goalList.remove(goalName);
+					dataMap.remove(goalName);
+					
+					if(goalList.isEmpty()) {
+					
+						goalList.add(getString(R.string.none));
+						goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
+						dataMap.put(goalList.get(0), goalData);
+					}
+					this.onContentChanged();
 				}
-				this.onContentChanged();
 			}
 		}
+		//go to details
 		else {		
 			
-			Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
-			this.goalData = dataMap.get(goalList.get(position));
-			i.putExtra("name", goalList.get(position));
-			i.putExtra("data", this.goalData);
-			startActivity(i);	
+			//goal != none
+			if(!goalList.get(position).equals(getString(R.string.none))) {
+			
+				Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
+				this.goalData = dataMap.get(goalList.get(position));
+				i.putExtra("name", goalList.get(position));
+				i.putExtra("data", this.goalData);
+				startActivity(i);	
+			}
 		}		
     }
 	

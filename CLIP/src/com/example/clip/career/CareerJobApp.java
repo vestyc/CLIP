@@ -124,37 +124,40 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 			
 			popUp.dismiss();
 			
-			//edit is clicked && current item is not "None"
-			if(this.popUpItems.get(position).equals(getString(R.string.action_edit))
-					&& !jobList.get(position).equals(getString(R.string.none))) {
-											
-				Intent i = new Intent(CareerJobApp.this, CareerJobAppEdit.class);
-				
-				this.jobData = dataMap.get(jobList.get(position));
-				this.jobDateApplied = this.dateAppMap.get(jobList.get(position));
-				
-				i.putExtra("name", jobList.get(position));
-				i.putExtra("data", this.jobData);
-				i.putExtra("date", this.jobDateApplied);
-				
-				this.startActivityForResult(i, 1);
-			}
-			//remove is clicked
-			else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
-				
-				jobList.remove(jobName);
-				dataMap.remove(jobName);
-				this.dateAppMap.remove(jobName);
-				
-				if(jobList.isEmpty()) {
-				
-					this.resetEmptyList();
+			//only operate when jobName != none
+			if(!jobName.equals(getString(R.string.none))) {
+			
+				//edit is clicked
+				if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
+												
+					Intent i = new Intent(CareerJobApp.this, CareerJobAppEdit.class);
+					
+					this.jobData = dataMap.get(jobList.get(position));
+					this.jobDateApplied = this.dateAppMap.get(jobList.get(position));
+					
+					i.putExtra("name", jobList.get(position));
+					i.putExtra("data", this.jobData);
+					i.putExtra("date", this.jobDateApplied);
+					
+					this.startActivityForResult(i, 1);
 				}
-				this.onContentChanged();
+				//remove is clicked
+				else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
+					
+					jobList.remove(jobName);
+					dataMap.remove(jobName);
+					this.dateAppMap.remove(jobName);
+					
+					if(jobList.isEmpty()) {
+					
+						this.resetEmptyList();
+					}
+					this.onContentChanged();
+				}
 			}
 		}
-		//show details
-		else {
+		//show details if job != none
+		else if(!jobList.get(position).equals(getString(R.string.none))) {
 			
 			Intent i = new Intent(CareerJobApp.this, CareerJobAppDetail.class);		
 			this.jobData = dataMap.get(jobList.get(position));
