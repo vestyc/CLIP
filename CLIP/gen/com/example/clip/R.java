@@ -29,7 +29,7 @@ public final class R {
         public static final int loginbackground=0x7f020001;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f090002;
+        public static final int LinearLayout1=0x7f090001;
         public static final int LoginButton=0x7f09001e;
         public static final int Register=0x7f09001f;
         public static final int action_add=0x7f090022;
@@ -61,7 +61,7 @@ public final class R {
         public static final int job_dateLabel=0x7f090012;
         public static final int job_datePicker=0x7f090013;
         public static final int job_statusSpinner=0x7f090011;
-        public static final int label=0x7f090001;
+        public static final int label=0x7f090002;
         public static final int label_compInfoList=0x7f090000;
         public static final int label_jobList=0x7f09000b;
         public static final int label_popUp=0x7f090020;
