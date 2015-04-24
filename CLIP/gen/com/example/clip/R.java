@@ -120,6 +120,7 @@ public final class R {
         public static final int title_activity_career_job_app_edit=0x7f05001c;
         public static final int title_activity_career_menu=0x7f050006;
         public static final int title_activity_entry=0x7f050010;
+        public static final int title_activity_login=0x7f05001e;
         public static final int title_activity_register=0x7f050014;
         public static final int username_title=0x7f050011;
     }

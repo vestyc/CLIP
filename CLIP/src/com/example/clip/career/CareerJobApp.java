@@ -4,13 +4,22 @@ import com.example.clip.R;
 import com.example.clip.R.id;
 import com.example.clip.R.layout;
 import com.example.clip.R.menu;
+import com.parse.FindCallback;
+import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,15 +39,14 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	String[] jobData;					//{appStatus, comments}
 	int[]	jobDateApplied;				//{Month, Day, Year}
 	
+	ParseQuery<ParseObject> query = ParseQuery.getQuery("careerJob");
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(false);
 		//initiate list
 		this.createEmptyList();
-		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_job_app,
-				R.id.label_jobList, jobList);
-		this.setListAdapter(listViewAdapter);
+		
 		
 		//initiate the pop-up list
 		popUp = new ListPopupWindow(this);
@@ -52,11 +60,97 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
 		
+		ParseAnalytics.trackAppOpened(getIntent());
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerJob");
+		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+		
+		// Create query for objects of type "Post"
+
+			// Restrict to cases where the author is the current user.
+			// Note that you should pass in a ParseUser and not the
+			// String reperesentation of that user
+			// Run the query
+			query.findInBackground(new FindCallback<ParseObject>() {
+
+				@Override
+				public void done(List<ParseObject> postList, ParseException e) {
+					if (e == null) {
+						jobList.clear();
+						dataMap.clear();
+						// If there are results, update the list of posts
+						// and notify the adapter
+						for (ParseObject job : postList) {
+							jobData[0] = job.getString("Status");
+							jobData[1] = job.getString("Comments");
+							jobDateApplied[0] = job.getInt("DateAppliedMonth");
+							jobDateApplied[1] = job.getInt("DateAppliedDay");
+							jobDateApplied[2] = job.getInt("DateAppliedYear");
+							jobList.add(job.getString("Name"));
+							dataMap.put(job.getString("Name"), jobData);
+						}
+						((ArrayAdapter<String>)getListAdapter()).notifyDataSetChanged();
+
+					} else {
+						Log.d("Post retrieval", "Error: " + e.getMessage());
+					}
+
+				}
+
+			});
+			
+		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_job_app,
+				R.id.label_jobList, jobList);
+		this.setListAdapter(listViewAdapter);
 		//listeners
 		this.getListView().setOnItemClickListener(this);
 		this.getListView().setOnItemLongClickListener(this);
 	}
 	
+	
+	@Override
+	protected void onPause()
+	{
+		super.onPause(); 
+		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+		query.findInBackground(new FindCallback<ParseObject>() {
+
+			@Override
+			public void done(List<ParseObject> postList, ParseException e) {
+				if (e == null) {
+					// If there are results, update the list of posts
+					// and notify the adapter
+					for (ParseObject job : postList) {
+						job.deleteInBackground();
+					}
+					
+				} else {
+					Log.d("Post retrieval", "Error: " + e.getMessage());
+				}
+
+			}
+
+		});
+		
+		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
+			ParseObject careerJob = new ParseObject("careerJob");
+			careerJob.put("Owner", ParseUser.getCurrentUser());
+			careerJob.put("Name", entry.getKey());
+			careerJob.put("Status", entry.getValue()[0]);
+			careerJob.put("Comments", entry.getValue()[1]);
+			 for(Map.Entry<String, int[]> entry1 : dateAppMap.entrySet())
+			 {
+				 if (entry1.getKey().toString().equalsIgnoreCase(entry.getKey().toString()))
+				 {
+					 careerJob.put("DateAppliedMonth", entry.getValue()[0]);
+					 careerJob.put("DateAppliedDay", entry.getValue()[1]);
+					 careerJob.put("DateAppliedYear", entry.getValue()[2]);
+					 break;
+				 }
+			 }
+			careerJob.saveInBackground();
+		 }
+		 
+	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		

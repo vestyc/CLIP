@@ -37,5 +37,6 @@
         <item>Accepted</item>
         <item>Rejected</item>
     </string-array>
+    <string name="title_activity_login">Welcom to Clip</string>
 
 </resources>

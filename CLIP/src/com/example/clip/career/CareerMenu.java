@@ -45,7 +45,17 @@ public class CareerMenu extends Activity {
 					careerGoal.put("goalType", "None");
 					careerGoal.put("goalDate", "None");
 					careerGoal.saveInBackground();
-
+					
+					ParseObject careerJob = new ParseObject("careerJob");
+					careerJob.put("Owner", ParseUser.getCurrentUser());
+					careerJob.put("Name", "AddYourJobHere");
+					careerJob.put("Status", "None");
+					careerJob.put("DateAppliedMonth", 1);
+					careerJob.put("DateAppliedDay", 1);
+					careerJob.put("DateAppliedYear", 2000);
+					careerJob.put("Comments", "None");
+					careerJob.saveInBackground();
+					
 					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
 					startActivity(i);
 
