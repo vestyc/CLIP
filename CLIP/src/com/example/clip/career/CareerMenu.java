@@ -1,27 +1,30 @@
 package com.example.clip.career;
 
-import com.example.clip.R;
-import com.example.clip.R.id;
-import com.example.clip.R.layout;
-import com.example.clip.R.menu;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.content.Intent;
+import android.widget.Button;
+
+import com.example.clip.R;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 public class CareerMenu extends Activity {
 	
 	Button goal, jobApp, compInfo, eId, contact;
 
+	Boolean newUser = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_menu);
+		getActionBar().setDisplayHomeAsUpEnabled(false);
+		Intent intent = getIntent();
+		newUser = intent.getBooleanExtra("newUser", false);
 		
 		//button assignments
 		goal = (Button) findViewById(R.id.button_goal);
@@ -34,9 +37,25 @@ public class CareerMenu extends Activity {
 		goal.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				
-				Intent i = new Intent(CareerMenu.this, CareerGoal.class);
-				startActivity(i);
+				if(newUser)
+				{
+					ParseObject careerGoal = new ParseObject("careerGoal");
+					careerGoal.put("Owner", ParseUser.getCurrentUser());
+					careerGoal.put("goalName", "AddYourGoalHere");
+					careerGoal.put("goalType", "None");
+					careerGoal.put("goalDate", "None");
+					careerGoal.saveInBackground();
+
+					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
+					startActivity(i);
+
+				}
+				else
+				{
+					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
+					startActivity(i);
+
+				}
 	         }
 		});
 	}

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.clip.career.CareerMenu;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class Entry extends Activity {
@@ -20,36 +21,27 @@ public class Entry extends Activity {
 	EditText txtsave;
 	TextView txtreturn;
 	Button btnsave;
-	ParseUser currentUser;
+	Boolean newUser;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_entry);
-		
-		currentUser = ParseUser.getCurrentUser();
-		txtsave = (EditText)findViewById(R.id.test);
-		btnsave = (Button) findViewById(R.id.testbtn);
-		txtreturn = (TextView) findViewById(R.id.testreturn1);
-		career = (Button) findViewById(R.id.button_career);
-		//txtreturn.setText(currentUser.get("testfield").toString());
-		btnsave.setOnClickListener(new OnClickListener() {
-					
-					public void onClick(View v) {
-						
-						currentUser.put("testfield",txtsave.getText().toString());
-						currentUser.saveInBackground();
-						txtreturn.setText(currentUser.get("testfield").toString());						
 
-			         }
-				});
+		Intent intent = getIntent();
+		newUser = intent.getBooleanExtra("newUser", false);
+		career = (Button) findViewById(R.id.button_career);
+
 		career.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				
-				Intent i = new Intent(Entry.this, CareerMenu.class);
-				startActivity(i);
-				
-	         }
+
+					Intent i = new Intent(Entry.this, CareerMenu.class);
+					i.putExtra("newUser",newUser);
+					startActivity(i);
+
+				}
+
 		});
 	}
 	
@@ -57,9 +49,9 @@ public class Entry extends Activity {
 	{
 		
 		Intent i = new Intent(Entry.this, MainActivity.class);
-		currentUser.logOut();
+		ParseUser.getCurrentUser().logOut();
 		startActivity(i);
-		finish();
+
 	}
 
 	@Override

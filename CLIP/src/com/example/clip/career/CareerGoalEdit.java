@@ -26,7 +26,7 @@ public class CareerGoalEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_goal_edit);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(false);
 		i = new Intent();
 		
 		goalName = (EditText) findViewById(R.id.goalName);
