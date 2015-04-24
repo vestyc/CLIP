@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".finance.financeGoalEdit" >
+
+    <EditText
+        android:id="@+id/goalName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Goal Title" >
+        <requestFocus />
+    </EditText>
+
+    <RadioGroup
+        android:id="@+id/goalLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <RadioButton
+            android:id="@+id/goalLengthShort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Short term"
+            android:onClick="onRadioButtonClicked" />
+
+        <RadioButton
+            android:id="@+id/goalLengthLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Long term"
+            android:onClick="onRadioButtonClicked" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/goalDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Completion Date" >
+    </EditText>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:onClick="saveClicked"
+        android:text="Save" />
+
+</LinearLayout>

@@ -30,21 +30,27 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090001;
-        public static final int LoginButton=0x7f09001d;
-        public static final int Register=0x7f09001e;
-        public static final int action_add=0x7f090020;
-        public static final int action_edit=0x7f090021;
-        public static final int action_logout=0x7f090024;
-        public static final int action_remove=0x7f090022;
-        public static final int action_settings=0x7f090023;
+        public static final int LoginButton=0x7f090023;
+        public static final int Register=0x7f090024;
+        public static final int action_add=0x7f090026;
+        public static final int action_edit=0x7f090027;
+        public static final int action_logout=0x7f09002a;
+        public static final int action_remove=0x7f090028;
+        public static final int action_settings=0x7f090029;
         public static final int appStatus=0x7f09000d;
         public static final int buttonSave=0x7f090009;
+        public static final int button_asset=0x7f09001d;
         public static final int button_career=0x7f09001a;
+        public static final int button_cc=0x7f09001e;
         public static final int button_compInfo=0x7f090017;
         public static final int button_contact=0x7f090019;
         public static final int button_eId=0x7f090018;
+        public static final int button_fgoal=0x7f09001b;
         public static final int button_goal=0x7f090015;
         public static final int button_jobApp=0x7f090016;
+        public static final int button_liability=0x7f09001f;
+        public static final int button_stock=0x7f09001c;
+        public static final int button_summary=0x7f090020;
         public static final int dateApplied=0x7f09000c;
         public static final int dateToComplete=0x7f090004;
         public static final int goalDate=0x7f090008;
@@ -63,9 +69,9 @@ public final class R {
         public static final int job_statusSpinner=0x7f090010;
         public static final int label=0x7f090000;
         public static final int label_jobList=0x7f09000a;
-        public static final int label_popUp=0x7f09001f;
-        public static final int passWord=0x7f09001c;
-        public static final int userName=0x7f09001b;
+        public static final int label_popUp=0x7f090025;
+        public static final int passWord=0x7f090022;
+        public static final int userName=0x7f090021;
     }
     public static final class layout {
         public static final int activity_career_goal=0x7f030000;
@@ -76,8 +82,12 @@ public final class R {
         public static final int activity_career_job_app_edit=0x7f030005;
         public static final int activity_career_menu=0x7f030006;
         public static final int activity_entry=0x7f030007;
-        public static final int activity_login=0x7f030008;
-        public static final int edit_remove_popup=0x7f030009;
+        public static final int activity_finance_goal=0x7f030008;
+        public static final int activity_finance_goal_detail=0x7f030009;
+        public static final int activity_finance_goal_edit=0x7f03000a;
+        public static final int activity_finance_menu=0x7f03000b;
+        public static final int activity_login=0x7f03000c;
+        public static final int edit_remove_popup=0x7f03000d;
     }
     public static final class menu {
         public static final int career_goal=0x7f080000;
@@ -88,8 +98,12 @@ public final class R {
         public static final int career_job_app_edit=0x7f080005;
         public static final int career_menu=0x7f080006;
         public static final int entry=0x7f080007;
-        public static final int main=0x7f080008;
-        public static final int register=0x7f080009;
+        public static final int finance_goal=0x7f080008;
+        public static final int finance_goal_detail=0x7f080009;
+        public static final int finance_goal_edit=0x7f08000a;
+        public static final int finance_menu=0x7f08000b;
+        public static final int main=0x7f08000c;
+        public static final int register=0x7f08000d;
     }
     public static final class string {
         public static final int action_add=0x7f050005;
@@ -120,6 +134,10 @@ public final class R {
         public static final int title_activity_career_job_app_edit=0x7f05001c;
         public static final int title_activity_career_menu=0x7f050006;
         public static final int title_activity_entry=0x7f050010;
+        public static final int title_activity_finance_goal=0x7f05001e;
+        public static final int title_activity_finance_goal_detail=0x7f050020;
+        public static final int title_activity_finance_goal_edit=0x7f050021;
+        public static final int title_activity_finance_menu=0x7f05001f;
         public static final int title_activity_register=0x7f050014;
         public static final int username_title=0x7f050011;
     }
