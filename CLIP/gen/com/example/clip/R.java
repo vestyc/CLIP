@@ -27,8 +27,8 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080001;
-        public static final int LoginButton=0x7f080012;
-        public static final int Register=0x7f080011;
+        public static final int LoginButton=0x7f080013;
+        public static final int Register=0x7f080014;
         public static final int action_add=0x7f080015;
         public static final int action_edit=0x7f080016;
         public static final int action_logout=0x7f080019;
@@ -50,8 +50,8 @@ public final class R {
         public static final int goalType=0x7f080003;
         public static final int label=0x7f080000;
         public static final int label2=0x7f08000a;
-        public static final int passWord=0x7f080013;
-        public static final int userName=0x7f080014;
+        public static final int passWord=0x7f080012;
+        public static final int userName=0x7f080011;
     }
     public static final class layout {
         public static final int activity_career_goal=0x7f030000;

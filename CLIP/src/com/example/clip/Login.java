@@ -37,6 +37,8 @@ public class Login extends Activity {
 		username = (EditText) findViewById(R.id.userName);
 		password = (EditText) findViewById(R.id.passWord);
 		
+		
+		
 		password.setTypeface(Typeface.DEFAULT);
 		password.setTransformationMethod(new PasswordTransformationMethod());
 		// Locate Buttons in main.xml

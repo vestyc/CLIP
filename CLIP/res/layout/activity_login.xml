@@ -12,32 +12,35 @@
 
     <EditText
         android:id="@+id/userName"
-        android:layout_width="500dp"
-        android:layout_height="50dp"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
+        android:layout_marginTop="188dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="@string/username_title"
         android:inputType="text|textPersonName"
-        android:textSize="25dp" >
+        android:textSize="25dp" 
+        android:gravity="center">
 
         <requestFocus />
+
     </EditText>
 
     <EditText
         android:id="@+id/passWord"
-        android:layout_width="500dp"
-        android:layout_height="50dp"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
         android:layout_alignLeft="@+id/userName"
         android:layout_below="@+id/userName"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="23dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="@string/password_title"
         android:inputType="textPassword"
-        android:textSize="25dp" />
+        android:textSize="25dp" 
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/LoginButton"
@@ -45,16 +48,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/passWord"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/button_login" />
 
     <Button
         android:id="@+id/Register"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/LoginButton"
         android:layout_below="@+id/LoginButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="13dp"
         android:text="@string/button_register" />
 
 </RelativeLayout>
