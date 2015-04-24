@@ -19,13 +19,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
+
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-             -->
+            -->
         </activity>
         <activity android:name=".Login" >
         </activity>
@@ -36,7 +37,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.MainActivity" />
-             <intent-filter>
+
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -91,12 +93,50 @@
                 android:value="com.example.clip.career.CareerJobApp" />
         </activity>
         <activity
-            android:name="com.example.clip.career.CareerJobAppDetail"
+            android:name=".career.CareerJobAppDetail"
             android:label="@string/title_activity_career_job_app_detail"
             android:parentActivityName=".career.CareerJobApp" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.career.CareerJobApp" />
+        </activity>
+        <activity
+            android:name=".finance.financeMenu"
+            android:label="@string/title_activity_finance_menu"
+            android:parentActivityName=".Login" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.MainActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+                <activity
+            android:name=".finance.financeGoal"
+            android:label="@string/title_activity_finance_goal"
+            android:parentActivityName="finance.financeMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.financeMenu" />
+        </activity>
+        <activity
+            android:name=".finance.financeGoalDetail"
+            android:label="@string/title_activity_finance_goal_detail"
+            android:parentActivityName=".finance.financeGoal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeGoal" />
+        </activity>
+        <activity
+            android:name=".finance.financeGoalEdit"
+            android:label="@string/title_activity_finance_goal_edit"
+            android:parentActivityName=".finance.financeGoal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeGoal" />
         </activity>
     </application>
 
