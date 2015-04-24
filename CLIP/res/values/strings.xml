@@ -18,8 +18,8 @@
     <string name="button_login">Login</string>
     <string name="checkcontent">Check Content</string>
     <string name="title_activity_entry">Entry</string>
-    <string name="username_title">Username:</string>
-    <string name="password_title">Password:</string>
+    <string name="username_title">Enter your Username here</string>
+    <string name="password_title">Enter your Password here</string>
     <string name="button_register">Register</string>
     <string name="title_activity_register">Register</string>
     <string name="button_career">Career</string>
