@@ -45,17 +45,7 @@ public class CareerMenu extends Activity {
 					careerGoal.put("goalType", "None");
 					careerGoal.put("goalDate", "None");
 					careerGoal.saveInBackground();
-					
-					ParseObject careerJob = new ParseObject("careerJob");
-					careerJob.put("Owner", ParseUser.getCurrentUser());
-					careerJob.put("Name", "AddYourJobHere");
-					careerJob.put("Status", "None");
-					careerJob.put("DateAppliedMonth", 1);
-					careerJob.put("DateAppliedDay", 1);
-					careerJob.put("DateAppliedYear", 2000);
-					careerJob.put("Comments", "None");
-					careerJob.saveInBackground();
-					
+										
 					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
 					startActivity(i);
 
@@ -72,10 +62,28 @@ public class CareerMenu extends Activity {
 		jobApp.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				
-				Intent i = new Intent(CareerMenu.this, CareerJobApp.class);
-				startActivity(i);
-	         }
+				if(newUser)
+				{
+					Intent i = new Intent(CareerMenu.this, CareerJobApp.class);
+					
+					ParseObject careerJob = new ParseObject("careerJob");
+					careerJob.put("Owner", ParseUser.getCurrentUser());
+					careerJob.put("Name", "None");
+					careerJob.put("Status", "None");
+					careerJob.put("DateAppliedMonth", 1);
+					careerJob.put("DateAppliedDay", 1);
+					careerJob.put("DateAppliedYear", 2000);
+					careerJob.put("Comments", "None");
+					careerJob.saveInBackground();
+					
+					startActivity(i);
+				}
+				else
+				{
+					Intent i = new Intent(CareerMenu.this, CareerJobApp.class);
+					startActivity(i);
+				}
+			}
 		});
 	}
 

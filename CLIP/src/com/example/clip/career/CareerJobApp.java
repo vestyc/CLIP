@@ -60,7 +60,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
 		
-		ParseAnalytics.trackAppOpened(getIntent());
+	//	ParseAnalytics.trackAppOpened(getIntent());
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerJob");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
@@ -107,7 +107,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	}
 	
 	
-	@Override
+	/*@Override
 	protected void onPause()
 	{
 		super.onPause(); 
@@ -150,7 +150,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 			careerJob.saveInBackground();
 		 }
 		 
-	}
+	}*/
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
@@ -279,7 +279,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		jobData = new String[] {"Status N/A", "No comments."};
 		dataMap = new HashMap<String, String[]>();
 		dataMap.put(jobList.get(0), jobData);
-		jobDateApplied = null;
+		jobDateApplied = new int[3];
 		dateAppMap = new HashMap<String, int[]>();
 		dateAppMap.put(jobList.get(0), jobDateApplied);
 	}
@@ -290,7 +290,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		jobData = new String[] {"Status N/A", "No comments."};
 		dataMap = new HashMap<String, String[]>();
 		dataMap.put(jobList.get(0), jobData);
-		jobDateApplied = null;
+		jobDateApplied = new int[3];
 		dateAppMap = new HashMap<String, int[]>();
 		dateAppMap.put(jobList.get(0), jobDateApplied);
 	}
