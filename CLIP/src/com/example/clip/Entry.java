@@ -32,7 +32,6 @@ public class Entry extends Activity {
 		newUser = intent.getBooleanExtra("newUser", false);
 		career = (Button) findViewById(R.id.button_career);
 
-
 		career.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
@@ -52,7 +51,7 @@ public class Entry extends Activity {
 		Intent i = new Intent(Entry.this, MainActivity.class);
 		ParseUser.getCurrentUser().logOut();
 		startActivity(i);
-
+		finish();
 	}
 
 	@Override
