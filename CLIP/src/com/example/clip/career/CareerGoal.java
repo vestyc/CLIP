@@ -48,20 +48,17 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		dataMap = new HashMap<String, String[]>();
 		goalData = new String[3];
 		
-		
-		
 		//initiate the pop-up list
 		popUp = new ListPopupWindow(this);
 		popUpItems = new ArrayList<String>();
-		popUpItems.add("Edit");
-		popUpItems.add("Remove");
-		popUpAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal_popup,
-				R.id.label2, popUpItems);
+		popUpItems.add(getString(R.string.action_edit));
+		popUpItems.add(getString(R.string.action_remove));
+		popUpAdapter = new ArrayAdapter<String>(this, R.layout.edit_remove_popup,
+				R.id.label_popUp, popUpItems);
 		popUp.setAdapter(popUpAdapter);
 		popUp.setModal(true);
-		popUp.setWidth(ListPopupWindow.WRAP_CONTENT);
+		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
-		//popUp.setOnItemClickListener(this);
 		
 		ParseAnalytics.trackAppOpened(getIntent());
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
@@ -173,10 +170,10 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		if(requestCode == 0) {
 			
 			//clears any initial data
-			if(goalList.get(0).equals("None")) {
+			if(goalList.get(0).equals(getString(R.string.none))) {
 			
 				goalList.remove(0);
-				dataMap.remove("None");
+				dataMap.remove(getString(R.string.none));
 			}
 			
 			//goalLength, goalDate
@@ -225,7 +222,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			popUp.dismiss();
 			
 			//edit is clicked
-			if(this.popUpItems.get(position).equals("Edit")) {
+			if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
 											
 				Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
 				i.putExtra("name", goalName);
@@ -233,14 +230,14 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 				this.startActivityForResult(i, 1);
 			}
 			//remove is clicked
-			else if(this.popUpItems.get(position).equals("Remove")) {
+			else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
 				
 				goalList.remove(goalName);
 				dataMap.remove(goalName);
 				
 				if(goalList.isEmpty()) {
 				
-					goalList.add("None");
+					goalList.add(getString(R.string.none));
 					goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
 					dataMap.put(goalList.get(0), goalData);
 				}
