@@ -51,7 +51,7 @@ public class Entry extends Activity {
 		Intent i = new Intent(Entry.this, MainActivity.class);
 		ParseUser.getCurrentUser().logOut();
 		startActivity(i);
-
+		finish();
 	}
 
 	@Override

@@ -108,9 +108,9 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	}
 	
 	@Override
-	protected void onStop()
+	protected void onPause()
 	{
-		super.onStop(); 
+		super.onPause(); 
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		query.findInBackground(new FindCallback<ParseObject>() {
 
