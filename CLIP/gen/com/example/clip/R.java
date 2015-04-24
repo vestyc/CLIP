@@ -30,21 +30,21 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090001;
-        public static final int LoginButton=0x7f09001b;
-        public static final int Register=0x7f09001c;
-        public static final int action_add=0x7f09001e;
-        public static final int action_edit=0x7f09001f;
-        public static final int action_logout=0x7f090022;
-        public static final int action_remove=0x7f090020;
-        public static final int action_settings=0x7f090021;
+        public static final int LoginButton=0x7f09001d;
+        public static final int Register=0x7f09001e;
+        public static final int action_add=0x7f090020;
+        public static final int action_edit=0x7f090021;
+        public static final int action_logout=0x7f090024;
+        public static final int action_remove=0x7f090022;
+        public static final int action_settings=0x7f090023;
         public static final int appStatus=0x7f09000d;
         public static final int buttonSave=0x7f090009;
-        public static final int button_career=0x7f090018;
-        public static final int button_compInfo=0x7f090015;
-        public static final int button_contact=0x7f090017;
-        public static final int button_eId=0x7f090016;
-        public static final int button_goal=0x7f090013;
-        public static final int button_jobApp=0x7f090014;
+        public static final int button_career=0x7f09001a;
+        public static final int button_compInfo=0x7f090017;
+        public static final int button_contact=0x7f090019;
+        public static final int button_eId=0x7f090018;
+        public static final int button_goal=0x7f090015;
+        public static final int button_jobApp=0x7f090016;
         public static final int dateApplied=0x7f09000c;
         public static final int dateToComplete=0x7f090004;
         public static final int goalDate=0x7f090008;
@@ -53,17 +53,19 @@ public final class R {
         public static final int goalLengthShort=0x7f090006;
         public static final int goalName=0x7f090002;
         public static final int goalType=0x7f090003;
-        public static final int jobComment=0x7f090011;
         public static final int jobComments=0x7f09000f;
         public static final int jobName=0x7f09000b;
         public static final int jobScrollView=0x7f09000e;
-        public static final int job_buttonSave=0x7f090012;
+        public static final int job_buttonSave=0x7f090014;
+        public static final int job_comments=0x7f090013;
+        public static final int job_dateLabel=0x7f090011;
+        public static final int job_datePicker=0x7f090012;
         public static final int job_statusSpinner=0x7f090010;
         public static final int label=0x7f090000;
         public static final int label_jobList=0x7f09000a;
-        public static final int label_popUp=0x7f09001d;
-        public static final int passWord=0x7f09001a;
-        public static final int userName=0x7f090019;
+        public static final int label_popUp=0x7f09001f;
+        public static final int passWord=0x7f09001c;
+        public static final int userName=0x7f09001b;
     }
     public static final class layout {
         public static final int activity_career_goal=0x7f030000;

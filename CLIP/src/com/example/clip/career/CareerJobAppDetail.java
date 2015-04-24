@@ -15,6 +15,7 @@ public class CareerJobAppDetail extends Activity {
 
 	String name;
 	String[] data;
+	int[] date;
 	TextView appStatus, comments, jobName, dateApplied;
 	
 	@Override
@@ -29,12 +30,22 @@ public class CareerJobAppDetail extends Activity {
 		
 		name = getIntent().getStringExtra("name");
 		data = getIntent().getStringArrayExtra("data");
+		date = getIntent().getIntArrayExtra("date");
 		
-		// data = {dateApplied, appStatus, comments}
-		jobName.setText(name);
-		dateApplied.setText(data[0]);
-		appStatus.setText(data[1]);
-		comments.setText(data[2]);
+		// data = {appStatus, comments}
+		if(name != null) {
+		
+			jobName.setText(name);
+		}
+		if(data != null) {
+		
+			appStatus.setText(data[0]);
+			comments.setText(data[1]);
+		}
+		if(date != null) {
+		
+			dateApplied.setText(date[0]+"/"+date[1]+"/"+date[2]);
+		}
 	}
 
 	@Override

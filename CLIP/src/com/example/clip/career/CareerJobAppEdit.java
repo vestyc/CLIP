@@ -21,11 +21,11 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 	EditText jobName, jobComments;
 	Button saveButton;
 	Spinner status;
-	//DatePickerDialog datePicker;
+	DatePicker datePicker;
 
-	String name;
-	String[] data;
-	int[] dataDate;
+	String name;	//jobName
+	String[] data;	//{appStatus, comments}
+	int[] dataDate;	//{month, day, year}
 	
 	Intent iReturn;
 	
@@ -37,9 +37,10 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 		iReturn = new Intent();
 		
 		jobName = (EditText) findViewById(R.id.jobName);
-		jobComments = (EditText) findViewById(R.id.jobComments);
-		saveButton = (Button) findViewById(R.id.job_buttonSave);		
 		status = (Spinner) findViewById(R.id.job_statusSpinner);
+		jobComments = (EditText) findViewById(R.id.job_comments);
+		saveButton = (Button) findViewById(R.id.job_buttonSave);		
+		datePicker = (DatePicker) findViewById(R.id.job_datePicker);
 		
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		spinnerAdapter = ArrayAdapter.createFromResource(this,
@@ -58,29 +59,59 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 			jobName.setText(getIntent().getStringExtra("name"));
 			iReturn.putExtra("oldName", jobName.getText().toString());
 			
-			// data = {dateApplied, appStatus, comments}
+			// data = {appStatus, comments}
 			data = getIntent().getStringArrayExtra("data");
-			//set current date applied
 			
-			//--------
+			//sets the current status
+			if(data != null) {
+				
+				String[] spinnerValues = getResources().getStringArray(R.array.job_status);
+				for(int i = 0; i < spinnerValues.length; i++) {
+					
+					if(spinnerValues[i].equals(data[0])) {
+						
+						this.status.setSelection(i);
+					}
+				}
+				
+				//set comments, if any
+				if(data[1] != null) {
+					
+					this.jobComments.setText(data[1]);
+				}
+			}
 			
-			
+			dataDate = getIntent().getIntArrayExtra("date");	//{Month, Day, Year}
+			if(dataDate != null) {
+				
+				datePicker.updateDate(dataDate[2], dataDate[0] - 1, dataDate[1]);
+			}
 		}
 		else {
 			
-			data = new String[3];
+			data = new String[2];	// data = {appStatus, comments}
+			data[0] = "Pending";	//Pending is initially selected
 			dataDate = new int[3];	//{month, day, year}
 		}
+		
+		//listeners
+		status.setOnItemSelectedListener(this);
 	}
 	
 	public void saveClicked(View view) {
 			
-		// data = {dateApplied, appStatus, comments}
-		//data[0] = 
-		//i.putExtra("data", this.data);
-		//i.putExtra("name", this.goalName.getText().toString());
-		//this.setResult(RESULT_OK, i);
+		iReturn.putExtra("name", jobName.getText().toString());
 		
+		data[1] = jobComments.getText().toString();
+		iReturn.putExtra("data", data);
+		
+		//{month, day, year}
+		dataDate[0] = 1 + datePicker.getMonth();
+		dataDate[1] = datePicker.getDayOfMonth();
+		dataDate[2] = datePicker.getYear();
+		iReturn.putExtra("date", dataDate);
+				
+		this.setResult(RESULT_OK, iReturn);
 		this.finish();
 	}
 
@@ -107,27 +138,11 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 	public void onItemSelected(AdapterView<?> parent, View view, 
             int pos, long id) {
         // An item was selected. You can retrieve the selected item using
-        data[1] = (String) parent.getItemAtPosition(pos);
+        data[0] = (String) parent.getItemAtPosition(pos);
     }
 
 	@Override
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
-	
-	/*
-	@Override
-	public void onDateSet(DatePicker view, int year, int month, int day) {
-	  
-		dataDate[0] = month;
-		dataDate[1] = day;
-		dataDate[2] = year;
-	}
-	
-	public void showDatePickerDialog(View view) {
-	
-		DialogFragment newFragment = new DialogFragment();
-		newFragment.show(new FragmentTransaction(), "datePicker");
-	}
-	*/
 }
