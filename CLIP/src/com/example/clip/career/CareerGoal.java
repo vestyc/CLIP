@@ -60,7 +60,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
 		
-		ParseAnalytics.trackAppOpened(getIntent());
+		//ParseAnalytics.trackAppOpened(getIntent());
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
