@@ -35,8 +35,6 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
 	
-	boolean cloudIsFinished;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
