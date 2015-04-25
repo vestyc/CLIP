@@ -37,25 +37,9 @@ public class CareerMenu extends Activity {
 		goal.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				if(newUser)
-				{
-					ParseObject careerGoal = new ParseObject("careerGoal");
-					careerGoal.put("Owner", ParseUser.getCurrentUser());
-					careerGoal.put("goalName", "AddYourGoalHere");
-					careerGoal.put("goalType", "None");
-					careerGoal.put("goalDate", "None");
-					careerGoal.saveInBackground();
-
-					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
-					startActivity(i);
-
-				}
-				else
-				{
-					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
-					startActivity(i);
-
-				}
+				
+				Intent i = new Intent(CareerMenu.this, CareerGoal.class);
+				startActivity(i);
 	         }
 		});
 		

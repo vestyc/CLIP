@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -35,18 +35,24 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
 	
-	ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
+	boolean cloudIsFinished;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		 
-		//build initial goalData	
+		
+		//initiate list view			
 		goalList = new ArrayList<String>();
+		goalList.add(getString(R.string.none));		
+		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
+				R.id.label, goalList);		
+		setListAdapter(listViewAdapter);
+		
+		//initiate data variables
 		dataMap = new HashMap<String, String[]>();
-		goalData = new String[3];
+		goalData = new String[2];
 		
 		//initiate the pop-up list
 		popUp = new ListPopupWindow(this);
@@ -59,88 +65,62 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUp.setModal(true);
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
+	}
+	
+	@Override
+	protected void onResume() {
 		
-		ParseAnalytics.trackAppOpened(getIntent());
+		super.onResume();
+		
+		//remove local data (overriding with cloud data)
+		dataMap.clear();
+		goalList.clear();
+		
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		// Create query for objects of type "Post"
 
-			// Restrict to cases where the author is the current user.
-			// Note that you should pass in a ParseUser and not the
-			// String reperesentation of that user
-			// Run the query
-			query.findInBackground(new FindCallback<ParseObject>() {
-
-				@Override
-				public void done(List<ParseObject> postList, ParseException e) {
-					if (e == null) {
-						goalList.clear();
-						dataMap.clear();
-						// If there are results, update the list of posts
-						// and notify the adapter
-						for (ParseObject goal : postList) {
-							goalData[0] = goal.getString("goalType");
-							goalData[1] = goal.getString("goalDate");
-							goalList.add(goal.getString("goalName"));
-							dataMap.put(goal.getString("goalName"), goalData);
-						}
-						((ArrayAdapter<String>)getListAdapter()).notifyDataSetChanged();
-
-					} else {
-						Log.d("Post retrieval", "Error: " + e.getMessage());
-					}
-
-				}
-
-			});
-			
-		//initiate list view
-		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_goal,
-				R.id.label, goalList);		
-		setListAdapter(listViewAdapter);
+		// Restrict to cases where the author is the current user.
+		// Note that you should pass in a ParseUser and not the
+		// String reperesentation of that user
+		// Run the query
 		
+		try {
+		
+			List<ParseObject> postList = query.find();
+		
+			// If there are results, update the list of posts
+			// and notify the adapter
+			for (ParseObject goal : postList) {				
+					
+				goalName = goal.getString("goalName");	
+				goalList.remove(getString(R.string.none));		//remove "none" if present
+				
+				//add data from database 
+				goalList.add(goalName);
+				goalData = new String[2];
+				goalData[0] = goal.getString("goalType");
+				goalData[1] = goal.getString("goalDate");	
+				dataMap.put(goalName, goalData);		
+			}
+			
+		}catch (ParseException e) {
+			
+			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+		}
+		
+		if(goalList.isEmpty()) {
+			
+			goalList.add(getString(R.string.none));
+		}
+		
+		//update screen
+		this.onContentChanged();
 		this.getListView().setOnItemClickListener(this);
 		this.getListView().setOnItemLongClickListener(this);
-		
-
-
-	}
-	
-	@Override
-	protected void onStop()
-	{
-		super.onStop(); 
-		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
-		query.findInBackground(new FindCallback<ParseObject>() {
-
-			@Override
-			public void done(List<ParseObject> postList, ParseException e) {
-				if (e == null) {
-					// If there are results, update the list of posts
-					// and notify the adapter
-					for (ParseObject goal : postList) {
-						goal.deleteInBackground();
-					}
-					
-				} else {
-					Log.d("Post retrieval", "Error: " + e.getMessage());
-				}
-
-			}
-
-		});
-		
-		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
-			ParseObject careerGoal = new ParseObject("careerGoal");
-			careerGoal.put("Owner", ParseUser.getCurrentUser());
-			careerGoal.put("goalName", entry.getKey());
-			careerGoal.put("goalType", entry.getValue()[0]);
-			careerGoal.put("goalDate", entry.getValue()[1]);
-			careerGoal.saveInBackground();
-		 }
-	}
-	
+		popUp.setOnItemClickListener(this);
+	}	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,11 +150,8 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		if(requestCode == 0) {
 			
 			//clears any initial data
-			if(goalList.get(0).equals(getString(R.string.none))) {
-			
-				goalList.remove(0);
-				dataMap.remove(getString(R.string.none));
-			}
+			goalList.remove(getString(R.string.none));
+			dataMap.remove(getString(R.string.none));
 			
 			//goalLength, goalDate
 			goalData = data.getStringArrayExtra("data");
@@ -192,6 +169,10 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		}
 		else if(requestCode == 1) {	//edit goal
 			
+			//remove old data
+			dataMap.remove(data.getStringExtra("oldName"));
+			goalList.remove(data.getStringExtra("oldName"));
+			
 			//goalLength, goalDate
 			goalData = data.getStringArrayExtra("data");	
 			
@@ -201,10 +182,6 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			//save data to dataMap
 			dataMap.put(data.getStringExtra("name"), goalData);
 			
-			//remove old data
-			dataMap.remove(data.getStringExtra("oldName"));
-			goalList.remove(data.getStringExtra("oldName"));
-			
 			//update screen
 			this.onContentChanged();
 			
@@ -212,6 +189,8 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			getListView().setOnItemClickListener(this);
 			popUp.setOnItemClickListener(this);
 		}
+		
+		this.saveToCloud();
 	}
 	
 	@Override
@@ -221,24 +200,20 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 			
 			popUp.dismiss();
 			
-			//edit is clicked
-			if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
-									
-				//goal != none
-				if(!goalName.equals(getString(R.string.none))) {
-				
+			//only operate when goalName != none
+			if(!goalName.equals(getString(R.string.none))) {
+			
+				//edit is clicked
+				if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
+												
 					Intent i = new Intent(CareerGoal.this, CareerGoalEdit.class);
 					i.putExtra("name", goalName);
 					i.putExtra("data", dataMap.get(goalName));
 					this.startActivityForResult(i, 1);
 				}
-			}
-			//remove is clicked
-			else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
-				
-				//goal != none
-				if(!goalName.equals(getString(R.string.none))) {
-				
+				//remove is clicked
+				else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
+					
 					goalList.remove(goalName);
 					dataMap.remove(goalName);
 					
@@ -249,21 +224,19 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 						dataMap.put(goalList.get(0), goalData);
 					}
 					this.onContentChanged();
+					getListView().setOnItemClickListener(this);
+					popUp.setOnItemClickListener(this);
+					this.saveToCloud();
 				}
 			}
 		}
-		//go to details
-		else {		
+		else if(!goalList.get(position).equals(getString(R.string.none)))  {		
 			
-			//goal != none
-			if(!goalList.get(position).equals(getString(R.string.none))) {
-			
-				Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
-				this.goalData = dataMap.get(goalList.get(position));
-				i.putExtra("name", goalList.get(position));
-				i.putExtra("data", this.goalData);
-				startActivity(i);	
-			}
+			Intent i = new Intent(CareerGoal.this, CareerGoalDetail.class);		
+			this.goalData = dataMap.get(goalList.get(position));
+			i.putExtra("name", goalList.get(position));
+			i.putExtra("data", this.goalData);
+			startActivity(i);	
 		}		
     }
 	
@@ -275,5 +248,44 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUp.show();
 		popUp.getListView().setOnItemClickListener(this); 
 		return true;
+	}
+	
+	private void saveToCloud() {
+		
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerGoal");
+		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+		
+		try {
+			
+			List<ParseObject> postList = query.find();
+		
+			// If there are results, update the list of posts
+			// and notify the adapter
+			for (ParseObject goal : postList) {
+				
+				goal.delete();
+			}
+			
+		}catch (ParseException e) {
+			
+			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+		}		
+		
+		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
+			ParseObject careerGoal = new ParseObject("careerGoal");
+			careerGoal.put("Owner", ParseUser.getCurrentUser());
+			careerGoal.put("goalName", entry.getKey());
+			careerGoal.put("goalType", entry.getValue()[0]);
+			careerGoal.put("goalDate", entry.getValue()[1]);
+			
+			try {
+				
+				careerGoal.save();
+				
+			}catch (ParseException e) {
+				
+				Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+			}
+		 }
 	}
 }
