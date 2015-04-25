@@ -10,21 +10,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.clip.R;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 public class CareerMenu extends Activity {
 	
 	Button goal, jobApp, compInfo, eId, contact;
 
-	Boolean newUser = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_menu);
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		Intent intent = getIntent();
-		newUser = intent.getBooleanExtra("newUser", false);
 		
 		//button assignments
 		goal = (Button) findViewById(R.id.button_goal);
@@ -37,53 +32,28 @@ public class CareerMenu extends Activity {
 		goal.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				if(newUser)
-				{
-					ParseObject careerGoal = new ParseObject("careerGoal");
-					careerGoal.put("Owner", ParseUser.getCurrentUser());
-					careerGoal.put("goalName", "None");
-					careerGoal.put("goalType", "None");
-					careerGoal.put("goalDate", "None");
-					careerGoal.saveInBackground();
-										
-					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
-					startActivity(i);
-
-				}
-				else
-				{
-					Intent i = new Intent(CareerMenu.this, CareerGoal.class);
-					startActivity(i);
-
-				}
+				
+				Intent i = new Intent(CareerMenu.this, CareerGoal.class);
+				startActivity(i);
 	         }
 		});
 		
 		jobApp.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				if(newUser)
-				{
-					Intent i = new Intent(CareerMenu.this, CareerJobApp.class);
-					
-					ParseObject careerJob = new ParseObject("careerJob");
-					careerJob.put("Owner", ParseUser.getCurrentUser());
-					careerJob.put("Name", "None");
-					careerJob.put("Status", "None");
-					careerJob.put("DateAppliedMonth", 1);
-					careerJob.put("DateAppliedDay", 1);
-					careerJob.put("DateAppliedYear", 2000);
-					careerJob.put("Comments", "None");
-					careerJob.saveInBackground();
-					
-					startActivity(i);
-				}
-				else
-				{
-					Intent i = new Intent(CareerMenu.this, CareerJobApp.class);
-					startActivity(i);
-				}
+				
+				Intent i = new Intent(CareerMenu.this, CareerJobApp.class);
+				startActivity(i);
 			}
+		});
+		
+		compInfo.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(CareerMenu.this, CareerCompInfo.class);
+				startActivity(i);
+	         }
 		});
 	}
 

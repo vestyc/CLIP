@@ -31,6 +31,7 @@
     <string name="title_activity_career_job_app">CareerJobApp</string>
     <string name="title_activity_career_job_app_edit">CareerJobAppEdit</string>
     <string name="title_activity_career_job_app_detail">CareerJobAppDetail</string>
+
     <string-array name="job_status">
         <item>Pending</item>
         <item>Interview Granted</item>
@@ -38,5 +39,9 @@
         <item>Rejected</item>
     </string-array>
     <string name="title_activity_login">Welcom to Clip</string>
+
+    <string name="title_activity_career_comp_info">CareerCompInfo</string>
+    <string name="title_activity_career_comp_info_edit">CareerCompInfoEdit</string>
+    <string name="title_activity_career_comp_info_detail">CareerCompInfoDetail</string>
 
 </resources>
