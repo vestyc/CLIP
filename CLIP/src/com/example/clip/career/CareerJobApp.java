@@ -27,12 +27,6 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
-import com.parse.FindCallback;
-import com.parse.ParseAnalytics;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 public class CareerJobApp extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
 
@@ -46,15 +40,17 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	String[] jobData;					//{appStatus, comments}
 	int[]	jobDateApplied;				//{Month, Day, Year}
 	
-	ParseQuery<ParseObject> query = ParseQuery.getQuery("careerJob");
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(false);
+		
 		//initiate list view
 		this.createEmptyList();
-		
+		listViewAdapter = new ArrayAdapter<String> (this, R.layout.activity_career_job_app,
+				R.id.label_jobList, jobList);
+		this.getListView().setAdapter(listViewAdapter);
 		
 		//initiate the pop-up list
 		popUp = new ListPopupWindow(this);
@@ -131,51 +127,6 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		popUp.setOnItemClickListener(this);
 	}
 	
-	
-	/*@Override
-	protected void onPause()
-	{
-		super.onPause(); 
-		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
-		query.findInBackground(new FindCallback<ParseObject>() {
-
-			@Override
-			public void done(List<ParseObject> postList, ParseException e) {
-				if (e == null) {
-					// If there are results, update the list of posts
-					// and notify the adapter
-					for (ParseObject job : postList) {
-						job.deleteInBackground();
-					}
-					
-				} else {
-					Log.d("Post retrieval", "Error: " + e.getMessage());
-				}
-
-			}
-
-		});
-		
-		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
-			ParseObject careerJob = new ParseObject("careerJob");
-			careerJob.put("Owner", ParseUser.getCurrentUser());
-			careerJob.put("Name", entry.getKey());
-			careerJob.put("Status", entry.getValue()[0]);
-			careerJob.put("Comments", entry.getValue()[1]);
-			 for(Map.Entry<String, int[]> entry1 : dateAppMap.entrySet())
-			 {
-				 if (entry1.getKey().toString().equalsIgnoreCase(entry.getKey().toString()))
-				 {
-					 careerJob.put("DateAppliedMonth", entry.getValue()[0]);
-					 careerJob.put("DateAppliedDay", entry.getValue()[1]);
-					 careerJob.put("DateAppliedYear", entry.getValue()[2]);
-					 break;
-				 }
-			 }
-			careerJob.saveInBackground();
-		 }
-		 
-	}*/
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
@@ -306,26 +257,32 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		
 		jobList = new ArrayList<String>();
 		jobList.add(getString(R.string.none));
+		dataMap = new HashMap<String, String[]>();
+		dateAppMap = new HashMap<String, int[]>();
+		/*
 		jobData = new String[] {"Status N/A", "No comments."};
 		dataMap = new HashMap<String, String[]>();
 		dataMap.put(jobList.get(0), jobData);
 		jobDateApplied = new int[3];
 		dateAppMap = new HashMap<String, int[]>();
 		dateAppMap.put(jobList.get(0), jobDateApplied);
+		*/
 	}
 	
 	private void resetEmptyList() {
 		
 		jobList.add(getString(R.string.none));
+		/*
 		jobData = new String[] {"Status N/A", "No comments."};
 		dataMap = new HashMap<String, String[]>();
 		dataMap.put(jobList.get(0), jobData);
 		jobDateApplied = new int[3];
 		dateAppMap = new HashMap<String, int[]>();
 		dateAppMap.put(jobList.get(0), jobDateApplied);
+		*/
 	}
 	
-private void saveToCloud() {
+	private void saveToCloud() {
 		
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("careerJob");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
