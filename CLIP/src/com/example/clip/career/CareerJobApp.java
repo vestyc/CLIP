@@ -50,7 +50,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String> (this, R.layout.activity_career_job_app,
 				R.id.label_jobList, jobList);
-		this.getListView().setAdapter(listViewAdapter);
+		this.setListAdapter(listViewAdapter);
 		
 		//initiate the pop-up list
 		popUp = new ListPopupWindow(this);
