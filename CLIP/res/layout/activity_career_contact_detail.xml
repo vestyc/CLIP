@@ -1,0 +1,93 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+
+	<LinearLayout
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.career.CareerContactDetail" >
+	
+	    <TextView
+	        android:id="@+id/contact_detailName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginBottom="10dp"
+	        android:text="@string/none"
+	        android:textSize="32sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_labelAffiliation"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Affiliation:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_detailAffiliation"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_labelEstablished"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:text="Date established:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_detailEstablished"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_labelUses"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:text="Number of times used:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_detailNumberOfUse"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_labelComments"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Comments:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/contact_detailComments"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	
+	</LinearLayout>
+
+</ScrollView>
