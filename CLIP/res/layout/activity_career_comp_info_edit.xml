@@ -80,11 +80,20 @@
 	        android:id="@+id/compInfo_facts"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dp"
+	        android:layout_marginTop="20dp"
 	        android:ems="10"
 	        android:inputType="text"
 	        android:hint="Company Facts" >
         </EditText>
+        
+        <Button
+	        android:id="@+id/job_buttonSave"
+	        android:layout_width="200dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:layout_gravity="bottom|center_horizontal"
+	        android:onClick="saveClicked"
+	        android:text="Save" />
 	    
 	</LinearLayout>
 

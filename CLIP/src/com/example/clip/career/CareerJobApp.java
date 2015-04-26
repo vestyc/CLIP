@@ -129,39 +129,45 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		//edit job
-		if(requestCode == 1) {	
+		try {
 			
-			//remove old data first
-			this.jobName = data.getStringExtra("oldName");
-			this.jobList.remove(jobName);
-			this.dataMap.remove(jobName);
-			this.dateAppMap.remove(jobName);
-		}
-		//add job
-		else if(requestCode == 0) {
+			//edit job
+			if(requestCode == 1) {	
+				
+				//remove old data first
+				this.jobName = data.getStringExtra("oldName");
+				this.jobList.remove(jobName);
+				this.dataMap.remove(jobName);
+				this.dateAppMap.remove(jobName);
+			}
+			//add job
+			else if(requestCode == 0) {
+				
+				//clears any initial data		
+				jobList.remove(getString(R.string.none));
+				dataMap.remove(getString(R.string.none));
+				dateAppMap.remove(getString(R.string.none));
+			}
 			
-			//clears any initial data		
-			jobList.remove(getString(R.string.none));
-			dataMap.remove(getString(R.string.none));
-			dateAppMap.remove(getString(R.string.none));
+			//add new data
+			this.jobName = data.getStringExtra("name");
+			this.jobData = data.getStringArrayExtra("data");
+			this.jobDateApplied = data.getIntArrayExtra("date");
+			
+			//adding data to data maps
+			this.jobList.add(this.jobName);
+			this.dataMap.put(this.jobName, this.jobData);
+			this.dateAppMap.put(this.jobName, this.jobDateApplied);
+			
+			//updating screen, resetting listeners
+			this.onContentChanged();
+			getListView().setOnItemClickListener(this);
+			popUp.setOnItemClickListener(this);
+			this.saveToCloud();
 		}
-		
-		//add new data
-		this.jobName = data.getStringExtra("name");
-		this.jobData = data.getStringArrayExtra("data");
-		this.jobDateApplied = data.getIntArrayExtra("date");
-		
-		//adding data to data maps
-		this.jobList.add(this.jobName);
-		this.dataMap.put(this.jobName, this.jobData);
-		this.dateAppMap.put(this.jobName, this.jobDateApplied);
-		
-		//updating screen, resetting listeners
-		this.onContentChanged();
-		getListView().setOnItemClickListener(this);
-		popUp.setOnItemClickListener(this);
-		this.saveToCloud();
+		catch(NullPointerException n) {
+			//back button press on edit screen
+		}
 	}
 
 	@Override
