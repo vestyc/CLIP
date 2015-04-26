@@ -50,8 +50,6 @@ public class CareerJobAppEdit extends Activity implements OnItemSelectedListener
 		// Apply the adapter to the spinner
 		status.setAdapter(spinnerAdapter);
 		
-		//datePicker = new DatePickerDialog(this, )
-		
 		//edit option
 		if(getIntent().getStringExtra("name") != null) {
 			

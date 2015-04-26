@@ -144,51 +144,57 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		//action_add
-		if(requestCode == 0) {
-			
-			//clears any initial data
-			goalList.remove(getString(R.string.none));
-			dataMap.remove(getString(R.string.none));
-			
-			//goalLength, goalDate
-			goalData = data.getStringArrayExtra("data");
-			
-			//goalName -- add to list
-			goalList.add(data.getStringExtra("name"));
-			
-			//save data to dataMap
-			dataMap.put(data.getStringExtra("name"), goalData);
-			
-			//update screen
-			this.onContentChanged();
-			getListView().setOnItemClickListener(this);
-			popUp.setOnItemClickListener(this);
-		}
-		else if(requestCode == 1) {	//edit goal
-			
-			//remove old data
-			dataMap.remove(data.getStringExtra("oldName"));
-			goalList.remove(data.getStringExtra("oldName"));
-			
-			//goalLength, goalDate
-			goalData = data.getStringArrayExtra("data");	
-			
-			//goalName -- add to list
-			goalList.add(data.getStringExtra("name"));
-			
-			//save data to dataMap
-			dataMap.put(data.getStringExtra("name"), goalData);
-			
-			//update screen
-			this.onContentChanged();
-			
-			//reset listeners
-			getListView().setOnItemClickListener(this);
-			popUp.setOnItemClickListener(this);
-		}
+		try {
 		
-		this.saveToCloud();
+			//action_add
+			if(requestCode == 0) {
+				
+				//clears any initial data
+				goalList.remove(getString(R.string.none));
+				dataMap.remove(getString(R.string.none));
+				
+				//goalLength, goalDate
+				goalData = data.getStringArrayExtra("data");
+				
+				//goalName -- add to list
+				goalList.add(data.getStringExtra("name"));
+				
+				//save data to dataMap
+				dataMap.put(data.getStringExtra("name"), goalData);
+				
+				//update screen
+				this.onContentChanged();
+				getListView().setOnItemClickListener(this);
+				popUp.setOnItemClickListener(this);
+			}
+			else if(requestCode == 1) {	//edit goal
+				
+				//remove old data
+				dataMap.remove(data.getStringExtra("oldName"));
+				goalList.remove(data.getStringExtra("oldName"));
+				
+				//goalLength, goalDate
+				goalData = data.getStringArrayExtra("data");	
+				
+				//goalName -- add to list
+				goalList.add(data.getStringExtra("name"));
+				
+				//save data to dataMap
+				dataMap.put(data.getStringExtra("name"), goalData);
+				
+				//update screen
+				this.onContentChanged();
+				
+				//reset listeners
+				getListView().setOnItemClickListener(this);
+				popUp.setOnItemClickListener(this);
+			}
+			
+			this.saveToCloud();
+		}
+		catch(NullPointerException n) {
+			//back button press on edit screen
+		}
 	}
 	
 	@Override
@@ -270,6 +276,10 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		}		
 		
 		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
+			
+			if(entry.getKey().equals(getString(R.string.none)))
+				continue;
+			 
 			ParseObject careerGoal = new ParseObject("careerGoal");
 			careerGoal.put("Owner", ParseUser.getCurrentUser());
 			careerGoal.put("goalName", entry.getKey());
