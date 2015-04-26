@@ -140,7 +140,7 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-	//	try {
+		try {
 		
 			//edit job
 			if(requestCode == 1) {	
@@ -173,11 +173,11 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 			
 			this.updateScreen();
 			this.saveToCloud();
-	/*	}
+		}
 		catch(NullPointerException n) {
 			//back button was pressed instead of save
 			Toast.makeText(this.getApplicationContext(), "You didn't save!", Toast.LENGTH_LONG).show();
-		}*/
+		}
 	}
 	
 	@Override
@@ -247,13 +247,11 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 			
 			Intent i = new Intent(CareerCompInfo.this, CareerCompInfoDetail.class);
 			
-			i.putExtra("name", companyList.get(position));
-			i.putExtra("data", dataMap.get(companyList.get(position)));
-			
-			//dates must be sent through bundle because it's a 2d array (int[][])
-			Bundle datesExtra = new Bundle();
-			datesExtra.putSerializable("dates", this.datesMap.get(companyList.get(position)));
-			i.putExtra("dates", datesExtra);
+			String name = companyList.get(position);
+			i.putExtra("name", name);
+			i.putExtra("data", dataMap.get(name));
+			i.putExtra("resumeDate", datesMap.get(name));
+			i.putExtra("interviewDate", datesMap.get(name));
 			
 			startActivity(i);
 		}

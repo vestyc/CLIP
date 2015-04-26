@@ -50,7 +50,43 @@ public class CareerCompInfoEdit extends Activity {
 		//edit option
 		if(getIntent().getStringExtra("name") != null) {
 			
+			String name = getIntent().getStringExtra("name");
+			String[] data = getIntent().getStringArrayExtra("data");
+			int[] resumeDate = getIntent().getIntArrayExtra("resumeDate");
+			int[] interviewDate = getIntent().getIntArrayExtra("interviewDate");
 			
+			//{0           1         2      3      4      5                    6                 7               }
+			//{productLOB, location, phone, email, facts, considerationReason, interviewOutcome, interviewLessons}
+			this.editName.setText(name);
+			this.editProductLOB.setText(data[0]);
+			this.editLocation.setText(data[1]);
+			this.editPhone.setText(data[2]);
+			this.editEmail.setText(data[3]);
+			this.editFacts.setText(data[4]);
+			this.editConsiderations.setText(data[5]);
+			
+			if(resumeDate[0] != 0 && resumeDate[1] != 0 && resumeDate[2] != 0) {
+				
+				this.checkResumeDate.setChecked(true);
+				this.pickerResume.setVisibility(View.VISIBLE);
+				this.pickerResume.updateDate(resumeDate[2], resumeDate[0], resumeDate[1]);
+			}
+			
+			if(interviewDate[0] != 0 && interviewDate[1] != 0 && interviewDate[2] != 0) {
+				
+				this.checkInterviewDate.setChecked(true);
+				this.pickerInterview.setVisibility(View.VISIBLE);
+				this.pickerInterview.updateDate(interviewDate[2], interviewDate[0], interviewDate[1]);
+			}
+			
+			this.editInterviewOutcome.setText(data[6]);
+			this.editInterviewLessons.setText(data[7]);
+			
+			this.data = data;
+			this.resumeDate = resumeDate;
+			this.interviewDate = interviewDate;
+			iReturn = new Intent();
+			iReturn.putExtra("oldName", name);
 		}
 		//add option
 		else {
@@ -58,9 +94,8 @@ public class CareerCompInfoEdit extends Activity {
 			data = new String[8];
 			resumeDate = new int[3];
 			interviewDate = new int[3];
+			iReturn = new Intent();
 		}
-		
-		iReturn = new Intent();
 	}
 	
 	public void saveClicked(View view) {
@@ -98,14 +133,14 @@ public class CareerCompInfoEdit extends Activity {
 		//[dateType][month, day, year]		
 		if(this.checkResumeDate.isChecked()) {
 			
-			this.resumeDate[0] = this.pickerResume.getMonth();
+			this.resumeDate[0] = this.pickerResume.getMonth() + 1;
 			this.resumeDate[1] = this.pickerResume.getDayOfMonth();
 			this.resumeDate[2] = this.pickerResume.getYear();
 			iReturn.putExtra("resumeDate", resumeDate);
 		}		
 		if(this.checkInterviewDate.isChecked()) {
 			
-			this.interviewDate[0] = this.pickerInterview.getMonth();
+			this.interviewDate[0] = this.pickerInterview.getMonth() + 1;
 			this.interviewDate[1] = this.pickerInterview.getDayOfMonth();
 			this.interviewDate[2] = this.pickerInterview.getYear();
 			iReturn.putExtra("interviewDate", interviewDate);
