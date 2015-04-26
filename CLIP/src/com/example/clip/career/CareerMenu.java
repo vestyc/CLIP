@@ -55,6 +55,15 @@ public class CareerMenu extends Activity {
 				startActivity(i);
 	         }
 		});
+		
+		contact.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(CareerMenu.this, CareerContact.class);
+				startActivity(i);
+	         }
+		});
 	}
 
 	@Override
