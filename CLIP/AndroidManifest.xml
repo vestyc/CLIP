@@ -19,13 +19,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-             -->
         </activity>
         <activity android:name=".Login" >
         </activity>
@@ -36,11 +34,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.MainActivity" />
-             <intent-filter>
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".career.CareerGoal"
@@ -91,12 +91,60 @@
                 android:value="com.example.clip.career.CareerJobApp" />
         </activity>
         <activity
-            android:name="com.example.clip.career.CareerJobAppDetail"
+            android:name=".career.CareerJobAppDetail"
             android:label="@string/title_activity_career_job_app_detail"
             android:parentActivityName=".career.CareerJobApp" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.career.CareerJobApp" />
+        </activity>
+        <activity
+            android:name=".career.CareerCompInfo"
+            android:label="@string/title_activity_career_comp_info"
+            android:parentActivityName=".career.CareerMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerMenu" />
+        </activity>
+        <activity
+            android:name=".career.CareerCompInfoEdit"
+            android:label="@string/title_activity_career_comp_info_edit"
+            android:parentActivityName=".career.CareerCompInfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerCompInfo" />
+        </activity>
+        <activity
+            android:name=".career.CareerCompInfoDetail"
+            android:label="@string/title_activity_career_comp_info_detail"
+            android:parentActivityName=".career.CareerCompInfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerCompInfo" />
+        </activity>
+        <activity
+            android:name=".career.CareerContact"
+            android:label="@string/title_activity_career_contact"
+            android:parentActivityName=".career.CareerMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerMenu" />
+        </activity>
+        <activity
+            android:name=".career.CareerContactEdit"
+            android:label="@string/title_activity_career_contact_edit"
+            android:parentActivityName=".career.CareerContact" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerContact" />
+        </activity>
+        <activity
+            android:name="com.example.clip.career.CareerContactDetail"
+            android:label="@string/title_activity_career_contact_detail"
+            android:parentActivityName=".career.CareerContact" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerContact" />
         </activity>
     </application>
 
