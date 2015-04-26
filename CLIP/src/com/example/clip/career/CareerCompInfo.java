@@ -140,7 +140,7 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		try {
+	//	try {
 		
 			//edit job
 			if(requestCode == 1) {	
@@ -172,10 +172,12 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 			this.datesMap.put(this.companyName, this.companyDates);
 			
 			this.updateScreen();
-		}
+			this.saveToCloud();
+	/*	}
 		catch(NullPointerException n) {
 			//back button was pressed instead of save
-		}
+			Toast.makeText(this.getApplicationContext(), "You didn't save!", Toast.LENGTH_LONG).show();
+		}*/
 	}
 	
 	@Override
@@ -235,7 +237,7 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 						this.resetEmptyList();
 					}
 					
-					this.onContentChanged();
+					this.updateScreen();
 					this.saveToCloud();
 				}
 			}
@@ -272,6 +274,9 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 		
 		companyList = new ArrayList<String>();
 		companyList.add(getString(R.string.none));
+		
+		companyDates = new int[2][3];
+		companyData = new String[8];
 		
 		dataMap = new HashMap<String, String[]>();		//<companyName, companyData>
 		datesMap = new HashMap<String, int[][]>();		//<companyName, companyDates>
@@ -313,6 +318,10 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 		}		
 		
 		 for(String companyName : companyList){
+			 
+			if(companyName.equals(getString(R.string.none)))
+				continue;
+			 
 			ParseObject careerCompInfo = new ParseObject("careerCompInfo");
 			careerCompInfo.put("Owner", ParseUser.getCurrentUser());
 			careerCompInfo.put("companyName", companyName);
@@ -328,13 +337,22 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 			careerCompInfo.put("interviewLessons", companyData[7]);
 			
 			companyDates = datesMap.get(companyName);
-			careerCompInfo.put("resumeSubMonth", companyDates[0][0]);
-			careerCompInfo.put("resumeSubDay", companyDates[0][1]);
-			careerCompInfo.put("resumeSubYear", companyDates[0][2]);
+			if(companyDates != null) {
 			
-			careerCompInfo.put("interviewMonth", companyDates[1][0]);
-			careerCompInfo.put("interviewDay", companyDates[1][1]);
-			careerCompInfo.put("interviewYear", companyDates[1][2]);
+				if(companyDates[0] != null) {
+					
+					careerCompInfo.put("resumeSubMonth", companyDates[0][0]);
+					careerCompInfo.put("resumeSubDay", companyDates[0][1]);
+					careerCompInfo.put("resumeSubYear", companyDates[0][2]);
+				}
+				
+				if(companyDates[1] != null) {
+					
+					careerCompInfo.put("interviewMonth", companyDates[1][0]);
+					careerCompInfo.put("interviewDay", companyDates[1][1]);
+					careerCompInfo.put("interviewYear", companyDates[1][2]);
+				}
+			}
 			
 			try {
 				

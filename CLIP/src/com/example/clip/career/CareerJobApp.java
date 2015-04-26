@@ -303,6 +303,10 @@ private void saveToCloud() {
 		}		
 		
 		 for(String jobName : jobList){
+			
+			 if(jobName.equals(getString(R.string.none)))
+				 continue;
+			 
 			ParseObject careerJob = new ParseObject("careerJob");
 			careerJob.put("Owner", ParseUser.getCurrentUser());
 			careerJob.put("jobName", jobName);

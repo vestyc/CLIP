@@ -276,6 +276,10 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		}		
 		
 		 for(Map.Entry<String, String[]> entry : dataMap.entrySet()){
+			
+			if(entry.getKey().equals(getString(R.string.none)))
+				continue;
+			 
 			ParseObject careerGoal = new ParseObject("careerGoal");
 			careerGoal.put("Owner", ParseUser.getCurrentUser());
 			careerGoal.put("goalName", entry.getKey());

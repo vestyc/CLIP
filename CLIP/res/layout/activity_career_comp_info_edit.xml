@@ -53,7 +53,7 @@
 	        android:layout_marginTop="20dp"
 	        android:ems="10"
 	        android:inputType="text"
-	        android:hint="Business Address" >
+	        android:hint="Business address." >
         </EditText>
         
         <EditText
@@ -63,7 +63,7 @@
 	        android:layout_marginTop="20dp"
 	        android:ems="10"
 	        android:inputType="text"
-	        android:hint="Phone Number" >
+	        android:hint="Phone number" >
         </EditText>
         
         <EditText
@@ -73,7 +73,7 @@
 	        android:layout_marginTop="20dp"
 	        android:ems="10"
 	        android:inputType="text"
-	        android:hint="Email" >
+	        android:hint="Email." >
         </EditText>
         
         <EditText
@@ -83,11 +83,73 @@
 	        android:layout_marginTop="20dp"
 	        android:ems="10"
 	        android:inputType="text"
-	        android:hint="Company Facts" >
+	        android:hint="Company facts." >
+        </EditText>
+        
+        <EditText
+	        android:id="@+id/compInfo_consideration"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:ems="10"
+	        android:inputType="textMultiLine"
+	        android:hint="Considerations for this company." >
+        </EditText>
+        
+         <CheckBox 
+            android:id="@+id/compInfo_checkboxResumeDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="Resume Submission Date"
+	        android:onClick="onResumeCheckboxClicked"/>
+        
+        <DatePicker
+	        android:id="@+id/compInfo_datePickerResume"
+	        android:calendarViewShown="false"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        android:layout_gravity="center_horizontal" />
+         
+        <CheckBox 
+            android:id="@+id/compInfo_checkboxInterviewDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="Interview Date"
+	        android:onClick="onInterviewCheckboxClicked"/>
+        
+        <DatePicker
+	        android:id="@+id/compInfo_datePickerInterview"
+	        android:calendarViewShown="false"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        android:layout_gravity="center_horizontal" />
+        
+        <EditText
+	        android:id="@+id/compInfo_interviewOutcome"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:ems="10"
+	        android:inputType="textMultiLine"
+	        android:hint="Interview outcome." >
+        </EditText>
+        
+        <EditText
+	        android:id="@+id/compInfo_interviewLessons"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:ems="10"
+	        android:inputType="textMultiLine"
+	        android:hint="Lessons learned from interivew." >
         </EditText>
         
         <Button
-	        android:id="@+id/job_buttonSave"
+	        android:id="@+id/compInfo_buttonSave"
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="20dp"
