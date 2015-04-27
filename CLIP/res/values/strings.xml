@@ -38,6 +38,12 @@
         <item>Accepted</item>
         <item>Rejected</item>
     </string-array>
+    <string-array name="education_financeType">
+        <item>Loan</item>
+        <item>Scholarship</item>
+        <item>Grant</item>
+        <item>Information</item>
+    </string-array>
 
     <string name="title_activity_login">Welcom to Clip</string>
     <string name="title_activity_career_comp_info">CareerCompInfo</string>
@@ -46,5 +52,9 @@
     <string name="title_activity_career_contact">CareerContact</string>
     <string name="title_activity_career_contact_edit">CareerContactEdit</string>
     <string name="title_activity_career_contact_detail">CareerContactDetail</string>
+    <string name="title_activity_education_finance">EducationFinance</string>
+    <string name="title_activity_education_menu">EducationMenu</string>
+    <string name="title_activity_education_finance_edit">EducationFinanceEdit</string>
+    <string name="title_activity_education_finance_detail">EducationFinanceDetail</string>
 
 </resources>

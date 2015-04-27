@@ -1,0 +1,73 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+
+	<LinearLayout
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.education.EducationFinanceEdit" >
+	
+	    <EditText
+	        android:id="@+id/educationFinance_name"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:ems="10"
+	        android:inputType="text"
+	        android:hint="Finance title" >
+	        <requestFocus />
+	    </EditText>
+	    
+	    <Spinner
+		    android:id="@+id/educationFinance_spinnerType"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="20dp" />
+	    
+	    <EditText
+	        android:id="@+id/educationFinance_funds"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:ems="10"
+	        android:inputType="text"
+	        android:hint="Funds recieved" />	
+	        
+	    <EditText
+	        android:id="@+id/educationFinance_upkeep"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:ems="10"
+	        android:inputType="text"
+	        android:hint="Requirements to keep funds" />
+	    
+	    <EditText
+	        android:id="@+id/educationFinance_comments"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:ems="10"
+	        android:inputType="textMultiLine"
+	        android:hint="Comments/notes" />
+	    
+	    <Button
+	        android:id="@+id/job_buttonSave"
+	        android:layout_width="200dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:layout_gravity="bottom|center_horizontal"
+	        android:onClick="saveClicked"
+	        android:text="Save" />
+	
+	</LinearLayout>
+
+</ScrollView>
