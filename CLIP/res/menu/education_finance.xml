@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.clip.CareerCompInfo" >
+    tools:context="com.example.clip.EducationFinance" >
 
     <item
         android:id="@+id/action_add"

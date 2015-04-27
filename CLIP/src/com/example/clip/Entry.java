@@ -12,37 +12,53 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.clip.career.CareerMenu;
+import com.example.clip.education.EducationMenu;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class Entry extends Activity {
 
-	Button career;
+	Button career, education, finance, health;
 	EditText txtsave;
 	TextView txtreturn;
 	Button btnsave;
-	Boolean newUser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_entry);
 
-		Intent intent = getIntent();
-		newUser = intent.getBooleanExtra("newUser", false);
 		career = (Button) findViewById(R.id.button_career);
+		education = (Button) findViewById(R.id.entry_buttonEducation);
+		finance = (Button) findViewById(R.id.entry_buttonFinance);
+		health = (Button) findViewById(R.id.entry_buttonHealth);
 
 		career.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
 
 					Intent i = new Intent(Entry.this, CareerMenu.class);
-					i.putExtra("newUser",newUser);
 					startActivity(i);
 
 				}
 
 		});
+		
+		education.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(Entry.this, EducationMenu.class);
+					startActivity(i);
+
+				}
+
+		});
+	}
+	
+	public void logoutClicked(View view) {
+		
+		this.logOut();
 	}
 	
 	public void logOut()

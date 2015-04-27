@@ -1,0 +1,88 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+
+	<LinearLayout 
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.education.EducationFinanceDetail" >
+	
+	    <TextView
+	        android:id="@+id/educationFinance_detailTitle"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/none"
+	        android:textSize="28sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_detailType"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:text="@string/none"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_labelFunds"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:visibility="gone"
+	        android:text="Funds:"
+	        android:textSize="17sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_detailFunds"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="3dp"
+	        android:visibility="gone"
+	        android:textSize="20sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_labelUpkeep"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:visibility="gone"
+	        android:text="Upkeep:"
+	        android:textSize="17sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_detailUpkeep"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="3dp"
+	        android:visibility="gone"
+	        android:textSize="20sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_labelComments"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:visibility="gone"
+	        android:text="Comments/notes:"
+	        android:textSize="17sp" />
+	    
+	    <TextView
+	        android:id="@+id/educationFinance_detailComments"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="3dp"
+	        android:visibility="gone"
+	        android:textSize="20sp" />
+	
+	</LinearLayout>
+
+</ScrollView>

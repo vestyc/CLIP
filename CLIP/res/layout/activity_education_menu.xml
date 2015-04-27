@@ -13,48 +13,43 @@
 	    android:paddingLeft="@dimen/activity_horizontal_margin"
 	    android:paddingRight="@dimen/activity_horizontal_margin"
 	    android:paddingTop="@dimen/activity_vertical_margin"
-	    tools:context="com.example.clip.Entry" >
+	    tools:context="com.example.clip.education.EducationMenu" >
 	
 	    <Button
-	        android:id="@+id/button_career"
+	        android:id="@+id/education_buttonCurrentEducation"
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:layout_marginTop="20dp"
-	        android:text="@string/button_career" />
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:text="Current Education" />
 	    
 	    <Button
-	        android:id="@+id/entry_buttonFinance"
+	        android:id="@+id/education_buttonGraduatePlans"
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:layout_marginTop="20dp"
-	        android:text="Finance" />
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:text="Graduate Plans" />
 	    
 	    <Button
-	        android:id="@+id/entry_buttonHealth"
+	        android:id="@+id/education_buttonFutureStudies"
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:layout_marginTop="20dp"
-	        android:text="Health" />
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:text="Future Studies" />
 	    
 	    <Button
-	        android:id="@+id/entry_buttonEducation"
+	        android:id="@+id/education_buttonFinancial"
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:layout_marginTop="20dp"
-	        android:text="Education" />
-	    
-	    <Button
-	        android:id="@+id/entry_buttonLogout"
-	        android:layout_width="100dp"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center_horizontal"
-	        android:onClick="logoutClicked"
-	        android:layout_marginTop="20dp"
-	        android:text="Logout" />
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:text="Financial Information" />
 	
 	</LinearLayout>
 
