@@ -16,7 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +41,9 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	HashMap<String, int[]> dateAppMap;	//<jobName, dateApplied>
 	String[] jobData;					//{appStatus, comments}
 	int[]	jobDateApplied;				//{Month, Day, Year}
+	
+	AlertDialog.Builder removeConfirm;
+	boolean safeToRemove;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,37 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		popUp.setModal(true);
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
+		
+		//Setup alert dialog
+		removeConfirm = new AlertDialog.Builder(this);
+		removeConfirm.setMessage("Are you sure you want to remove?");
+		
+		removeConfirm.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog,int id) {
+				
+				// if this button is clicked, remove item
+				jobList.remove(jobName);
+				dataMap.remove(jobName);
+				dateAppMap.remove(jobName);
+				
+				if(jobList.isEmpty()) {
+				
+					resetEmptyList();
+				}
+				updateScreen();
+				saveToCloud();
+			}
+		  });
+		
+		removeConfirm.setNegativeButton("No",new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog,int id) {
+				
+				// if this button is clicked, close dialog and do nothing
+				dialog.cancel();
+			}
+		});
 	}
 	
 	@Override
@@ -219,18 +255,8 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 				//remove is clicked
 				else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
 					
-					jobList.remove(jobName);
-					dataMap.remove(jobName);
-					this.dateAppMap.remove(jobName);
-					
-					if(jobList.isEmpty()) {
-					
-						this.resetEmptyList();
-					}
-					this.onContentChanged();
-					getListView().setOnItemClickListener(this);
-					popUp.setOnItemClickListener(this);
-					this.saveToCloud();
+					AlertDialog removePopup = removeConfirm.create();
+					removePopup.show();
 				}
 			}
 		}
@@ -286,6 +312,14 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		dateAppMap = new HashMap<String, int[]>();
 		dateAppMap.put(jobList.get(0), jobDateApplied);
 		*/
+	}
+	
+	private void updateScreen() {
+		
+		this.onContentChanged();
+		this.getListView().setOnItemClickListener(this);
+		this.getListView().setOnItemLongClickListener(this);
+		popUp.setOnItemClickListener(this);
 	}
 	
 	private void saveToCloud() {

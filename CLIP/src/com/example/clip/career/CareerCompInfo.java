@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.parse.*;
@@ -41,6 +43,9 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 	//[dateType][month, day, year]
 	int[][] companyDates; 	
 	
+	AlertDialog.Builder removeConfirm;
+	boolean safeToRemove;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -63,6 +68,38 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 		popUp.setModal(true);
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
+		
+		//Setup alert dialog
+		removeConfirm = new AlertDialog.Builder(this);
+		removeConfirm.setMessage("Are you sure you want to remove?");
+		
+		removeConfirm.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog,int id) {
+				
+				// if this button is clicked, remove item
+				companyList.remove(companyName);
+				dataMap.remove(companyName);
+				datesMap.remove(companyName);
+				
+				if(companyList.isEmpty()) {
+					
+					resetEmptyList();
+				}
+				
+				updateScreen();
+				saveToCloud();
+			}
+		  });
+		
+		removeConfirm.setNegativeButton("No",new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog,int id) {
+				
+				// if this button is clicked, close dialog and do nothing
+				dialog.cancel();
+			}
+		});
 	}
 	
 	@Override
@@ -228,17 +265,9 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 				//remove is clicked 
 				else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
 					
-					companyList.remove(companyName);
-					dataMap.remove(companyName);
-					datesMap.remove(companyName);
-					
-					if(companyList.isEmpty()) {
-						
-						this.resetEmptyList();
-					}
-					
-					this.updateScreen();
-					this.saveToCloud();
+					//show warning popup
+					AlertDialog removePopup = removeConfirm.create();
+					removePopup.show();
 				}
 			}
 		}

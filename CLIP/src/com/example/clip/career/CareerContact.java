@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.parse.*;
@@ -35,6 +37,9 @@ public class CareerContact extends ListActivity implements OnItemClickListener, 
 	String contactName;
 	ArrayList<String> contactList;
 	ArrayAdapter<String> listViewAdapter;
+	
+	AlertDialog.Builder removeConfirm;
+	boolean safeToRemove;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,38 @@ public class CareerContact extends ListActivity implements OnItemClickListener, 
 		popUp.setModal(true);
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
+		
+		//Setup alert dialog
+				removeConfirm = new AlertDialog.Builder(this);
+				removeConfirm.setMessage("Are you sure you want to remove?");
+				
+				removeConfirm.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					
+					public void onClick(DialogInterface dialog,int id) {
+						
+						// if this button is clicked, remove item
+						contactList.remove(contactName);
+						dataStringMap.remove(contactName);
+						dataIntMap.remove(contactName);
+						
+						if(contactList.isEmpty()) {
+							
+							resetEmptyList();
+						}
+						
+						updateScreen();
+						saveToCloud();
+					}
+				  });
+				
+				removeConfirm.setNegativeButton("No",new DialogInterface.OnClickListener() {
+					
+					public void onClick(DialogInterface dialog,int id) {
+						
+						// if this button is clicked, close dialog and do nothing
+						dialog.cancel();
+					}
+				});
 	}
 
 	@Override
@@ -213,17 +250,9 @@ public class CareerContact extends ListActivity implements OnItemClickListener, 
 				//remove is clicked 
 				else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
 					
-					contactList.remove(contactName);
-					dataStringMap.remove(contactName);
-					dataIntMap.remove(contactName);
-					
-					if(contactList.isEmpty()) {
-						
-						this.resetEmptyList();
-					}
-					
-					this.updateScreen();
-					this.saveToCloud();
+					//create alert dialog
+					AlertDialog removePopup = removeConfirm.create();
+					removePopup.show();
 				}
 			}
 		}
