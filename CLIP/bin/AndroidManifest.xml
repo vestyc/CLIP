@@ -39,7 +39,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -171,12 +171,36 @@
                 android:value="com.example.clip.education.EducationFinance" />
         </activity>
         <activity
-            android:name="com.example.clip.education.EducationFinanceDetail"
+            android:name=".education.EducationFinanceDetail"
             android:label="@string/title_activity_education_finance_detail"
             android:parentActivityName=".education.EducationFinance" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.education.EducationFinance" />
+        </activity>
+        <activity
+            android:name=".education.EducationFuture"
+            android:label="@string/title_activity_education_future"
+            android:parentActivityName=".education.EducationMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationMenu" />
+        </activity>
+        <activity
+            android:name=".education.EducationFutureEdit"
+            android:label="@string/title_activity_education_future_edit"
+            android:parentActivityName=".education.EducationFuture" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationFuture" />
+        </activity>
+        <activity
+            android:name="com.example.clip.education.EducationFutureDetail"
+            android:label="@string/title_activity_education_future_detail"
+            android:parentActivityName=".education.EducationFuture" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationFuture" />
         </activity>
     </application>
 
