@@ -38,19 +38,29 @@
         <item>Accepted</item>
         <item>Rejected</item>
     </string-array>
-    
     <string-array name="education_financeType">
         <item>Loan</item>
         <item>Scholarship</item>
         <item>Grant</item>
         <item>Information</item>
     </string-array>
-    
-     <string-array name="education_futureType">
+    <string-array name="education_futureType">
         <item>Continuing Education</item>
         <item>Other</item>
     </string-array>
-
+    <string-array name="educationGraduate_actionType">
+        <item>In consideration</item>
+        <item>Applied</item>
+    </string-array>
+    <string-array name="educationGraduate_planType">
+        <item>Part-time</item>
+        <item>Full-time</item>
+    </string-array>
+	 <string-array name="educationGraduate_degreeType">
+        <item>Masters</item>
+        <item>Doctorate</item>
+    </string-array>
+    
     <string name="title_activity_login">Welcom to Clip</string>
     <string name="title_activity_career_comp_info">CareerCompInfo</string>
     <string name="title_activity_career_comp_info_edit">CareerCompInfoEdit</string>
@@ -65,5 +75,8 @@
     <string name="title_activity_education_future">EducationFuture</string>
     <string name="title_activity_education_future_edit">EducationFutureEdit</string>
     <string name="title_activity_education_future_detail">EducationFutureDetail</string>
+    <string name="title_activity_education_graduate">EducationGraduate</string>
+    <string name="title_activity_education_graduate_edit">EducationGraduateEdit</string>
+    <string name="title_activity_education_graduate_detail">EducationGraduateDetail</string>
 
 </resources>

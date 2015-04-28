@@ -49,6 +49,15 @@ public class EducationMenu extends Activity {
 				startActivity(i);
 	         }
 		});
+		
+		gradPlans.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(EducationMenu.this, EducationGraduate.class);
+				startActivity(i);
+	         }
+		});
 	}
 
 	@Override
