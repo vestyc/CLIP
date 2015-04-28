@@ -9,6 +9,9 @@ package com.example.clip;
 
 public final class R {
     public static final class array {
+        public static final int educationGraduate_actionType=0x7f060003;
+        public static final int educationGraduate_degreeType=0x7f060005;
+        public static final int educationGraduate_planType=0x7f060004;
         public static final int education_financeType=0x7f060001;
         public static final int education_futureType=0x7f060002;
         public static final int job_status=0x7f060000;
@@ -32,16 +35,16 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090001;
-        public static final int LoginButton=0x7f090086;
-        public static final int Register=0x7f090087;
-        public static final int action_add=0x7f090089;
-        public static final int action_edit=0x7f09008b;
-        public static final int action_logout=0x7f09008d;
-        public static final int action_remove=0x7f09008c;
-        public static final int action_settings=0x7f09008a;
+        public static final int LoginButton=0x7f09009d;
+        public static final int Register=0x7f09009e;
+        public static final int action_add=0x7f0900a0;
+        public static final int action_edit=0x7f0900a2;
+        public static final int action_logout=0x7f0900a4;
+        public static final int action_remove=0x7f0900a3;
+        public static final int action_settings=0x7f0900a1;
         public static final int appStatus=0x7f090043;
         public static final int buttonSave=0x7f09003f;
-        public static final int button_career=0x7f09007f;
+        public static final int button_career=0x7f090096;
         public static final int button_compInfo=0x7f09004d;
         public static final int button_contact=0x7f09004f;
         public static final int button_eId=0x7f09004e;
@@ -142,14 +145,37 @@ public final class R {
         public static final int educationFuture_school=0x7f090070;
         public static final int educationFuture_spinnerType=0x7f09006f;
         public static final int educationFuture_title=0x7f09006e;
-        public static final int education_buttonCurrentEducation=0x7f09007b;
-        public static final int education_buttonFinancial=0x7f09007e;
-        public static final int education_buttonFutureStudies=0x7f09007d;
-        public static final int education_buttonGraduatePlans=0x7f09007c;
-        public static final int entry_buttonEducation=0x7f090082;
-        public static final int entry_buttonFinance=0x7f090080;
-        public static final int entry_buttonHealth=0x7f090081;
-        public static final int entry_buttonLogout=0x7f090083;
+        public static final int educationGraduate_checkboxDate=0x7f09008e;
+        public static final int educationGraduate_date=0x7f09008f;
+        public static final int educationGraduate_detailAction=0x7f09007e;
+        public static final int educationGraduate_detailComments=0x7f090088;
+        public static final int educationGraduate_detailDate=0x7f090084;
+        public static final int educationGraduate_detailDegree=0x7f09007f;
+        public static final int educationGraduate_detailLocation=0x7f090082;
+        public static final int educationGraduate_detailName=0x7f09007d;
+        public static final int educationGraduate_detailOutcome=0x7f090086;
+        public static final int educationGraduate_detailPlan=0x7f090080;
+        public static final int educationGraduate_editComments=0x7f090091;
+        public static final int educationGraduate_editLocation=0x7f09008a;
+        public static final int educationGraduate_editName=0x7f090089;
+        public static final int educationGraduate_editOutcome=0x7f090090;
+        public static final int educationGraduate_labelComments=0x7f090087;
+        public static final int educationGraduate_labelDate=0x7f090083;
+        public static final int educationGraduate_labelLocation=0x7f090081;
+        public static final int educationGraduate_labelOutcome=0x7f090085;
+        public static final int educationGraduate_listName=0x7f09007b;
+        public static final int educationGraduate_listType=0x7f09007c;
+        public static final int educationGraduate_spinnerActionType=0x7f09008b;
+        public static final int educationGraduate_spinnerDegreeType=0x7f09008d;
+        public static final int educationGraduate_spinnerPlanType=0x7f09008c;
+        public static final int education_buttonCurrentEducation=0x7f090092;
+        public static final int education_buttonFinancial=0x7f090095;
+        public static final int education_buttonFutureStudies=0x7f090094;
+        public static final int education_buttonGraduatePlans=0x7f090093;
+        public static final int entry_buttonEducation=0x7f090099;
+        public static final int entry_buttonFinance=0x7f090097;
+        public static final int entry_buttonHealth=0x7f090098;
+        public static final int entry_buttonLogout=0x7f09009a;
         public static final int goalDate=0x7f09003e;
         public static final int goalLength=0x7f09003b;
         public static final int goalLengthLong=0x7f09003d;
@@ -170,9 +196,9 @@ public final class R {
         public static final int label_educationFinanceList=0x7f090050;
         public static final int label_educationFutureList=0x7f09005e;
         public static final int label_jobList=0x7f090040;
-        public static final int label_popUp=0x7f090088;
-        public static final int passWord=0x7f090085;
-        public static final int userName=0x7f090084;
+        public static final int label_popUp=0x7f09009f;
+        public static final int passWord=0x7f09009c;
+        public static final int userName=0x7f09009b;
     }
     public static final class layout {
         public static final int activity_career_comp_info=0x7f030000;
@@ -194,10 +220,13 @@ public final class R {
         public static final int activity_education_future=0x7f030010;
         public static final int activity_education_future_detail=0x7f030011;
         public static final int activity_education_future_edit=0x7f030012;
-        public static final int activity_education_menu=0x7f030013;
-        public static final int activity_entry=0x7f030014;
-        public static final int activity_login=0x7f030015;
-        public static final int edit_remove_popup=0x7f030016;
+        public static final int activity_education_graduate=0x7f030013;
+        public static final int activity_education_graduate_detail=0x7f030014;
+        public static final int activity_education_graduate_edit=0x7f030015;
+        public static final int activity_education_menu=0x7f030016;
+        public static final int activity_entry=0x7f030017;
+        public static final int activity_login=0x7f030018;
+        public static final int edit_remove_popup=0x7f030019;
     }
     public static final class menu {
         public static final int career_comp_info=0x7f080000;
@@ -219,10 +248,13 @@ public final class R {
         public static final int education_future=0x7f080010;
         public static final int education_future_detail=0x7f080011;
         public static final int education_future_edit=0x7f080012;
-        public static final int education_menu=0x7f080013;
-        public static final int entry=0x7f080014;
-        public static final int main=0x7f080015;
-        public static final int register=0x7f080016;
+        public static final int education_graduate=0x7f080013;
+        public static final int education_graduate_detail=0x7f080014;
+        public static final int education_graduate_edit=0x7f080015;
+        public static final int education_menu=0x7f080016;
+        public static final int entry=0x7f080017;
+        public static final int main=0x7f080018;
+        public static final int register=0x7f080019;
     }
     public static final class string {
         public static final int action_add=0x7f050005;
@@ -264,6 +296,9 @@ public final class R {
         public static final int title_activity_education_future=0x7f050029;
         public static final int title_activity_education_future_detail=0x7f05002b;
         public static final int title_activity_education_future_edit=0x7f05002a;
+        public static final int title_activity_education_graduate=0x7f05002c;
+        public static final int title_activity_education_graduate_detail=0x7f05002e;
+        public static final int title_activity_education_graduate_edit=0x7f05002d;
         public static final int title_activity_education_menu=0x7f050026;
         public static final int title_activity_entry=0x7f050010;
         public static final int title_activity_login=0x7f05001e;
