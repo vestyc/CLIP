@@ -8,14 +8,12 @@ import com.example.clip.R;
 import com.example.clip.R.id;
 import com.example.clip.R.layout;
 import com.example.clip.R.menu;
-import com.example.clip.education.EducationCurrent;
-import com.example.clip.education.EducationCurrentDetail;
-import com.example.clip.education.EducationCurrentEdit;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -31,7 +29,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
-public class HealthExercise extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
+public class HealthDiet extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
 
 	ArrayAdapter<String> popUpAdapter;
 	ListPopupWindow popUp;
@@ -40,24 +38,23 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 	AlertDialog.Builder removeConfirm;
 	boolean safeToRemove;
 	
-	String exerciseName;
-	ArrayList<String> exerciseList;
+	String dietName;
+	ArrayList<String> dietList;
 	ArrayAdapter<String> listViewAdapter;
 	
-	String[] dataString;						//sun, mon, tues, wed, thurs, fri, sat
-	int[][] dataInt;							//[dateStart/dateEnd][month, day, year]
-	HashMap<String, String[]> dataStringMap;
+	String[] dataString;	//sun, mon, tues, wed, thurs, fri, sat
+	String[] dataString2;	//dietType, notes/instructions
+	int[][] dataInt;		//[dateStart/dateEnd][month, day, year]
+	HashMap<String, String[]> dataStringMap, dataStringMap2;
 	HashMap<String, int[][]> dataIntMap;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);
 		
-		//initiate empty list
 		this.createEmptyList();
-		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_health_exercise, 
-				R.id.healthExercise_list, exerciseList);
+		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_health_diet, 
+				R.id.healthDiet_list, dietList);
 		this.setListAdapter(listViewAdapter);
 		
 		//initiate pop-up list (edit/remove)
@@ -81,11 +78,12 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 			public void onClick(DialogInterface dialog,int id) {
 				
 				// if this button is clicked, remove item
-				exerciseList.remove(exerciseName);
-				dataStringMap.remove(exerciseName);
-				dataIntMap.remove(exerciseName);
+				dietList.remove(dietName);
+				dataStringMap.remove(dietName);
+				dataStringMap2.remove(dietName);
+				dataIntMap.remove(dietName);
 				
-				if(exerciseList.isEmpty()) {
+				if(dietList.isEmpty()) {
 					
 					resetEmptyList();
 				}
@@ -102,7 +100,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 				// if this button is clicked, close dialog and do nothing
 				dialog.cancel();
 			}
-		});
+		});		
 	}
 	
 	@Override
@@ -112,10 +110,11 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 		
 		//remove local data (overriding with cloud data)
 		dataStringMap.clear();
-		exerciseList.clear();
+		dataStringMap2.clear();
+		dietList.clear();
 		dataIntMap.clear();
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("healthExercise");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("healthDiet");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		// Create query for objects of type "Post"
@@ -131,28 +130,33 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 		
 			// If there are results, update the list of posts
 			// and notify the adapter
-			for (ParseObject exercise : postList) {				
+			for (ParseObject diet : postList) {				
 					
-				exerciseName = exercise.getString("exerciseName");	
+				dietName = diet.getString("dietName");	
 				
 				//add data from database 
-				exerciseList.add(exerciseName);
+				dietList.add(dietName);
 				
 				//dataStringMap
-				ArrayList<String> tempDataString = (ArrayList<String>) exercise.get("dataString");
+				ArrayList<String> tempDataString = (ArrayList<String>) diet.get("dataString");
 				tempDataString.toArray(dataString);
-				dataStringMap.put(exerciseName, dataString);
+				dataStringMap.put(dietName, dataString);
+				
+				//dataStringMap2
+				tempDataString = (ArrayList<String>) diet.get("dataString2");
+				tempDataString.toArray(dataString2);
+				dataStringMap2.put(dietName, dataString2);
 				
 				//dataIntMap
-				ArrayList<Integer> dateStart = (ArrayList<Integer>) exercise.get("dateStart");
-				ArrayList<Integer> dateEnd = (ArrayList<Integer>) exercise.get("dateEnd");
+				ArrayList<Integer> dateStart = (ArrayList<Integer>) diet.get("dateStart");
+				ArrayList<Integer> dateEnd = (ArrayList<Integer>) diet.get("dateEnd");
 				dataInt = new int[2][3];
 				for(int i=0; i < dataInt[0].length; i++) {
 					
 					dataInt[0][i] = dateStart.get(i);
 					dataInt[1][i] = dateEnd.get(i);
 				}
-				dataIntMap.put(exerciseName, dataInt);
+				dataIntMap.put(dietName, dataInt);
 			}
 			
 		}catch (ParseException e) {
@@ -160,7 +164,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
 		}
 		
-		if(exerciseList.isEmpty()) {
+		if(dietList.isEmpty()) {
 			
 			this.resetEmptyList();
 		}
@@ -177,28 +181,30 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 			if(requestCode == 1) {	
 				
 				//remove old data first
-				this.exerciseName = data.getStringExtra("oldName");
-				this.exerciseList.remove(exerciseName);
-				this.dataStringMap.remove(exerciseName);
-				this.dataIntMap.remove(exerciseName);
+				this.dietName = data.getStringExtra("oldName");
+				this.dietList.remove(dietName);
+				this.dataStringMap.remove(dietName);
+				this.dataStringMap2.remove(dietName);
+				this.dataIntMap.remove(dietName);
 			}
 			//add job
 			else if(requestCode == 0) {
 				
 				//clears any initial data		
-				exerciseList.remove(getString(R.string.none));
+				dietList.remove(getString(R.string.none));
 			}
 			
 			//add new data
-			this.exerciseName = data.getStringExtra("exerciseName");
+			this.dietName = data.getStringExtra("dietName");
 			
-			exerciseList.add(exerciseName);
-			dataStringMap.put(exerciseName, data.getStringArrayExtra("dataString"));
+			dietList.add(dietName);
+			dataStringMap.put(dietName, data.getStringArrayExtra("dataString"));
+			dataStringMap2.put(dietName, data.getStringArrayExtra("dataString2"));
 			
 			dataInt = new int[2][3];
 			dataInt[0] = data.getIntArrayExtra("dateStart");
 			dataInt[1] = data.getIntArrayExtra("dateEnd");
-			dataIntMap.put(exerciseName, dataInt);
+			dataIntMap.put(dietName, dataInt);
 			
 			this.updateScreen();
 			this.saveToCloud();
@@ -212,7 +218,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.health_exercise, menu);
+		getMenuInflater().inflate(R.menu.health_diet, menu);
 		return true;
 	}
 
@@ -224,7 +230,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 		int id = item.getItemId();
 		if (id == R.id.action_add) {
 
-			Intent i = new Intent(HealthExercise.this, HealthExerciseEdit.class);
+			Intent i = new Intent(HealthDiet.this, HealthDietEdit.class);
 			startActivityForResult(i, 0);
 		}
 		return super.onOptionsItemSelected(item);
@@ -238,19 +244,22 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 			popUp.dismiss();
 			
 			//only operate when companyName != none
-			if(!exerciseName.equals(getString(R.string.none))) {
+			if(!dietName.equals(getString(R.string.none))) {
 			
 				//edit is clicked 
 				if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
 					
-					Intent i = new Intent(HealthExercise.this, HealthExerciseEdit.class);
+					Intent i = new Intent(HealthDiet.this, HealthDietEdit.class);
 					
-					i.putExtra("exerciseName", exerciseName);
+					i.putExtra("dietName", dietName);
 					
-					this.dataString = this.dataStringMap.get(exerciseName);
+					this.dataString = this.dataStringMap.get(dietName);
 					i.putExtra("dataString", this.dataString);
 					
-					this.dataInt = this.dataIntMap.get(exerciseName);
+					this.dataString2 = this.dataStringMap2.get(dietName);
+					i.putExtra("dataString2", this.dataString2);
+					
+					this.dataInt = this.dataIntMap.get(dietName);
 					i.putExtra("dateStart", dataInt[0]);
 					i.putExtra("dateEnd", dataInt[1]);
 					
@@ -266,17 +275,20 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 			}
 		}
 		//show details if company != none
-		else if(!exerciseList.get(position).equals(getString(R.string.none))) {
+		else if(!dietList.get(position).equals(getString(R.string.none))) {
 			
-			Intent i = new Intent(HealthExercise.this, HealthExerciseDetail.class);
+			Intent i = new Intent(HealthDiet.this, HealthDietDetail.class);
 			
-			exerciseName = exerciseList.get(position);
-			i.putExtra("exerciseName", exerciseName);
+			dietName = dietList.get(position);
+			i.putExtra("dietName", dietName);
 			
-			this.dataString = this.dataStringMap.get(exerciseName);
+			this.dataString = this.dataStringMap.get(dietName);
 			i.putExtra("dataString", dataString);
 			
-			this.dataInt = this.dataIntMap.get(exerciseName);
+			this.dataString2 = this.dataStringMap2.get(dietName);
+			i.putExtra("dataString2", dataString2);
+			
+			this.dataInt = this.dataIntMap.get(dietName);
 			i.putExtra("dateStart", dataInt[0]);
 			i.putExtra("dateEnd", dataInt[1]);
 			
@@ -287,7 +299,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 		
-		exerciseName = exerciseList.get(position);
+		dietName = dietList.get(position);
 		popUp.setAnchorView(view);
 		popUp.show();
 		popUp.getListView().setOnItemClickListener(this); 
@@ -296,19 +308,21 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 	
 	private void createEmptyList() {
 		
-		exerciseList = new ArrayList<String>();
-		exerciseList.add(getString(R.string.none));
+		dietList = new ArrayList<String>();
+		dietList.add(getString(R.string.none));
 		
 		this.dataInt = new int[2][3];
 		this.dataString = new String[7];
+		this.dataString2 = new String[2];
 		
 		this.dataIntMap = new HashMap<String, int[][]>();
 		this.dataStringMap = new HashMap<String, String[]>();
+		this.dataStringMap2 = new HashMap<String, String[]>();
 	}
 	
 	private void resetEmptyList() {
 		
-		exerciseList.add(getString(R.string.none));
+		dietList.add(getString(R.string.none));
 	}
 	
 	private void updateScreen() {
@@ -321,7 +335,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 	
 	private void saveToCloud() {
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("healthExercise");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("healthDiet");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		try {
@@ -330,9 +344,9 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 		
 			// If there are results, update the list of posts
 			// and notify the adapter
-			for (ParseObject exercise : postList) {
+			for (ParseObject diet : postList) {
 				
-				exercise.delete();
+				diet.delete();
 			}
 			
 		}catch (ParseException e) {
@@ -340,26 +354,33 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
 		}		
 		
-		for(String exerciseName : exerciseList){
+		for(String dietName : dietList){
 			 
-			if(exerciseName.equals(getString(R.string.none)))
+			if(dietName.equals(getString(R.string.none)))
 				continue;
 			 
-			ParseObject healthExercise = new ParseObject("healthExercise");
-			healthExercise.put("Owner", ParseUser.getCurrentUser());
+			ParseObject healthDiet = new ParseObject("healthDiet");
+			healthDiet.put("Owner", ParseUser.getCurrentUser());
 			
-			healthExercise.put("exerciseName", exerciseName);
+			healthDiet.put("dietName", dietName);
 			
-			//degree type
-			dataString = dataStringMap.get(exerciseName);
+			dataString = dataStringMap.get(dietName);
 			ArrayList<String> tempDataString = new ArrayList<String>();
 			for(String data : dataString) {
 				
 				tempDataString.add(data);
 			}
-			healthExercise.put("dataString", tempDataString);
+			healthDiet.put("dataString", tempDataString);
 			
-			dataInt = dataIntMap.get(exerciseName);
+			dataString2 = dataStringMap2.get(dietName);
+			tempDataString = new ArrayList<String>();
+			for(String data : dataString2) {
+				
+				tempDataString.add(data);
+			}
+			healthDiet.put("dataString2", tempDataString);
+			
+			dataInt = dataIntMap.get(dietName);
 			ArrayList<Integer> dateStart = new ArrayList<Integer>();
 			ArrayList<Integer> dateEnd = new ArrayList<Integer>();
 			for(int i=0; i < dataInt[0].length; i++) {
@@ -367,12 +388,12 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 				dateStart.add(dataInt[0][i]);
 				dateEnd.add(dataInt[1][i]);
 			}
-			healthExercise.addAll("dateStart", dateStart);
-			healthExercise.addAll("dateEnd", dateEnd);			
+			healthDiet.addAll("dateStart", dateStart);
+			healthDiet.addAll("dateEnd", dateEnd);			
 			
 			try {
 				
-				healthExercise.save();
+				healthDiet.save();
 				
 			}catch (ParseException e) {
 				
