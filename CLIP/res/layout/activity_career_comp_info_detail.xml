@@ -1,0 +1,199 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+    
+	<LinearLayout 
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.career.CareerCompInfoDetail" >
+	
+	    <TextView
+	        android:id="@+id/compInfo_detailName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginBottom="10dp"
+	        android:text="@string/none"
+	        android:textSize="32sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelProductLOB"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Product or line of business:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailProductLOB"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelLocation"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Business address:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailLocation"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelPhone"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Phone number:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailPhone"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelEmail"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Email:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailEmail"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelFacts"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Company facts:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailFacts"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelConsideration"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Considerations for this company:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailConsideration"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelResumeDate"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Resume due by:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailResumeDate"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelInterviewDate"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Date of interview:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailInterviewDate"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelInterviewOutcome"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Outcome of interview:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailInterviewOutcome"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_labelInterviewLessons"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:visibility="gone"
+	        android:text="Lessons learned from interview:"
+	        android:textSize="15sp" />
+	    
+	    <TextView
+	        android:id="@+id/compInfo_detailInterviewLessons"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:visibility="gone"
+	        android:textSize="25sp" />
+	
+	</LinearLayout>
+	
+</ScrollView>
