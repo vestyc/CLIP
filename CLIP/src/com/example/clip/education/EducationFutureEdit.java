@@ -98,6 +98,8 @@ public class EducationFutureEdit extends Activity implements OnItemSelectedListe
 			dataString = new String[4];
 			dataString[0] = "Continuing Education";	//default spinner value
 		}
+		
+		type.setOnItemSelectedListener(this);
 	}
 	
 	public void saveClicked(View view) {

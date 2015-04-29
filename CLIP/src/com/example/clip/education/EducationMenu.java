@@ -58,6 +58,15 @@ public class EducationMenu extends Activity {
 				startActivity(i);
 	         }
 		});
+		
+		currentEdu.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(EducationMenu.this, EducationCurrent.class);
+				startActivity(i);
+	         }
+		});
 	}
 
 	@Override

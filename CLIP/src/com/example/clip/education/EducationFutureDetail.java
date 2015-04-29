@@ -51,7 +51,12 @@ public class EducationFutureDetail extends Activity {
 		
 		title.setText(futureName);
 		//{planType, school, location, comments/notes}
-		type.setText(dataString[0]);
+		if(!dataString[0].equals("Other")) {
+			type.setText(dataString[0]);
+		}
+		else {
+			type.setText("");
+		}
 		
 		if(!dataString[1].equals("")) {
 			school.setText(dataString[1]);
