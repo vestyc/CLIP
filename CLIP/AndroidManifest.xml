@@ -39,7 +39,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -267,12 +267,36 @@
                 android:value="com.example.clip.health.HealthMenu" />
         </activity>
         <activity
-            android:name="com.example.clip.health.HealthVitalEdit"
+            android:name=".health.HealthVitalEdit"
             android:label="@string/title_activity_health_vital_edit"
             android:parentActivityName=".health.HealthVital" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.health.HealthVital" />
+        </activity>
+        <activity
+            android:name=".health.HealthExercise"
+            android:label="@string/title_activity_health_exercise"
+            android:parentActivityName=".health.HealthMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthMenu" />
+        </activity>
+        <activity
+            android:name=".health.HealthExerciseEdit"
+            android:label="@string/title_activity_health_exercise_edit"
+            android:parentActivityName=".health.HealthExercise" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthExercise" />
+        </activity>
+        <activity
+            android:name="com.example.clip.health.HealthExerciseDetail"
+            android:label="@string/title_activity_health_exercise_detail"
+            android:parentActivityName=".health.HealthExercise" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthExercise" />
         </activity>
     </application>
 

@@ -91,5 +91,8 @@
     <string name="title_activity_health_menu">HealthMenu</string>
     <string name="title_activity_health_vital">HealthVital</string>
     <string name="title_activity_health_vital_edit">HealthVitalEdit</string>
+    <string name="title_activity_health_exercise">HealthExercise</string>
+    <string name="title_activity_health_exercise_edit">HealthExerciseEdit</string>
+    <string name="title_activity_health_exercise_detail">HealthExerciseDetail</string>
 
 </resources>

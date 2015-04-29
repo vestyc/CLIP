@@ -43,6 +43,17 @@ public class HealthMenu extends Activity {
 				}
 
 		});
+		
+		exercise.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(HealthMenu.this, HealthExercise.class);
+					startActivity(i);
+
+				}
+
+		});
 	}
 
 	@Override
