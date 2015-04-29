@@ -1,5 +1,9 @@
 package com.example.clip.education;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import com.example.clip.R;
 import com.example.clip.R.id;
 import com.example.clip.R.layout;
@@ -9,38 +13,39 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.*;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListPopupWindow;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.widget.*;
 
-public class EducationFuture extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
+public class EducationCurrent extends ListActivity implements OnItemClickListener, OnItemLongClickListener  {
 
 	ArrayAdapter<String> popUpAdapter;
 	ListPopupWindow popUp;
 	ArrayList<String> popUpItems;
 	
-	String futureName;
-	ArrayList<String> futureList;
-	ArrayAdapter<String> listViewAdapter;
-	
-	String[] dataString;						//{planType, school, location, comments/notes}
-	ArrayList<String> courseList;
-	HashMap<String, String[]> dataStringMap;
-	HashMap<String, ArrayList<String>> courseMap;
-	
 	AlertDialog.Builder removeConfirm;
 	boolean safeToRemove;
+	
+	ArrayAdapter<String> listViewAdapter;
+	ArrayList<String> currentList;
+	String currentName;
+	
+	String dataString;		//degreeType
+	int[][] dataInt;		//[dateType][month, day, year]
+	HashMap<String, String> dataStringMap;
+	HashMap<String, int[][]> dataIntMap;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +54,8 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 		
 		//initiate empty list
 		this.createEmptyList();
-		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_education_future, 
-				R.id.label_educationFutureList, futureList);
+		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_education_current, 
+				R.id.educationCurrent_listName, currentList);
 		this.setListAdapter(listViewAdapter);
 		
 		//initiate pop-up list (edit/remove)
@@ -74,11 +79,11 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 			public void onClick(DialogInterface dialog,int id) {
 				
 				// if this button is clicked, remove item
-				futureList.remove(futureName);
-				dataStringMap.remove(futureName);
-				courseMap.remove(futureName);
+				currentList.remove(currentName);
+				dataStringMap.remove(currentName);
+				dataIntMap.remove(currentName);
 				
-				if(futureList.isEmpty()) {
+				if(currentList.isEmpty()) {
 					
 					resetEmptyList();
 				}
@@ -105,10 +110,10 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 		
 		//remove local data (overriding with cloud data)
 		dataStringMap.clear();
-		futureList.clear();
-		courseMap.clear();
+		currentList.clear();
+		dataIntMap.clear();
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("educationFuture");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("educationCurrent");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		// Create query for objects of type "Post"
@@ -124,20 +129,26 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 		
 			// If there are results, update the list of posts
 			// and notify the adapter
-			for (ParseObject future : postList) {				
+			for (ParseObject current : postList) {				
 					
-				futureName = future.getString("futureName");	
+				currentName = current.getString("currentName");	
 				
 				//add data from database 
-				futureList.add(futureName);
+				currentList.add(currentName);
 				
 				//dataStringMap
-				ArrayList<String> tempDataString = (ArrayList<String>) future.get("dataString");
-				tempDataString.toArray(dataString);
-				dataStringMap.put(futureName, dataString);
+				dataStringMap.put(currentName, (String) current.get("dataString"));
 				
-				//courseMap
-				courseMap.put(futureName, (ArrayList<String>) future.get("course"));
+				//dataIntMap
+				ArrayList<Integer> dateStart = (ArrayList<Integer>) current.get("dateStart");
+				ArrayList<Integer> dateEnd = (ArrayList<Integer>) current.get("dateEnd");
+				dataInt = new int[2][3];
+				for(int i=0; i < dataInt[0].length; i++) {
+					
+					dataInt[0][i] = dateStart.get(i);
+					dataInt[1][i] = dateEnd.get(i);
+				}
+				dataIntMap.put(currentName, dataInt);
 			}
 			
 		}catch (ParseException e) {
@@ -145,7 +156,7 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
 		}
 		
-		if(futureList.isEmpty()) {
+		if(currentList.isEmpty()) {
 			
 			this.resetEmptyList();
 		}
@@ -162,26 +173,28 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 			if(requestCode == 1) {	
 				
 				//remove old data first
-				this.futureName = data.getStringExtra("oldName");
-				this.futureList.remove(futureName);
-				this.dataStringMap.remove(futureName);
-				this.courseMap.remove(futureName);
+				this.currentName = data.getStringExtra("oldName");
+				this.currentList.remove(currentName);
+				this.dataStringMap.remove(currentName);
+				this.dataIntMap.remove(currentName);
 			}
 			//add job
 			else if(requestCode == 0) {
 				
 				//clears any initial data		
-				futureList.remove(getString(R.string.none));
+				currentList.remove(getString(R.string.none));
 			}
 			
 			//add new data
-			this.futureName = data.getStringExtra("futureName");
+			this.currentName = data.getStringExtra("currentName");
 			
-			futureList.add(futureName);
-			dataStringMap.put(futureName, data.getStringArrayExtra("dataString"));
+			currentList.add(currentName);
+			dataStringMap.put(currentName, data.getStringExtra("dataString"));
 			
-			courseList = data.getStringArrayListExtra("course");
-			courseMap.put(futureName, courseList);
+			dataInt = new int[2][3];
+			dataInt[0] = data.getIntArrayExtra("dateStart");
+			dataInt[1] = data.getIntArrayExtra("dateEnd");
+			dataIntMap.put(currentName, dataInt);
 			
 			this.updateScreen();
 			this.saveToCloud();
@@ -195,7 +208,7 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.education_future, menu);
+		getMenuInflater().inflate(R.menu.education_current, menu);
 		return true;
 	}
 
@@ -207,7 +220,7 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 		int id = item.getItemId();
 		if (id == R.id.action_add) {
 			
-			Intent i = new Intent(EducationFuture.this, EducationFutureEdit.class);
+			Intent i = new Intent(EducationCurrent.this, EducationCurrentEdit.class);
 			startActivityForResult(i, 0);
 		}
 		return super.onOptionsItemSelected(item);
@@ -221,20 +234,21 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 			popUp.dismiss();
 			
 			//only operate when companyName != none
-			if(!futureName.equals(getString(R.string.none))) {
+			if(!currentName.equals(getString(R.string.none))) {
 			
 				//edit is clicked 
 				if(this.popUpItems.get(position).equals(getString(R.string.action_edit))) {
 					
-					Intent i = new Intent(EducationFuture.this, EducationFutureEdit.class);
+					Intent i = new Intent(EducationCurrent.this, EducationCurrentEdit.class);
 					
-					i.putExtra("futureName", futureName);
+					i.putExtra("currentName", currentName);
 					
-					this.dataString = this.dataStringMap.get(futureName);
+					this.dataString = this.dataStringMap.get(currentName);
 					i.putExtra("dataString", this.dataString);
 					
-					this.courseList = this.courseMap.get(futureName);
-					i.putExtra("course", courseList);
+					this.dataInt = this.dataIntMap.get(currentName);
+					i.putExtra("dateStart", dataInt[0]);
+					i.putExtra("dateEnd", dataInt[1]);
 					
 					startActivityForResult(i, 1);
 				}
@@ -248,18 +262,19 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 			}
 		}
 		//show details if company != none
-		else if(!futureList.get(position).equals(getString(R.string.none))) {
+		else if(!currentList.get(position).equals(getString(R.string.none))) {
 			
-			Intent i = new Intent(EducationFuture.this, EducationFutureDetail.class);
+			Intent i = new Intent(EducationCurrent.this, EducationCurrentDetail.class);
 			
-			futureName = futureList.get(position);
-			i.putExtra("futureName", futureName);
+			currentName = currentList.get(position);
+			i.putExtra("currentName", currentName);
 			
-			this.dataString = this.dataStringMap.get(futureName);
+			this.dataString = this.dataStringMap.get(currentName);
 			i.putExtra("dataString", dataString);
 			
-			this.courseList = this.courseMap.get(futureName);
-			i.putExtra("course", courseList);
+			this.dataInt = this.dataIntMap.get(currentName);
+			i.putExtra("dateStart", dataInt[0]);
+			i.putExtra("dateEnd", dataInt[1]);
 			
 			startActivity(i);
 		}
@@ -268,7 +283,7 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 		
-		futureName = futureList.get(position);
+		currentName = currentList.get(position);
 		popUp.setAnchorView(view);
 		popUp.show();
 		popUp.getListView().setOnItemClickListener(this); 
@@ -277,18 +292,19 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 	
 	private void createEmptyList() {
 		
-		futureList = new ArrayList<String>();
-		futureList.add(getString(R.string.none));
+		currentList = new ArrayList<String>();
+		currentList.add(getString(R.string.none));
 		
-		dataString = new String[4];
+		this.dataInt = new int[2][3];
+		this.dataString = new String();
 		
-		dataStringMap = new HashMap<String, String[]>();
-		courseMap = new HashMap<String, ArrayList<String>>();
+		this.dataIntMap = new HashMap<String, int[][]>();
+		this.dataStringMap = new HashMap<String, String>();
 	}
 	
 	private void resetEmptyList() {
 		
-		futureList.add(getString(R.string.none));
+		currentList.add(getString(R.string.none));
 	}
 	
 	private void updateScreen() {
@@ -299,9 +315,9 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 		popUp.setOnItemClickListener(this);
 	}
 	
-	private void saveToCloud() {
+private void saveToCloud() {
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("educationFuture");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("educationCurrent");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		try {
@@ -310,9 +326,9 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 		
 			// If there are results, update the list of posts
 			// and notify the adapter
-			for (ParseObject future : postList) {
+			for (ParseObject current : postList) {
 				
-				future.delete();
+				current.delete();
 			}
 			
 		}catch (ParseException e) {
@@ -320,31 +336,34 @@ public class EducationFuture extends ListActivity implements OnItemClickListener
 			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
 		}		
 		
-		for(String futureName : futureList){
+		for(String currentName : currentList){
 			 
-			if(futureName.equals(getString(R.string.none)))
+			if(currentName.equals(getString(R.string.none)))
 				continue;
 			 
-			ParseObject educationFuture = new ParseObject("educationFuture");
-			educationFuture.put("Owner", ParseUser.getCurrentUser());
+			ParseObject educationCurrent = new ParseObject("educationCurrent");
+			educationCurrent.put("Owner", ParseUser.getCurrentUser());
 			
-			educationFuture.put("futureName", futureName);
+			educationCurrent.put("currentName", currentName);
 			
-			//{planType, school, location, comments/notes}
-			dataString = dataStringMap.get(futureName);
-			ArrayList<String> tempDataString = new ArrayList<String>();
-			for(int i=0; i < 4; i++) {
+			//degree type
+			dataString = dataStringMap.get(currentName);
+			educationCurrent.put("dataString", dataString);
+			
+			dataInt = dataIntMap.get(currentName);
+			ArrayList<Integer> dateStart = new ArrayList<Integer>();
+			ArrayList<Integer> dateEnd = new ArrayList<Integer>();
+			for(int i=0; i < dataInt[0].length; i++) {
 				
-				tempDataString.add(dataString[i]);
+				dateStart.add(dataInt[0][i]);
+				dateEnd.add(dataInt[1][i]);
 			}
-			educationFuture.addAll("dataString", tempDataString);
-			
-			//courseMap
-			educationFuture.addAll("course", courseMap.get(futureName));
+			educationCurrent.addAll("dateStart", dateStart);
+			educationCurrent.addAll("dateEnd", dateEnd);			
 			
 			try {
 				
-				educationFuture.save();
+				educationCurrent.save();
 				
 			}catch (ParseException e) {
 				

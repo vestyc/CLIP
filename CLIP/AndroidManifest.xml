@@ -39,7 +39,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -219,12 +219,36 @@
                 android:value="com.example.clip.education.EducationGraduate" />
         </activity>
         <activity
-            android:name="com.example.clip.education.EducationGraduateDetail"
+            android:name=".education.EducationGraduateDetail"
             android:label="@string/title_activity_education_graduate_detail"
             android:parentActivityName=".education.EducationGraduate" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.education.EducationGraduate" />
+        </activity>
+        <activity
+            android:name=".education.EducationCurrent"
+            android:label="@string/title_activity_education_current"
+            android:parentActivityName=".education.EducationMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationMenu" />
+        </activity>
+        <activity
+            android:name=".education.EducationCurrentEdit"
+            android:label="@string/title_activity_education_current_edit"
+            android:parentActivityName=".education.EducationCurrent" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationCurrent" />
+        </activity>
+        <activity
+            android:name="com.example.clip.education.EducationCurrentDetail"
+            android:label="@string/title_activity_education_current_detail"
+            android:parentActivityName=".education.EducationCurrent" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationCurrent" />
         </activity>
     </application>
 
