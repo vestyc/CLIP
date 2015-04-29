@@ -36,13 +36,13 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090001;
-        public static final int LoginButton=0x7f0900ab;
-        public static final int Register=0x7f0900ac;
-        public static final int action_add=0x7f0900ae;
-        public static final int action_edit=0x7f0900b0;
-        public static final int action_logout=0x7f0900b2;
-        public static final int action_remove=0x7f0900b1;
-        public static final int action_settings=0x7f0900af;
+        public static final int LoginButton=0x7f0900c7;
+        public static final int Register=0x7f0900c8;
+        public static final int action_add=0x7f0900ca;
+        public static final int action_edit=0x7f0900cc;
+        public static final int action_logout=0x7f0900ce;
+        public static final int action_remove=0x7f0900cd;
+        public static final int action_settings=0x7f0900cb;
         public static final int appStatus=0x7f090043;
         public static final int buttonSave=0x7f09003f;
         public static final int button_career=0x7f0900a4;
@@ -197,6 +197,34 @@ public final class R {
         public static final int goalLengthShort=0x7f09003c;
         public static final int goalName=0x7f090038;
         public static final int goalType=0x7f090039;
+        public static final int healthVital_checkboxBP=0x7f0900c1;
+        public static final int healthVital_checkboxPulse=0x7f0900bd;
+        public static final int healthVital_checkboxRespiration=0x7f0900bf;
+        public static final int healthVital_checkboxTemp=0x7f0900b9;
+        public static final int healthVital_detailBloodPressure=0x7f0900b7;
+        public static final int healthVital_detailLastUpdate=0x7f0900b0;
+        public static final int healthVital_detailPulse=0x7f0900b3;
+        public static final int healthVital_detailRespiration=0x7f0900b5;
+        public static final int healthVital_detailTemp=0x7f0900b1;
+        public static final int healthVital_labelBloodPressure=0x7f0900b8;
+        public static final int healthVital_labelPulse=0x7f0900b4;
+        public static final int healthVital_labelRespiration=0x7f0900b6;
+        public static final int healthVital_labelTemp=0x7f0900b2;
+        public static final int healthVital_layoutBP=0x7f0900c2;
+        public static final int healthVital_layoutTemp=0x7f0900ba;
+        public static final int healthVital_pickerBP0=0x7f0900c3;
+        public static final int healthVital_pickerBP1=0x7f0900c4;
+        public static final int healthVital_pickerPulse=0x7f0900be;
+        public static final int healthVital_pickerRespiration=0x7f0900c0;
+        public static final int healthVital_pickerTemp0=0x7f0900bb;
+        public static final int healthVital_pickerTemp1=0x7f0900bc;
+        public static final int health_buttonAllergies=0x7f0900ae;
+        public static final int health_buttonCheckup=0x7f0900ac;
+        public static final int health_buttonDiet=0x7f0900ab;
+        public static final int health_buttonExercise=0x7f0900aa;
+        public static final int health_buttonMedication=0x7f0900ad;
+        public static final int health_buttonRecipes=0x7f0900af;
+        public static final int health_buttonVitals=0x7f0900a9;
         public static final int jobComments=0x7f090045;
         public static final int jobName=0x7f090041;
         public static final int jobScrollView=0x7f090044;
@@ -211,9 +239,9 @@ public final class R {
         public static final int label_educationFinanceList=0x7f09005e;
         public static final int label_educationFutureList=0x7f09006c;
         public static final int label_jobList=0x7f090040;
-        public static final int label_popUp=0x7f0900ad;
-        public static final int passWord=0x7f0900aa;
-        public static final int userName=0x7f0900a9;
+        public static final int label_popUp=0x7f0900c9;
+        public static final int passWord=0x7f0900c6;
+        public static final int userName=0x7f0900c5;
     }
     public static final class layout {
         public static final int activity_career_comp_info=0x7f030000;
@@ -243,8 +271,11 @@ public final class R {
         public static final int activity_education_graduate_edit=0x7f030018;
         public static final int activity_education_menu=0x7f030019;
         public static final int activity_entry=0x7f03001a;
-        public static final int activity_login=0x7f03001b;
-        public static final int edit_remove_popup=0x7f03001c;
+        public static final int activity_health_menu=0x7f03001b;
+        public static final int activity_health_vital=0x7f03001c;
+        public static final int activity_health_vital_edit=0x7f03001d;
+        public static final int activity_login=0x7f03001e;
+        public static final int edit_remove_popup=0x7f03001f;
     }
     public static final class menu {
         public static final int career_comp_info=0x7f080000;
@@ -274,8 +305,11 @@ public final class R {
         public static final int education_graduate_edit=0x7f080018;
         public static final int education_menu=0x7f080019;
         public static final int entry=0x7f08001a;
-        public static final int main=0x7f08001b;
-        public static final int register=0x7f08001c;
+        public static final int health_menu=0x7f08001b;
+        public static final int health_vital=0x7f08001c;
+        public static final int health_vital_edit=0x7f08001d;
+        public static final int main=0x7f08001e;
+        public static final int register=0x7f08001f;
     }
     public static final class string {
         public static final int action_add=0x7f050005;
@@ -325,6 +359,9 @@ public final class R {
         public static final int title_activity_education_graduate_edit=0x7f05002d;
         public static final int title_activity_education_menu=0x7f050026;
         public static final int title_activity_entry=0x7f050010;
+        public static final int title_activity_health_menu=0x7f050032;
+        public static final int title_activity_health_vital=0x7f050033;
+        public static final int title_activity_health_vital_edit=0x7f050034;
         public static final int title_activity_login=0x7f05001e;
         public static final int title_activity_register=0x7f050014;
         public static final int username_title=0x7f050011;

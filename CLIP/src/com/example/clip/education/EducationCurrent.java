@@ -315,7 +315,7 @@ public class EducationCurrent extends ListActivity implements OnItemClickListene
 		popUp.setOnItemClickListener(this);
 	}
 	
-private void saveToCloud() {
+	private void saveToCloud() {
 		
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("educationCurrent");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
