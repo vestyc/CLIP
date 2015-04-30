@@ -74,7 +74,7 @@ public class financeLiability extends ListActivity implements OnItemClickListene
 		dataMap.clear();
 		liabilityList.clear();
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeliability");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeLiability");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		// Create query for objects of type "Post"
@@ -255,7 +255,7 @@ public class financeLiability extends ListActivity implements OnItemClickListene
 	
 	private void saveToCloud() {
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeliability");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeLiability");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		try {
@@ -279,14 +279,14 @@ public class financeLiability extends ListActivity implements OnItemClickListene
 			if(entry.getKey().equals(getString(R.string.none)))
 				continue;
 			 
-			ParseObject financeliability = new ParseObject("financeliability");
-			financeliability.put("Owner", ParseUser.getCurrentUser());
-			financeliability.put("liabilityName", entry.getKey());
-			financeliability.put("liabilityType", entry.getValue()[0]);
+			ParseObject financeLiability = new ParseObject("financeLiability");
+			financeLiability.put("Owner", ParseUser.getCurrentUser());
+			financeLiability.put("liabilityName", entry.getKey());
+			financeLiability.put("liabilityType", entry.getValue()[0]);
 			
 			try {
 				
-				financeliability.save();
+				financeLiability.save();
 				
 			}catch (ParseException e) {
 				
