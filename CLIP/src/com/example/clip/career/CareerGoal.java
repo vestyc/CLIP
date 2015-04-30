@@ -5,22 +5,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListPopupWindow;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.clip.R;
-import com.parse.FindCallback;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -35,12 +37,16 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	ArrayList<String> goalList, popUpItems;
 	ListPopupWindow popUp;
 	
+	AlertDialog.Builder removeConfirm;
+	boolean safeToRemove;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
+
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		goalList = new ArrayList<String>();
 		goalList.add(getString(R.string.none));		
@@ -63,6 +69,38 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUp.setModal(true);
 		popUp.setWidth(200);
 		popUp.setHeight(ListPopupWindow.WRAP_CONTENT);
+		
+		//Setup alert dialog
+		removeConfirm = new AlertDialog.Builder(this);
+		removeConfirm.setMessage("Are you sure you want to remove?");
+		
+		removeConfirm.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog,int id) {
+				
+				// if this button is clicked, remove item
+				goalList.remove(goalName);
+				dataMap.remove(goalName);
+				
+				if(goalList.isEmpty()) {
+				
+					goalList.add(getString(R.string.none));
+					goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
+					dataMap.put(goalList.get(0), goalData);
+				}
+				updateScreen();
+				saveToCloud();
+			}
+		  });
+		
+		removeConfirm.setNegativeButton("No",new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog,int id) {
+				
+				// if this button is clicked, close dialog and do nothing
+				dialog.cancel();
+			}
+		});
 	}
 	
 	@Override
@@ -218,19 +256,9 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 				//remove is clicked
 				else if(this.popUpItems.get(position).equals(getString(R.string.action_remove))) {
 					
-					goalList.remove(goalName);
-					dataMap.remove(goalName);
-					
-					if(goalList.isEmpty()) {
-					
-						goalList.add(getString(R.string.none));
-						goalData = new String[] {"Goal Type N/A", "Completion Date N/A"};
-						dataMap.put(goalList.get(0), goalData);
-					}
-					this.onContentChanged();
-					getListView().setOnItemClickListener(this);
-					popUp.setOnItemClickListener(this);
-					this.saveToCloud();
+					//show warning popup
+					AlertDialog removePopup = removeConfirm.create();
+					removePopup.show();
 				}
 			}
 		}
@@ -252,6 +280,14 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		popUp.show();
 		popUp.getListView().setOnItemClickListener(this); 
 		return true;
+	}
+	
+	private void updateScreen() {
+		
+		this.onContentChanged();
+		this.getListView().setOnItemClickListener(this);
+		this.getListView().setOnItemLongClickListener(this);
+		popUp.setOnItemClickListener(this);
 	}
 	
 	private void saveToCloud() {
