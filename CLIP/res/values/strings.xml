@@ -95,7 +95,7 @@
         <item>Other</item>
     </string-array>
 
-    <string name="title_activity_login">Welcome to Clip</string>
+    <string name="title_activity_login">Welcome to CLIP</string>
     <string name="title_activity_career_comp_info">Company Information</string>
     <string name="title_activity_career_comp_info_edit">Editing Company Info</string>
     <string name="title_activity_career_comp_info_detail">Company Details</string>
