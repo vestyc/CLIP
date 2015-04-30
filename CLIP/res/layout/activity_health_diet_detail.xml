@@ -44,19 +44,20 @@
 	        android:id="@+id/healthDiet_labelComments"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_gravity="center_horizontal"
-	        android:text="Notes/instructions:" />
+	        android:layout_gravity="left"
+	        android:text="Notes/instructions:"
+	        android:layout_marginTop="30dp"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	    
 	    <TextView
 	        android:id="@+id/healthDiet_detailComments"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:layout_marginTop="30dp"
 	        android:text="none" />
 	    	 	    
 	    <LinearLayout 
-	        android:id="@+id/healthDetail_layoutSchedule"
+	        android:id="@+id/healthDiet_layoutDetailSchedule"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="vertical" >

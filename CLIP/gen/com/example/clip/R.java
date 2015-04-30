@@ -198,7 +198,6 @@ public final class R {
         public static final int goalLengthShort=0x7f09003c;
         public static final int goalName=0x7f090038;
         public static final int goalType=0x7f090039;
-        public static final int healthDetail_layoutSchedule=0x7f0900af;
         public static final int healthDiet_checkbox=0x7f0900c1;
         public static final int healthDiet_dateEnd=0x7f0900cd;
         public static final int healthDiet_dateStart=0x7f0900cb;
@@ -232,6 +231,7 @@ public final class R {
         public static final int healthDiet_labelThursday=0x7f0900b9;
         public static final int healthDiet_labelTuesday=0x7f0900b5;
         public static final int healthDiet_labelWednesday=0x7f0900b7;
+        public static final int healthDiet_layoutDetailSchedule=0x7f0900af;
         public static final int healthDiet_layoutSchedule=0x7f0900c2;
         public static final int healthDiet_list=0x7f0900a9;
         public static final int healthDiet_spinnerType=0x7f0900bf;

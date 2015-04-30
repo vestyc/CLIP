@@ -15,7 +15,8 @@ import android.widget.*;
 
 public class HealthDietDetail extends Activity {
 
-	TextView name, type, date, sun, mon, tues, wed, thurs, fri, sat;
+	TextView comments, name, type, date, sun, mon, tues, wed, thurs, fri, sat;
+	TextView commentsLabel;
 	LinearLayout schedule;
 	
 	@Override
@@ -23,6 +24,8 @@ public class HealthDietDetail extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_health_diet_detail);
 		
+		commentsLabel = (TextView) this.findViewById(R.id.healthDiet_labelComments);
+		comments = (TextView) this.findViewById(R.id.healthDiet_detailComments);
 		name = (TextView) this.findViewById(R.id.healthDiet_detailName);
 		type = (TextView) this.findViewById(R.id.healthDiet_detailType);
 		date = (TextView) this.findViewById(R.id.healthDiet_detailDate);
@@ -33,7 +36,7 @@ public class HealthDietDetail extends Activity {
 		thurs = (TextView) this.findViewById(R.id.healthDiet_detailThursday);
 		fri = (TextView) this.findViewById(R.id.healthDiet_detailFriday);
 		sat = (TextView) this.findViewById(R.id.healthDiet_detailSaturday);
-		schedule = (LinearLayout) this.findViewById(R.id.healthDiet_layoutSchedule);
+		schedule = (LinearLayout) this.findViewById(R.id.healthDiet_layoutDetailSchedule);
 		
 		Intent i = getIntent();
 		String dietName = i.getStringExtra("dietName");
@@ -97,8 +100,21 @@ public class HealthDietDetail extends Activity {
 		//dietType, notes/instructions
 		this.type.setText(dataString2[0]);
 		
+		if(dataString2[1].equals("")) {
+			comments.setVisibility(View.GONE);
+			commentsLabel.setVisibility(View.GONE);
+		}
+		else
+			this.comments.setText(dataString2[1]);
 	}
 
+	@Override
+	protected void onPause() {
+		
+		super.onPause();
+		this.finish();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

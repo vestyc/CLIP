@@ -132,6 +132,9 @@ public class HealthDietEdit extends Activity implements OnItemSelectedListener {
 		}
 		else {
 			dataString = new String[7];	//empty
+			for(int i=0; i<dataString.length; i++) {
+				dataString[i] = "";
+			}
 			iReturn.putExtra("dataString", dataString);
 		}
 		
