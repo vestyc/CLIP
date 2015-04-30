@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.clip.career.CareerMenu" 
-    android:background="#008FC5">
+    android:background="#8951e1">
 
     <Button
         android:id="@+id/button_goal"
