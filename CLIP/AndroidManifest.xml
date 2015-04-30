@@ -40,7 +40,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -292,12 +292,36 @@
                 android:value="com.example.clip.health.HealthExercise" />
         </activity>
         <activity
-            android:name="com.example.clip.health.HealthExerciseDetail"
+            android:name=".health.HealthExerciseDetail"
             android:label="@string/title_activity_health_exercise_detail"
             android:parentActivityName=".health.HealthExercise" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.health.HealthExercise" />
+        </activity>
+        <activity
+            android:name=".health.HealthDiet"
+            android:label="@string/title_activity_health_diet"
+            android:parentActivityName=".health.HealthMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthMenu" />
+        </activity>
+        <activity
+            android:name=".health.HealthDietEdit"
+            android:label="@string/title_activity_health_diet_edit"
+            android:parentActivityName=".health.HealthDiet" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthDiet" />
+        </activity>
+        <activity
+            android:name="com.example.clip.health.HealthDietDetail"
+            android:label="@string/title_activity_health_diet_detail"
+            android:parentActivityName=".health.HealthDiet" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthDiet" />
         </activity>
     </application>
 

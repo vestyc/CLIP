@@ -54,6 +54,17 @@ public class HealthMenu extends Activity {
 				}
 
 		});
+		
+		diet.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(HealthMenu.this, HealthDiet.class);
+					startActivity(i);
+
+				}
+
+		});
 	}
 
 	@Override

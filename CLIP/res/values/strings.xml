@@ -67,6 +67,15 @@
         <item>Masters</item>
         <item>Doctorate</item>
     </string-array>
+    <string-array name="healthDiet_type">
+        <item>Low Carb</item>
+        <item>Vegetarian</item>
+        <item>Low Calorie</item>
+        <item>Low Fat</item>
+        <item>Crash</item>
+        <item>Detox</item>
+        <item>Other</item>
+    </string-array>
 
     <string name="title_activity_login">Welcome to Clip</string>
     <string name="title_activity_career_comp_info">Company Information</string>
@@ -94,5 +103,8 @@
     <string name="title_activity_health_exercise">Exercises</string>
     <string name="title_activity_health_exercise_edit">Editing Exercise</string>
     <string name="title_activity_health_exercise_detail">Exercise Detail</string>
+    <string name="title_activity_health_diet">Diet</string>
+    <string name="title_activity_health_diet_edit">Editing Diet</string>
+    <string name="title_activity_health_diet_detail">Diet Details</string>
 
 </resources>
