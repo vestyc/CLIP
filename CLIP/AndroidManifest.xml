@@ -19,14 +19,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity android:name=".Login" >
         </activity>
@@ -37,13 +34,37 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.MainActivity" />
-<!-- 
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-      -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            -->
         </activity>
         <activity
             android:name=".career.CareerGoal"
@@ -102,18 +123,220 @@
                 android:value="com.example.clip.career.CareerJobApp" />
         </activity>
         <activity
+            android:name=".career.CareerCompInfo"
+            android:label="@string/title_activity_career_comp_info"
+            android:parentActivityName=".career.CareerMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerMenu" />
+        </activity>
+        <activity
+            android:name=".career.CareerCompInfoEdit"
+            android:label="@string/title_activity_career_comp_info_edit"
+            android:parentActivityName=".career.CareerCompInfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerCompInfo" />
+        </activity>
+        <activity
+            android:name=".career.CareerCompInfoDetail"
+            android:label="@string/title_activity_career_comp_info_detail"
+            android:parentActivityName=".career.CareerCompInfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerCompInfo" />
+        </activity>
+        <activity
+            android:name=".career.CareerContact"
+            android:label="@string/title_activity_career_contact"
+            android:parentActivityName=".career.CareerMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerMenu" />
+        </activity>
+        <activity
+            android:name=".career.CareerContactEdit"
+            android:label="@string/title_activity_career_contact_edit"
+            android:parentActivityName=".career.CareerContact" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerContact" />
+        </activity>
+        <activity
+            android:name=".career.CareerContactDetail"
+            android:label="@string/title_activity_career_contact_detail"
+            android:parentActivityName=".career.CareerContact" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerContact" />
+        </activity>
+        <activity
+            android:name=".education.EducationFinance"
+            android:label="@string/title_activity_education_finance"
+            android:parentActivityName=".education.EducationMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationMenu" />
+        </activity>
+        <activity
+            android:name=".education.EducationMenu"
+            android:label="@string/title_activity_education_menu"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.MainActivity" />
+        </activity>
+        <activity
+            android:name=".education.EducationFinanceEdit"
+            android:label="@string/title_activity_education_finance_edit"
+            android:parentActivityName=".education.EducationFinance" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationFinance" />
+        </activity>
+        <activity
+            android:name=".education.EducationFinanceDetail"
+            android:label="@string/title_activity_education_finance_detail"
+            android:parentActivityName=".education.EducationFinance" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationFinance" />
+        </activity>
+        <activity
+            android:name=".education.EducationFuture"
+            android:label="@string/title_activity_education_future"
+            android:parentActivityName=".education.EducationMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationMenu" />
+        </activity>
+        <activity
+            android:name=".education.EducationFutureEdit"
+            android:label="@string/title_activity_education_future_edit"
+            android:parentActivityName=".education.EducationFuture" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationFuture" />
+        </activity>
+        <activity
+            android:name=".education.EducationFutureDetail"
+            android:label="@string/title_activity_education_future_detail"
+            android:parentActivityName=".education.EducationFuture" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationFuture" />
+        </activity>
+        <activity
+            android:name=".education.EducationGraduate"
+            android:label="@string/title_activity_education_graduate"
+            android:parentActivityName=".education.EducationMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationMenu" />
+        </activity>
+        <activity
+            android:name=".education.EducationGraduateEdit"
+            android:label="@string/title_activity_education_graduate_edit"
+            android:parentActivityName=".education.EducationGraduate" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationGraduate" />
+        </activity>
+        <activity
+            android:name=".education.EducationGraduateDetail"
+            android:label="@string/title_activity_education_graduate_detail"
+            android:parentActivityName=".education.EducationGraduate" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationGraduate" />
+        </activity>
+        <activity
+            android:name=".education.EducationCurrent"
+            android:label="@string/title_activity_education_current"
+            android:parentActivityName=".education.EducationMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationMenu" />
+        </activity>
+        <activity
+            android:name=".education.EducationCurrentEdit"
+            android:label="@string/title_activity_education_current_edit"
+            android:parentActivityName=".education.EducationCurrent" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationCurrent" />
+        </activity>
+        <activity
+            android:name=".education.EducationCurrentDetail"
+            android:label="@string/title_activity_education_current_detail"
+            android:parentActivityName=".education.EducationCurrent" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.education.EducationCurrent" />
+        </activity>
+        <activity
+            android:name=".health.HealthMenu"
+            android:label="@string/title_activity_health_menu"
+            android:parentActivityName=".Entry" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.Entry" />
+        </activity>
+        <activity
+            android:name=".health.HealthVital"
+            android:label="@string/title_activity_health_vital"
+            android:parentActivityName=".health.HealthMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthMenu" />
+        </activity>
+        <activity
+            android:name=".health.HealthVitalEdit"
+            android:label="@string/title_activity_health_vital_edit"
+            android:parentActivityName=".health.HealthVital" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthVital" />
+        </activity>
+        <activity
+            android:name=".health.HealthExercise"
+            android:label="@string/title_activity_health_exercise"
+            android:parentActivityName=".health.HealthMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthMenu" />
+        </activity>
+        <activity
+            android:name=".health.HealthExerciseEdit"
+            android:label="@string/title_activity_health_exercise_edit"
+            android:parentActivityName=".health.HealthExercise" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthExercise" />
+        </activity>
+        <activity
+            android:name="com.example.clip.health.HealthExerciseDetail"
+            android:label="@string/title_activity_health_exercise_detail"
+            android:parentActivityName=".health.HealthExercise" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthExercise" />
+        </activity>
+
+        <activity
             android:name=".finance.financeMenu"
             android:label="@string/title_activity_finance_menu"
             android:parentActivityName=".Login" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.MainActivity" />
-
+<!--  
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
                 <activity
             android:name=".finance.financeGoal"
@@ -138,6 +361,102 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.finance.financeGoal" />
+        </activity>
+        <activity
+            android:name=".finance.financeAsset"
+            android:label="@string/title_activity_finance_asset"
+            android:parentActivityName="finance.financeMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.financeMenu" />
+        </activity>
+        <activity
+            android:name=".finance.financeAssetDetail"
+            android:label="@string/title_activity_finance_asset_detail"
+            android:parentActivityName=".finance.financeAsset" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeAsset" />
+        </activity>
+        <activity
+            android:name=".finance.financeAssetEdit"
+            android:label="@string/title_activity_finance_asset_edit"
+            android:parentActivityName=".finance.financeAsset" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeAsset" />
+        </activity>
+        <activity
+            android:name=".finance.financeCreditCard"
+            android:label="@string/title_activity_finance_creditcard"
+            android:parentActivityName="finance.financeMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.financeMenu" />
+        </activity>
+        <activity
+            android:name=".finance.financeCreditCardDetail"
+            android:label="@string/title_activity_finance_creditcard_detail"
+            android:parentActivityName=".finance.financeCreditCard" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeCreditCard" />
+        </activity>
+        <activity
+            android:name=".finance.financeCreditCardEdit"
+            android:label="@string/title_activity_finance_creditcard_edit"
+            android:parentActivityName=".finance.financeCreditCard" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeCreditCard" />
+        </activity>
+        <activity
+            android:name=".finance.financeLiability"
+            android:label="@string/title_activity_finance_liability"
+            android:parentActivityName="finance.financeMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.financeMenu" />
+        </activity>
+        <activity
+            android:name=".finance.financeLiabilityDetail"
+            android:label="@string/title_activity_finance_liability_detail"
+            android:parentActivityName=".finance.financeLiability" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeLiability" />
+        </activity>
+        <activity
+            android:name=".finance.financeLiabilityEdit"
+            android:label="@string/title_activity_finance_liability_edit"
+            android:parentActivityName=".finance.financeLiability" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeLiability" />
+        </activity>
+                <activity
+            android:name=".finance.financeStock"
+            android:label="@string/title_activity_finance_stock"
+            android:parentActivityName="finance.financeMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.financeMenu" />
+        </activity>
+        <activity
+            android:name=".finance.financeStockDetail"
+            android:label="@string/title_activity_finance_stock_detail"
+            android:parentActivityName=".finance.financeStock" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeStock" />
+        </activity>
+        <activity
+            android:name=".finance.financeStockEdit"
+            android:label="@string/title_activity_finance_stock_edit"
+            android:parentActivityName=".finance.financeStock" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeStock" />
         </activity>
     </application>
 
