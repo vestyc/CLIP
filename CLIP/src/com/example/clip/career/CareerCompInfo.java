@@ -1,27 +1,31 @@
 package com.example.clip.career;
 
-import com.example.clip.R;
-import com.example.clip.R.id;
-import com.example.clip.R.layout;
-import com.example.clip.R.menu;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.widget.ArrayAdapter;
+import android.widget.ListPopupWindow;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.parse.*;
+import com.example.clip.R;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class CareerCompInfo extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
 
@@ -34,7 +38,7 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 	ArrayList<String> companyList;
 	HashMap<String, String[]> dataMap;		//<companyName, companyData>
 	HashMap<String, int[][]> datesMap;		//<companyName, companyDates>
-	
+	//ListView LV = null;
 	//{0           1         2      3      4      5                    6                 7               }
 	//{productLOB, location, phone, email, facts, considerationReason, interviewOutcome, interviewLessons}
 	String[] companyData;
@@ -50,7 +54,8 @@ public class CareerCompInfo extends ListActivity implements OnItemClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
+		//LV = getListView();
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate empty list
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_comp_info, 

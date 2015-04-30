@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,7 +50,7 @@ public class EducationCurrent extends ListActivity implements OnItemClickListene
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		super.onCreate(savedInstanceState);
 		
 		//initiate empty list

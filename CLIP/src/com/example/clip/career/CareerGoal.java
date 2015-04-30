@@ -9,20 +9,20 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListPopupWindow;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.clip.R;
-import com.parse.FindCallback;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -39,13 +39,14 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 	
 	AlertDialog.Builder removeConfirm;
 	boolean safeToRemove;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
+
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		goalList = new ArrayList<String>();
 		goalList.add(getString(R.string.none));		

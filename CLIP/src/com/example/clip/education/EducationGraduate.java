@@ -25,6 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 
 public class EducationGraduate extends ListActivity implements OnItemClickListener, OnItemLongClickListener {
 
@@ -49,7 +50,7 @@ public class EducationGraduate extends ListActivity implements OnItemClickListen
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate empty list
 		this.createEmptyList();
 		listViewAdapter = new EducationGraduateAdapter(this, R.layout.activity_education_graduate, graduateList);
