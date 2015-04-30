@@ -68,22 +68,22 @@
         <item>Doctorate</item>
     </string-array>
 
-    <string name="title_activity_finance_asset">FinanceAsset</string>
-    <string name="title_activity_finance_asset_detail">FinanceAssetDetail</string>
-    <string name="title_activity_finance_asset_edit">FinanceAssetEdit</string>
-    <string name="title_activity_finance_goal">FinanceGoal</string>
-    <string name="title_activity_finance_stock">FinanceStock</string>
-    <string name="title_activity_finance_stock_detail">FinanceStockDetail</string>
-    <string name="title_activity_finance_stock_edit">FinanceStockEdit</string>
-    <string name="title_activity_finance_liability">FinanceLiability</string>
-    <string name="title_activity_finance_liability_detail">FinanceLiabilityDetail</string>
-    <string name="title_activity_finance_liability_edit">FinanceLiabilityEdit</string>
-    <string name="title_activity_finance_menu">FinanceMenu</string>
-    <string name="title_activity_finance_goal_detail">FinanceGoalDetail</string>
-    <string name="title_activity_finance_goal_edit">FinanceGoalEdit</string>
-    <string name="title_activity_finance_creditcard">FinanceCreditCard</string>
-    <string name="title_activity_finance_creditcard_detail">FinanceCreditCardDetail</string>
-    <string name="title_activity_finance_creditcard_edit">FinanceCreditCardEdit</string>
+    <string name="title_activity_finance_asset">Assets</string>
+    <string name="title_activity_finance_asset_detail">Assets</string>
+    <string name="title_activity_finance_asset_edit">Asset Editing</string>
+    <string name="title_activity_finance_goal">Financial Goals</string>
+    <string name="title_activity_finance_stock">Stocks and Securities</string>
+    <string name="title_activity_finance_stock_detail">Stocks and Securities</string>
+    <string name="title_activity_finance_stock_edit">Stocks and Securities</string>
+    <string name="title_activity_finance_liability">Liabilities</string>
+    <string name="title_activity_finance_liability_detail">Liabilities</string>
+    <string name="title_activity_finance_liability_edit">Liabilities</string>
+    <string name="title_activity_finance_menu">Finance</string>
+    <string name="title_activity_finance_goal_detail">Financial Goals</string>
+    <string name="title_activity_finance_goal_edit">Financial Goals</string>
+    <string name="title_activity_finance_creditcard">Credit Card</string>
+    <string name="title_activity_finance_creditcard_detail">Credit Card Information</string>
+    <string name="title_activity_finance_creditcard_edit">Credit Card Information</string>
     
     <string-array name="healthDiet_type">
         <item>Low Carb</item>
