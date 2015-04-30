@@ -7,30 +7,30 @@
     <string name="action_edit">Edit</string>
     <string name="action_remove">Remove</string>
     <string name="action_add">Add</string>
-    <string name="title_activity_career_menu">CareerMenu</string>
+    <string name="title_activity_career_menu">Career Menu</string>
     <string name="button_goal">Goals</string>
     <string name="button_jobApp">Job Applications</string>
     <string name="button_compInfo">Company Information</string>
     <string name="button_eId">Electronic ID</string>
     <string name="button_contact">Contacts</string>
-    <string name="title_activity_career_goal">CareerGoal</string>
-    <string name="title_activity_career_goal_detail">CareerGoalDetail</string>
+    <string name="title_activity_career_goal">List of Career Goals</string>
+    <string name="title_activity_career_goal_detail">Details on Goal</string>
     <string name="button_login">Login</string>
     <string name="checkcontent">Check Content</string>
-    <string name="title_activity_entry">Entry</string>
+    <string name="title_activity_entry">Main Menu</string>
     <string name="username_title">Enter your Username here</string>
     <string name="password_title">Enter your Password here</string>
     <string name="button_register">Register</string>
     <string name="title_activity_register">Register</string>
     <string name="button_career">Career</string>
     <string name="none">None</string>
-    <string name="title_activity_career_goal_edit">CareerGoalEdit</string>
+    <string name="title_activity_career_goal_edit">Editing Goal</string>
     <string name="goal_long">Long term goal.</string>
     <string name="goal_short">Short term goal.</string>
     <string name="action_logout">Log Out</string>
-    <string name="title_activity_career_job_app">CareerJobApp</string>
-    <string name="title_activity_career_job_app_edit">CareerJobAppEdit</string>
-    <string name="title_activity_career_job_app_detail">CareerJobAppDetail</string>
+    <string name="title_activity_career_job_app">Job Applications</string>
+    <string name="title_activity_career_job_app_edit">Editting Application</string>
+    <string name="title_activity_career_job_app_detail">Application Details</string>
 
     <string-array name="job_status">
         <item>Pending</item>
@@ -68,31 +68,31 @@
         <item>Doctorate</item>
     </string-array>
 
-    <string name="title_activity_login">Welcom to Clip</string>
-    <string name="title_activity_career_comp_info">CareerCompInfo</string>
-    <string name="title_activity_career_comp_info_edit">CareerCompInfoEdit</string>
-    <string name="title_activity_career_comp_info_detail">CareerCompInfoDetail</string>
-    <string name="title_activity_career_contact">CareerContact</string>
-    <string name="title_activity_career_contact_edit">CareerContactEdit</string>
-    <string name="title_activity_career_contact_detail">CareerContactDetail</string>
-    <string name="title_activity_education_finance">EducationFinance</string>
-    <string name="title_activity_education_menu">EducationMenu</string>
-    <string name="title_activity_education_finance_edit">EducationFinanceEdit</string>
-    <string name="title_activity_education_finance_detail">EducationFinanceDetail</string>
-    <string name="title_activity_education_future">EducationFuture</string>
-    <string name="title_activity_education_future_edit">EducationFutureEdit</string>
-    <string name="title_activity_education_future_detail">EducationFutureDetail</string>
-    <string name="title_activity_education_graduate">EducationGraduate</string>
-    <string name="title_activity_education_graduate_edit">EducationGraduateEdit</string>
-    <string name="title_activity_education_graduate_detail">EducationGraduateDetail</string>
-    <string name="title_activity_education_current">EducationCurrent</string>
-    <string name="title_activity_education_current_edit">EducationCurrentEdit</string>
-    <string name="title_activity_education_current_detail">EducationCurrentDetail</string>
-    <string name="title_activity_health_menu">HealthMenu</string>
-    <string name="title_activity_health_vital">HealthVital</string>
-    <string name="title_activity_health_vital_edit">HealthVitalEdit</string>
-    <string name="title_activity_health_exercise">HealthExercise</string>
-    <string name="title_activity_health_exercise_edit">HealthExerciseEdit</string>
-    <string name="title_activity_health_exercise_detail">HealthExerciseDetail</string>
+    <string name="title_activity_login">Welcome to Clip</string>
+    <string name="title_activity_career_comp_info">Company Information</string>
+    <string name="title_activity_career_comp_info_edit">Editing Company Info</string>
+    <string name="title_activity_career_comp_info_detail">Company Details</string>
+    <string name="title_activity_career_contact">Business Contacts</string>
+    <string name="title_activity_career_contact_edit">Editing Contact</string>
+    <string name="title_activity_career_contact_detail">Contact Details</string>
+    <string name="title_activity_education_finance">Educational Finances</string>
+    <string name="title_activity_education_menu">Education Menu</string>
+    <string name="title_activity_education_finance_edit">Editing Educational Finance</string>
+    <string name="title_activity_education_finance_detail">Financial Details</string>
+    <string name="title_activity_education_future">Future Educations</string>
+    <string name="title_activity_education_future_edit">Editing Future Education</string>
+    <string name="title_activity_education_future_detail">Future Education Details</string>
+    <string name="title_activity_education_graduate">Graduate Plans</string>
+    <string name="title_activity_education_graduate_edit">Editing Graduate Plan</string>
+    <string name="title_activity_education_graduate_detail">Graduate Plan Deatails</string>
+    <string name="title_activity_education_current">Current Educations</string>
+    <string name="title_activity_education_current_edit">Editing Current Education Info</string>
+    <string name="title_activity_education_current_detail">Current Education Details</string>
+    <string name="title_activity_health_menu">Health Menu</string>
+    <string name="title_activity_health_vital">Vital Signs</string>
+    <string name="title_activity_health_vital_edit">Editing Vital Signs</string>
+    <string name="title_activity_health_exercise">Exercises</string>
+    <string name="title_activity_health_exercise_edit">Editing Exercise</string>
+    <string name="title_activity_health_exercise_detail">Exercise Detail</string>
 
 </resources>
