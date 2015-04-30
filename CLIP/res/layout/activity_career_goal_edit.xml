@@ -49,8 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="text"
-        android:hint="Completion Date" >
+        android:hint="Completion Date/Notes"
+        android:inputType="text" >
+
     </EditText>
 
     <Button
