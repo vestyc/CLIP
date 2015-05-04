@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,7 +54,7 @@ public class HealthExercise extends ListActivity implements OnItemClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate empty list
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_health_exercise, 

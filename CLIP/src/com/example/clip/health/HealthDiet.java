@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,7 +52,7 @@ public class HealthDiet extends ListActivity implements OnItemClickListener, OnI
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_health_diet, 
 				R.id.healthDiet_list, dietList);

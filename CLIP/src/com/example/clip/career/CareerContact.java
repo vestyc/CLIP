@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 
 import com.parse.*;
 
@@ -45,7 +46,7 @@ public class CareerContact extends ListActivity implements OnItemClickListener, 
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate empty list
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_career_contact, 
@@ -356,7 +357,7 @@ public class CareerContact extends ListActivity implements OnItemClickListener, 
 			//<contactName, dataInt>
 			//{estMonth, estDay, estYear, #OfUse}	
 			this.dataInt = this.dataIntMap.get(contactName);
-			careerContact.put("month", dataInt[0]);
+			careerContact.put("month", dataInt[0]+1);
 			careerContact.put("day", dataInt[1]);
 			careerContact.put("year", dataInt[2]);
 			careerContact.put("uses", dataInt[3]);

@@ -67,6 +67,24 @@
         <item>Masters</item>
         <item>Doctorate</item>
     </string-array>
+
+    <string name="title_activity_finance_asset">Assets</string>
+    <string name="title_activity_finance_asset_detail">Assets</string>
+    <string name="title_activity_finance_asset_edit">Asset Editing</string>
+    <string name="title_activity_finance_goal">Financial Goals</string>
+    <string name="title_activity_finance_stock">Stocks and Securities</string>
+    <string name="title_activity_finance_stock_detail">Stocks and Securities</string>
+    <string name="title_activity_finance_stock_edit">Stocks and Securities</string>
+    <string name="title_activity_finance_liability">Liabilities</string>
+    <string name="title_activity_finance_liability_detail">Liabilities</string>
+    <string name="title_activity_finance_liability_edit">Liabilities</string>
+    <string name="title_activity_finance_menu">Finance</string>
+    <string name="title_activity_finance_goal_detail">Financial Goals</string>
+    <string name="title_activity_finance_goal_edit">Financial Goals</string>
+    <string name="title_activity_finance_creditcard">Credit Card</string>
+    <string name="title_activity_finance_creditcard_detail">Credit Card Information</string>
+    <string name="title_activity_finance_creditcard_edit">Credit Card Information</string>
+    
     <string-array name="healthDiet_type">
         <item>Low Carb</item>
         <item>Vegetarian</item>
@@ -77,7 +95,7 @@
         <item>Other</item>
     </string-array>
 
-    <string name="title_activity_login">Welcome to Clip</string>
+    <string name="title_activity_login">Welcome to CLIP</string>
     <string name="title_activity_career_comp_info">Company Information</string>
     <string name="title_activity_career_comp_info_edit">Editing Company Info</string>
     <string name="title_activity_career_comp_info_detail">Company Details</string>

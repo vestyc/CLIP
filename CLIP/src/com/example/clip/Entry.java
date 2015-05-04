@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.example.clip.career.CareerMenu;
 import com.example.clip.education.EducationMenu;
+import com.example.clip.finance.financeMenu;
 import com.example.clip.health.HealthMenu;
+
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -53,6 +55,17 @@ public class Entry extends Activity {
 					startActivity(i);
 
 				}
+
+		});
+		
+		finance.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(Entry.this, financeMenu.class);
+					startActivity(i);
+
+			}
 
 		});
 		

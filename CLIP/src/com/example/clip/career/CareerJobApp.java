@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -41,7 +42,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	HashMap<String, int[]> dateAppMap;	//<jobName, dateApplied>
 	String[] jobData;					//{appStatus, comments}
 	int[]	jobDateApplied;				//{Month, Day, Year}
-	
+	ListView LV = null;
 	AlertDialog.Builder removeConfirm;
 	boolean safeToRemove;
 	
@@ -50,7 +51,8 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 		
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		
+		LV = getListView();
+		LV.setBackgroundColor(Color.GRAY);
 		//initiate list view
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String> (this, R.layout.activity_career_job_app,
