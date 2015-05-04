@@ -92,7 +92,7 @@ public class HealthVital extends Activity {
 						bloodPressure.setText("N/A");
 					
 					if(!vital.getString("lastUpdateString").equals("")) 
-						this.lastUpdate.setText(vital.getString("lastUpdateString"));
+						this.lastUpdate.setText("Last updated\n" + vital.getString("lastUpdateString"));
 					else
 						this.lastUpdate.setText("N/A");
 				}

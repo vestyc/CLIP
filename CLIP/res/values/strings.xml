@@ -106,5 +106,15 @@
     <string name="title_activity_health_diet">Diet</string>
     <string name="title_activity_health_diet_edit">Editing Diet</string>
     <string name="title_activity_health_diet_detail">Diet Details</string>
+    <string name="title_activity_health_checkup">HealthCheckup</string>
+    <string name="title_activity_health_checkup_edit">HealthCheckupEdit</string>
+    <string name="title_activity_health_checkup_detail">HealthCheckupDetail</string>
+    <string name="title_activity_health_medication">HealthMedication</string>
+    <string name="title_activity_health_medication_edit">HealthMedicationEdit</string>
+    <string name="title_activity_health_medication_detail">HealthMedicationDetail</string>
+    <string name="title_activity_health_allergy">HealthAllergy</string>
+    <string name="title_activity_health_recipe">HealthRecipe</string>
+    <string name="title_activity_health_recipe_edit">HealthRecipeEdit</string>
+    <string name="title_activity_health_recipe_detail">HealthRecipeDetail</string>
 
 </resources>

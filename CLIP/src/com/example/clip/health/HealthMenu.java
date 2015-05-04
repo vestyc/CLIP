@@ -65,6 +65,50 @@ public class HealthMenu extends Activity {
 				}
 
 		});
+		
+		checkup.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(HealthMenu.this, HealthCheckup.class);
+					startActivity(i);
+
+				}
+
+		});
+		
+		medications.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(HealthMenu.this, HealthMedication.class);
+					startActivity(i);
+
+				}
+
+		});
+		
+		allergies.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(HealthMenu.this, HealthAllergy.class);
+					startActivity(i);
+
+				}
+
+		});
+		
+		recipes.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+					Intent i = new Intent(HealthMenu.this, HealthRecipe.class);
+					startActivity(i);
+
+				}
+
+		});
 	}
 
 	@Override
