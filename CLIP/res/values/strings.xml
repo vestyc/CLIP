@@ -116,5 +116,6 @@
     <string name="title_activity_health_recipe">HealthRecipe</string>
     <string name="title_activity_health_recipe_edit">HealthRecipeEdit</string>
     <string name="title_activity_health_recipe_detail">HealthRecipeDetail</string>
+    <string name="title_activity_health_allergy_edit">HealthAllergyEdit</string>
 
 </resources>

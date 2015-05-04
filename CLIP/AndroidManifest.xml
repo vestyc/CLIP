@@ -41,7 +41,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -389,12 +389,20 @@
                 android:value="com.example.clip.health.HealthRecipe" />
         </activity>
         <activity
-            android:name="com.example.clip.health.HealthRecipeDetail"
+            android:name=".health.HealthRecipeDetail"
             android:label="@string/title_activity_health_recipe_detail"
             android:parentActivityName=".health.HealthRecipe" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.health.HealthRecipe" />
+        </activity>
+        <activity
+            android:name="com.example.clip.health.HealthAllergyEdit"
+            android:label="@string/title_activity_health_allergy_edit"
+            android:parentActivityName=".health.HealthAllergy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.health.HealthAllergy" />
         </activity>
     </application>
 
