@@ -6,34 +6,40 @@ import com.example.clip.R.layout;
 import com.example.clip.R.menu;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class HealthMedicationDetail extends Activity {
 
+	TextView name, date, instruction;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_health_medication_detail);
+		
+		name = (TextView) this.findViewById(R.id.healthMedication_detailName);
+		instruction = (TextView) this.findViewById(R.id.healthMedication_detailInstruction);
+		date = (TextView) this.findViewById(R.id.healthMedication_detailDate);
+		
+		Intent i = getIntent();
+		int[] dateS = i.getIntArrayExtra("dateStart");
+		int[] dateE = i.getIntArrayExtra("dateEnd");
+		String medicationName = i.getStringExtra("medicationName");
+		String dataString = i.getStringExtra("dataString");
+		name.setText(medicationName);
+		instruction.setText(dataString);
+		date.setText(dateS[0] + "/" + dateS[1] + "/" + dateS[2] + "  to  " + 
+					dateE[0] + "/" + dateE[1] + "/" + dateE[2]);
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.health_medication_detail, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	protected void onPause() {
+		
+		super.onPause();
+		this.finish();
 	}
 }
