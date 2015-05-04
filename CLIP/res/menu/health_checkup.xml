@@ -3,9 +3,9 @@
     tools:context="com.example.clip.HealthCheckup" >
 
     <item
-        android:id="@+id/action_add"
+        android:id="@+id/action_edit"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
-        android:title="@string/action_add"/>
+        android:title="@string/action_edit"/>
 
 </menu>
