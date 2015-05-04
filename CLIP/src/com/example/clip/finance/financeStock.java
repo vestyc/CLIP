@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -40,7 +41,7 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 		
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		stockList = new ArrayList<String>();
 		stockList.add(getString(R.string.none));		

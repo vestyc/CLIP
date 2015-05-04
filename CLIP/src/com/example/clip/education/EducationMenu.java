@@ -40,6 +40,33 @@ public class EducationMenu extends Activity {
 				startActivity(i);
 	         }
 		});
+		
+		futureStudies.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(EducationMenu.this, EducationFuture.class);
+				startActivity(i);
+	         }
+		});
+		
+		gradPlans.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(EducationMenu.this, EducationGraduate.class);
+				startActivity(i);
+	         }
+		});
+		
+		currentEdu.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(EducationMenu.this, EducationCurrent.class);
+				startActivity(i);
+	         }
+		});
 	}
 
 	@Override

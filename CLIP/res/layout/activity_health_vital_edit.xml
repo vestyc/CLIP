@@ -1,0 +1,125 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+
+	<LinearLayout
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.health.HealthVitalEdit" >
+	
+	    <CheckBox
+	        android:id="@+id/healthVital_checkboxTemp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="Body Temperature (F)"
+	        android:checked="true"
+	        android:onClick="temperatureCheckboxClicked" />
+	    
+	    <LinearLayout 
+	        android:id="@+id/healthVital_layoutTemp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >	        
+	        
+	        <NumberPicker
+	            android:id="@+id/healthVital_pickerTemp0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:text="."
+	            android:textSize="100dp" />
+	        
+	        <NumberPicker
+	            android:id="@+id/healthVital_pickerTemp1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />"
+	        
+	    </LinearLayout> 
+	        
+	    <CheckBox
+	        android:id="@+id/healthVital_checkboxPulse"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="Pulse (bpm)"
+	        android:checked="true"
+	        android:onClick="pulseCheckboxClicked" />
+	    
+	    <NumberPicker
+	         android:id="@+id/healthVital_pickerPulse"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content" />
+	    
+	    <CheckBox
+	        android:id="@+id/healthVital_checkboxRespiration"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="Respiration (breaths/min)"
+	        android:checked="true"
+	        android:onClick="respirationCheckboxClicked" />
+	    
+	    <NumberPicker
+	         android:id="@+id/healthVital_pickerRespiration"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content" />
+	    
+	    <CheckBox
+	        android:id="@+id/healthVital_checkboxBP"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="Blood Pressure (systolic/diastolic)"
+	        android:checked="true"
+	        android:onClick="bpCheckboxClicked" />
+	    
+	    <LinearLayout 
+	        android:id="@+id/healthVital_layoutBP"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >	        
+	        
+	        <NumberPicker
+	            android:id="@+id/healthVital_pickerBP0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:text="/"
+	            android:textSize="120dp" />
+	        
+	        <NumberPicker
+	            android:id="@+id/healthVital_pickerBP1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+	        	        
+	    </LinearLayout>
+	
+	    <Button
+	        android:id="@+id/contact_buttonSave"
+	        android:layout_width="200dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:layout_gravity="bottom|center_horizontal"
+	        android:onClick="saveClicked"
+	        android:text="Save" />
+	    
+	</LinearLayout>
+
+</ScrollView>

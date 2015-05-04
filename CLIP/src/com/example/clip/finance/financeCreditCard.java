@@ -18,6 +18,7 @@ import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -45,7 +46,7 @@ public class financeCreditCard extends ListActivity implements OnItemClickListen
 		
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-		
+		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String> (this, R.layout.activity_finance_creditcard,
