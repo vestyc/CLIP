@@ -38,7 +38,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="20dp"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Good Cholesterol (HDL)"
+	        android:text="Good Cholesterol (HDL mg/dL)"
 	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	
 	    <TextView
@@ -56,7 +56,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="20dp"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Bad Cholesterol (LDL)"
+	        android:text="Bad Cholesterol (LDL mg/dL)"
 	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	    
 	    <TextView
@@ -74,7 +74,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="20dp"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Cholesterol Total"
+	        android:text="Cholesterol Total (mg/dL)"
 	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	
 	    <TextView
@@ -92,7 +92,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="20dp"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Blood Pressure"
+	        android:text="Blood Pressure (mmHg)"
 	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	    
 	    <TextView
@@ -110,7 +110,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="20dp"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Glucose"
+	        android:text="Glucose (mg/dL)"
 	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	    
 	    <TextView
