@@ -23,7 +23,7 @@ public class financeStockDetail extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_finance_goal_detail);
+		setContentView(R.layout.activity_finance_stock_detail);
 		
 		stockName = (TextView) findViewById(R.id.stockName);
 		stockAmount = (TextView) findViewById(R.id.stockAmount);
