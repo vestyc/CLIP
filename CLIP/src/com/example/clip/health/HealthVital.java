@@ -79,7 +79,7 @@ public class HealthVital extends Activity {
 					if(!vital.getString("pulse").equals(""))
 						pulse.setText(vital.getString("pulse"));
 					else
-						temperature.setText("N/A");
+						pulse.setText("N/A");
 					
 					if(!vital.getString("respiration").equals(""))
 						respiration.setText(vital.getString("respiration"));
