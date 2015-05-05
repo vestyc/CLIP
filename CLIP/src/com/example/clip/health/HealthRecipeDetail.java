@@ -9,31 +9,60 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class HealthRecipeDetail extends Activity {
 
+	TextView name, url, notes;
+	TextView urlLabel, notesLabel;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_health_recipe_detail);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.health_recipe_detail, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		
+		name = (TextView) this.findViewById(R.id.healthRecipe_detailName);
+		url = (TextView) this.findViewById(R.id.healthRecipe_detailURL);
+		notes = (TextView) this.findViewById(R.id.healthRecipe_detailNotes);
+		urlLabel = (TextView) this.findViewById(R.id.healthRecipe_labelURL);
+		notesLabel = (TextView) this.findViewById(R.id.healthRecipe_labelNotes);
+		
+		String name = getIntent().getStringExtra("recipeName");
+		String[] dataString = getIntent().getStringArrayExtra("dataString");
+		
+		this.name.setText(name);
+		url.setText(dataString[0]);
+		notes.setText(dataString[1]);
+		
+		if(dataString[0].equals("")) {
+			
+			urlLabel.setVisibility(View.GONE);
+			url.setVisibility(View.GONE);
 		}
-		return super.onOptionsItemSelected(item);
+		else {
+			
+			urlLabel.setVisibility(View.VISIBLE);
+			url.setVisibility(View.VISIBLE);
+		}
+		
+		if(dataString[1].equals("")) {
+			
+			notesLabel.setVisibility(View.GONE);
+			notes.setVisibility(View.GONE);
+		}
+		else {
+			
+			notesLabel.setVisibility(View.VISIBLE);
+			notes.setVisibility(View.VISIBLE);
+		}
+	}
+	
+	@Override
+	protected void onPause() {
+		
+		super.onPause();
+		this.finish();
 	}
 }
