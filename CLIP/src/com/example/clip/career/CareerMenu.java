@@ -64,6 +64,15 @@ public class CareerMenu extends Activity {
 				startActivity(i);
 	         }
 		});
+		
+		eId.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(CareerMenu.this, CareerEid.class);
+				startActivity(i);
+	         }
+		});
 	}
 
 	@Override

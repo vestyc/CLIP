@@ -1,0 +1,84 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">	
+
+	<LinearLayout
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.health.CareerEidDetail" >
+	
+	    <TextView
+	        android:id="@+id/careerEid_detailName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginTop="10dp"
+	        android:text="account name"
+	        android:textSize="28sp" />
+	    
+	    <TextView
+	        android:id="@+id/careerEid_labelURL"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:layout_marginTop="30dp"
+	        android:text="Website URL:" />
+	    
+	    <TextView
+	        android:id="@+id/careerEid_detailURL"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:text="myURL"
+	        android:layout_marginTop="3dp"
+	        android:autoLink="web"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <TextView
+	        android:id="@+id/careerEid_labelUsername"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:layout_marginTop="30dp"
+	        android:text="Username:" />
+	    
+	    <TextView
+	        android:id="@+id/careerEid_detailUsername"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:text="myusername"
+	        android:layout_marginTop="3dp"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <CheckBox
+	        android:id="@+id/careerEid_checkboxPassword"
+	        android:text="Show password"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="30dp"
+	        android:layout_gravity="left"
+	        android:onClick="pwCheckboxClicked"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	    
+	    <TextView
+	        android:id="@+id/careerEid_detailPassword"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:text="epicness"
+	        android:inputType="textPassword"
+	        android:layout_marginTop="1dp"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	  	
+	</LinearLayout>
+	
+</ScrollView>

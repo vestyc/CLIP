@@ -84,7 +84,7 @@
     <string name="title_activity_finance_creditcard">Credit Card</string>
     <string name="title_activity_finance_creditcard_detail">Credit Card Information</string>
     <string name="title_activity_finance_creditcard_edit">Credit Card Information</string>
-    
+
     <string-array name="healthDiet_type">
         <item>Low Carb</item>
         <item>Vegetarian</item>
@@ -135,5 +135,8 @@
     <string name="title_activity_health_recipe_edit">HealthRecipeEdit</string>
     <string name="title_activity_health_recipe_detail">HealthRecipeDetail</string>
     <string name="title_activity_health_allergy_edit">HealthAllergyEdit</string>
+    <string name="title_activity_career_eid">CareerEid</string>
+    <string name="title_activity_career_eid_edit">CareerEidEdit</string>
+    <string name="title_activity_career_eid_detail">CareerEidDetail</string>
 
 </resources>

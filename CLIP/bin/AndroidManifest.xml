@@ -41,7 +41,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -397,14 +397,13 @@
                 android:value="com.example.clip.health.HealthRecipe" />
         </activity>
         <activity
-            android:name="com.example.clip.health.HealthAllergyEdit"
+            android:name=".health.HealthAllergyEdit"
             android:label="@string/title_activity_health_allergy_edit"
             android:parentActivityName=".health.HealthAllergy" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.health.HealthAllergy" />
-        </activity> 
-
+        </activity>
         <activity
             android:name=".finance.financeMenu"
             android:label="@string/title_activity_finance_menu"
@@ -412,15 +411,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.MainActivity" />
-<!--  
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
-                <activity
+        <activity
             android:name=".finance.financeGoal"
             android:label="@string/title_activity_finance_goal"
             android:parentActivityName="finance.financeMenu" >
@@ -516,7 +515,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.finance.financeLiability" />
         </activity>
-                <activity
+        <activity
             android:name=".finance.financeStock"
             android:label="@string/title_activity_finance_stock"
             android:parentActivityName="finance.financeMenu" >
@@ -539,6 +538,30 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.finance.financeStock" />
+        </activity>
+        <activity
+            android:name=".career.CareerEid"
+            android:label="@string/title_activity_career_eid"
+            android:parentActivityName=".career.CareerMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerMenu" />
+        </activity>
+        <activity
+            android:name=".career.CareerEidEdit"
+            android:label="@string/title_activity_career_eid_edit"
+            android:parentActivityName=".career.CareerEid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerEid" />
+        </activity>
+        <activity
+            android:name="com.example.clip.career.CareerEidDetail"
+            android:label="@string/title_activity_career_eid_detail"
+            android:parentActivityName=".career.CareerEid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.career.CareerEid" />
         </activity>
     </application>
 
