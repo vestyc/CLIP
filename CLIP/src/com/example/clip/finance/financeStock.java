@@ -99,8 +99,8 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 				//add data from database 
 				stockList.add(stockName);
 				stockData = new String[2];
-				stockData[0] = stock.getString("stockType");
-				stockData[1] = stock.getString("stockDate");	
+				stockData[0] = stock.getString("stockPrice");
+				stockData[1] = stock.getString("stockAmount");	
 				dataMap.put(stockName, stockData);		
 			}
 			
@@ -284,8 +284,8 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 			ParseObject financeStock = new ParseObject("financeStock");
 			financeStock.put("Owner", ParseUser.getCurrentUser());
 			financeStock.put("stockName", entry.getKey());
-			financeStock.put("stockType", entry.getValue()[0]);
-			financeStock.put("stockDate", entry.getValue()[1]);
+			financeStock.put("stockPrice", entry.getValue()[0]);
+			financeStock.put("stockAmount", entry.getValue()[1]);
 			
 			try {
 				

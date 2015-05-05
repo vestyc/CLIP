@@ -1,6 +1,7 @@
 package com.example.clip.finance;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.example.clip.R;
@@ -68,9 +69,9 @@ public class FinanceSummary extends Activity {
 				
 				for (ParseObject summary : postList) {				
 						
-					net.setText(Double.toString(summary.getDouble("net")));
-					own.setText(Double.toString(summary.getDouble("own")));
-					debt.setText(Double.toString(summary.getDouble("debt")));
+					net.setText(String.format("%.2f", summary.getDouble("net")));
+					own.setText(String.format("%.2f", summary.getDouble("own")));
+					debt.setText(String.format("%.2f", summary.getDouble("debt")));
 					
 					ArrayList<Integer> lastUpdateList = (ArrayList<Integer>) summary.get("lastUpdate");
 					this.lastUpdate = new int[lastUpdateList.size()];
@@ -78,7 +79,7 @@ public class FinanceSummary extends Activity {
 						
 						lastUpdate[i] = lastUpdateList.get(i).intValue();
 					}
-					
+
 					date.setText("Last updated\n" + lastUpdate[0] + ":" + lastUpdate[1] + "--" +
 								lastUpdate[2] + "/" + lastUpdate[3] + "/" + lastUpdate[4]);
 				}
@@ -106,20 +107,158 @@ public class FinanceSummary extends Activity {
 		if (id == R.id.action_update) {
 			
 			//Grab data from Parse and compute values
-			ParseQuery<ParseObject> query = ParseQuery.getQuery("financeSummary");
+			//STOCKS
+			ParseQuery<ParseObject> query = ParseQuery.getQuery("financeStock");
 			query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 			
 			try {
 				
-				List<ParseObject> postList = query.find();
+				List<ParseObject> postList = query.find();				
 			
-				
+				for(ParseObject stock : postList) {
+					
+					String price = stock.getString("stockPrice");
+					String amount = stock.getString("stockAmount");
+					price = price.replace("$", "");
+					price = price.replace(",", "");
+					this.ownDouble = ownDouble + (Double.valueOf(price) * Double.valueOf(amount));
+				}
 				
 			}catch (ParseException e) {
 				
 				Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
 			}
+			
+			//ASSETS
+			query = ParseQuery.getQuery("financeAsset");
+			query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+			
+			try {
+				
+				List<ParseObject> postList = query.find();				
+			
+				for(ParseObject asset : postList) {
+					
+					String price = asset.getString("assetType");
+					price = price.replace("$", "");
+					price = price.replace(",", "");
+					this.ownDouble = ownDouble + Double.valueOf(price);
+				}
+				
+			}catch (ParseException e) {
+				
+				Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+			}
+			
+			//CREDIT CARDS
+			query = ParseQuery.getQuery("financeCreditCard");
+			query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+			
+			try {
+				
+				List<ParseObject> postList = query.find();				
+			
+				for(ParseObject credit : postList) {
+					
+					String debt = credit.getString("amountOwed");
+					debt = debt.replace("$", "");
+					debt = debt.replace(",", "");
+					this.debtDouble = debtDouble + Double.valueOf(debt);
+				}
+				
+			}catch (ParseException e) {
+				
+				Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+			}
+			
+			//LIABILITIES
+			query = ParseQuery.getQuery("financeLiability");
+			query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+			
+			try {
+				
+				List<ParseObject> postList = query.find();				
+			
+				for(ParseObject liability : postList) {
+					
+					String debt = liability.getString("liabilityType");
+					debt = debt.replace("$", "");
+					debt = debt.replace(",", "");
+					this.debtDouble = debtDouble + Double.valueOf(debt);
+				}
+				
+			}catch (ParseException e) {
+				
+				Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+			}
+			
+			this.netDouble = this.ownDouble - this.debtDouble;
+			
+			Calendar currentTime = Calendar.getInstance();
+			lastUpdate = new int[5]; //hour, minute, month, day, year
+			lastUpdate[0] = currentTime.get(Calendar.HOUR_OF_DAY);
+			lastUpdate[1] = currentTime.get(Calendar.MINUTE);
+			lastUpdate[2] = currentTime.get(Calendar.MONTH) + 1;
+			lastUpdate[3] = currentTime.get(Calendar.DAY_OF_MONTH);
+			lastUpdate[4] = currentTime.get(Calendar.YEAR);
+			
+			this.updateScreen();
+			this.saveToCloud();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void updateScreen() {
+		
+		net.setText(String.format("%.2f", this.netDouble));
+		own.setText(String.format("%.2f", this.ownDouble));
+		debt.setText(String.format("%.2f", this.debtDouble));		
+		date.setText("Last updated\n" + lastUpdate[0] + ":" + lastUpdate[1] + "--" +
+					lastUpdate[2] + "/" + lastUpdate[3] + "/" + lastUpdate[4]);
+	}
+	
+	private void saveToCloud() {
+		
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeSummary");
+		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
+		
+		try {
+			
+			List<ParseObject> postList = query.find();
+		
+			// If there are results, update the list of posts
+			// and notify the adapter
+			for (ParseObject summary : postList) {
+				
+				summary.delete();
+			}
+			
+		}catch (ParseException e) {
+			
+			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+		}		
+				 
+		ParseObject financeSummary = new ParseObject("financeSummary");
+		
+		financeSummary.put("Owner", ParseUser.getCurrentUser());
+		financeSummary.put("net", netDouble);
+		financeSummary.put("own", ownDouble);
+		financeSummary.put("debt", debtDouble);
+		
+		ArrayList<Integer> date = new ArrayList<Integer>();
+		for(int temp : this.lastUpdate) {
+			
+			date.add(temp);
+		}
+		financeSummary.put("lastUpdate", date);
+		
+		try {
+			
+			financeSummary.save();
+			
+		}catch (ParseException e) {
+			
+			Toast.makeText(this.getApplicationContext(), "query error!", Toast.LENGTH_LONG).show();
+		}
 	}
 }
