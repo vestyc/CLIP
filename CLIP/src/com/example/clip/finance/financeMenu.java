@@ -19,7 +19,7 @@ public class financeMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finance_menu);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		//button assignments
 		goal = (Button) findViewById(R.id.button_fgoal);

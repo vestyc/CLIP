@@ -80,7 +80,7 @@ public class FinanceSummary extends Activity {
 						lastUpdate[i] = lastUpdateList.get(i).intValue();
 					}
 
-					date.setText("Last updated\n" + lastUpdate[0] + ":" + lastUpdate[1] + "--" +
+					date.setText("Last updated\n" + lastUpdate[0] + ":" + String.format("%02d",lastUpdate[1]) + "--" +
 								lastUpdate[2] + "/" + lastUpdate[3] + "/" + lastUpdate[4]);
 				}
 			}
@@ -213,7 +213,7 @@ public class FinanceSummary extends Activity {
 		net.setText(String.format("%.2f", this.netDouble));
 		own.setText(String.format("%.2f", this.ownDouble));
 		debt.setText(String.format("%.2f", this.debtDouble));		
-		date.setText("Last updated\n" + lastUpdate[0] + ":" + lastUpdate[1] + "--" +
+		date.setText("Last updated\n" + lastUpdate[0] + ":" + String.format("%02d", lastUpdate[1]) + "--" +
 					lastUpdate[2] + "/" + lastUpdate[3] + "/" + lastUpdate[4]);
 	}
 	

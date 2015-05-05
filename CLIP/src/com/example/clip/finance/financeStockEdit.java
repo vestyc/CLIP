@@ -26,7 +26,6 @@ public class financeStockEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finance_stock_edit);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
 		i = new Intent();
 		
 		stockName = (EditText) findViewById(R.id.stockName);

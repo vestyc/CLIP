@@ -26,7 +26,6 @@ public class financeLiabilityEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finance_liability_edit);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
 		i = new Intent();
 		
 		liabilityName = (EditText) findViewById(R.id.liabilityName);

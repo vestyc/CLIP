@@ -116,7 +116,7 @@ public class HealthVital extends Activity {
 			bloodPressure.setText(data.getStringExtra("bp"));
 			
 			this.lastUpdateInt = data.getIntArrayExtra("lastUpdate");
-			this.lastUpdate.setText(lastUpdateInt[0] + ":" + lastUpdateInt[1] +
+			this.lastUpdate.setText(lastUpdateInt[0] + ":" + String.format("%02d", lastUpdateInt[1]) +
 					" " + lastUpdateInt[2] + "/" + lastUpdateInt[3] + "/" + lastUpdateInt[4]);
 			
 			this.saveToCloud();

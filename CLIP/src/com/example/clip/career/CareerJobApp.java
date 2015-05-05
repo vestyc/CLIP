@@ -50,7 +50,7 @@ public class CareerJobApp extends ListActivity implements OnItemClickListener, O
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		LV = getListView();
 		LV.setBackgroundColor(Color.GRAY);
 		//initiate list view

@@ -45,7 +45,7 @@ public class CareerGoal extends ListActivity implements OnItemClickListener, OnI
 		
 		super.onCreate(savedInstanceState);
 
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		goalList = new ArrayList<String>();

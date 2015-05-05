@@ -40,7 +40,7 @@ public class financeGoal extends ListActivity implements OnItemClickListener, On
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		goalList = new ArrayList<String>();
