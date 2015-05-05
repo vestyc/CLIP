@@ -41,7 +41,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -416,7 +416,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -556,12 +556,20 @@
                 android:value="com.example.clip.career.CareerEid" />
         </activity>
         <activity
-            android:name="com.example.clip.career.CareerEidDetail"
+            android:name=".career.CareerEidDetail"
             android:label="@string/title_activity_career_eid_detail"
             android:parentActivityName=".career.CareerEid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.clip.career.CareerEid" />
+        </activity>
+        <activity
+            android:name="com.example.clip.finance.FinanceSummary"
+            android:label="@string/title_activity_finance_summary"
+            android:parentActivityName=".finance.financeMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clip.finance.financeMenu" />
         </activity>
     </application>
 

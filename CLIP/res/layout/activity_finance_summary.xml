@@ -1,0 +1,82 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+
+	<LinearLayout 
+	    android:id="@+id/LinearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context="com.example.clip.finance.FinanceSummary" >
+	
+	    <TextView
+	        android:id="@+id/financeSummary_detailLastUpdate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:text="N/A"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	    
+	    <TextView
+	        android:id="@+id/financeSummary_detailNet"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginTop="30dp"
+	        android:text="N/A"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <TextView
+	        android:id="@+id/financeSummary_labelNet"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:layout_gravity="center_horizontal"
+	        android:text="Net Worth\n(Total Owned - Debt)"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	    	
+	    <TextView
+	        android:id="@+id/financeSummary_detailOwned"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginTop="20dp"
+	        android:text="N/A"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <TextView
+	        android:id="@+id/financeSummary_labelOwned"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:layout_gravity="center_horizontal"
+	        android:text="Total Amount Owned\n(Stocks, Securities, Assets)"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    <TextView
+	        android:id="@+id/financeSummary_detailDebt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginTop="20dp"
+	        android:text="N/A"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <TextView
+	        android:id="@+id/financeSummary_labelDebt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:layout_gravity="center_horizontal"
+	        android:text="Total Debt\n(Liabilities, Unpaid Credit)"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	    	    	
+	</LinearLayout>
+
+</ScrollView>

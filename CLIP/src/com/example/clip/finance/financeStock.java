@@ -75,7 +75,7 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 		dataMap.clear();
 		stockList.clear();
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("financestock");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeStock");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		// Create query for objects of type "Post"
@@ -257,7 +257,7 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 	
 	private void saveToCloud() {
 		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("financestock");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("financeStock");
 		query.whereEqualTo("Owner", ParseUser.getCurrentUser());
 		
 		try {
@@ -281,15 +281,15 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 			if(entry.getKey().equals(getString(R.string.none)))
 				continue;
 			 
-			ParseObject financestock = new ParseObject("financestock");
-			financestock.put("Owner", ParseUser.getCurrentUser());
-			financestock.put("stockName", entry.getKey());
-			financestock.put("stockType", entry.getValue()[0]);
-			financestock.put("stockDate", entry.getValue()[1]);
+			ParseObject financeStock = new ParseObject("financeStock");
+			financeStock.put("Owner", ParseUser.getCurrentUser());
+			financeStock.put("stockName", entry.getKey());
+			financeStock.put("stockType", entry.getValue()[0]);
+			financeStock.put("stockDate", entry.getValue()[1]);
 			
 			try {
 				
-				financestock.save();
+				financeStock.save();
 				
 			}catch (ParseException e) {
 				

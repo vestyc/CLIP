@@ -7,6 +7,7 @@
     <string name="action_edit">Edit</string>
     <string name="action_remove">Remove</string>
     <string name="action_add">Add</string>
+    <string name="action_update">Update</string>
     <string name="title_activity_career_menu">Career Menu</string>
     <string name="button_goal">Goals</string>
     <string name="button_jobApp">Job Applications</string>
@@ -138,5 +139,6 @@
     <string name="title_activity_career_eid">CareerEid</string>
     <string name="title_activity_career_eid_edit">CareerEidEdit</string>
     <string name="title_activity_career_eid_detail">CareerEidDetail</string>
+    <string name="title_activity_finance_summary">FinanceSummary</string>
 
 </resources>

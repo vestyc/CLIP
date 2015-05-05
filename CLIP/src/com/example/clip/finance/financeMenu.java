@@ -13,7 +13,7 @@ import com.example.clip.R;
 
 public class financeMenu extends Activity {
 	
-	Button goal, stock, asset, creditcard, liability;
+	Button goal, stock, asset, creditcard, liability, summary;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class financeMenu extends Activity {
 		asset = (Button) findViewById(R.id.button_asset);
 		creditcard = (Button) findViewById(R.id.button_creditcard);
 		liability = (Button) findViewById(R.id.button_liability);
+		summary = (Button) this.findViewById(R.id.button_summary);
 		
 		//listeners
 		goal.setOnClickListener(new OnClickListener() {
@@ -70,6 +71,15 @@ public class financeMenu extends Activity {
 			public void onClick(View v) {
 				
 				Intent i = new Intent(financeMenu.this, financeLiability.class);
+				startActivity(i);
+			}
+		});
+		
+		summary.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent i = new Intent(financeMenu.this, FinanceSummary.class);
 				startActivity(i);
 			}
 		});
