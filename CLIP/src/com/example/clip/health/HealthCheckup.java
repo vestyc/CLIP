@@ -105,7 +105,7 @@ public class HealthCheckup extends Activity {
 						lastUpdate[i] = lastUpdateList.get(i).intValue();
 					}
 					
-					date.setText("Last updated\n" + lastUpdate[0] + ":" + lastUpdate[1] + "--" +
+					date.setText("Last updated\n" + lastUpdate[0] + ":" +String.format("%02d", lastUpdate[1]) + "--" +
 								lastUpdate[2] + "/" + lastUpdate[3] + "/" + lastUpdate[4]);
 				}
 			}

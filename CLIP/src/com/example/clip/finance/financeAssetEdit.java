@@ -26,7 +26,7 @@ public class financeAssetEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finance_asset_edit);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		i = new Intent();
 		
 		assetName = (EditText) findViewById(R.id.assetName);

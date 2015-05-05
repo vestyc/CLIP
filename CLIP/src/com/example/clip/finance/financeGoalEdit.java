@@ -26,7 +26,7 @@ public class financeGoalEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finance_goal_edit);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		i = new Intent();
 		
 		goalName = (EditText) findViewById(R.id.goalName);

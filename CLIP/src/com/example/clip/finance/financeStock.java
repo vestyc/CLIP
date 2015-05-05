@@ -40,7 +40,6 @@ public class financeStock extends ListActivity implements OnItemClickListener, O
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
 		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		stockList = new ArrayList<String>();

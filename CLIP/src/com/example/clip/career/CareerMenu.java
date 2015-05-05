@@ -19,7 +19,7 @@ public class CareerMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_career_menu);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		//button assignments
 		goal = (Button) findViewById(R.id.button_goal);

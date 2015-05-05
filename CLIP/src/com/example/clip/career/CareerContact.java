@@ -357,7 +357,7 @@ public class CareerContact extends ListActivity implements OnItemClickListener, 
 			//<contactName, dataInt>
 			//{estMonth, estDay, estYear, #OfUse}	
 			this.dataInt = this.dataIntMap.get(contactName);
-			careerContact.put("month", dataInt[0]);
+			careerContact.put("month", dataInt[0]+1);
 			careerContact.put("day", dataInt[1]);
 			careerContact.put("year", dataInt[2]);
 			careerContact.put("uses", dataInt[3]);

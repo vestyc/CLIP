@@ -40,7 +40,7 @@ public class financeLiability extends ListActivity implements OnItemClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getListView().setBackgroundColor(Color.GRAY);
 		//initiate list view			
 		liabilityList = new ArrayList<String>();
