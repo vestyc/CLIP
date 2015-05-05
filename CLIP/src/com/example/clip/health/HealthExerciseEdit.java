@@ -102,11 +102,4 @@ public class HealthExerciseEdit extends Activity {
 		this.setResult(RESULT_OK, iReturn);
 		this.finish();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.health_exercise_edit, menu);
-		return true;
-	}
 }
