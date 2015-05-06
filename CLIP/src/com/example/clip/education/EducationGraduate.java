@@ -133,9 +133,11 @@ public class EducationGraduate extends ListActivity implements OnItemClickListen
 				graduateName = graduate.getString("graduateName");
 				
 				ArrayList<String> tempDataString = (ArrayList<String>) graduate.get("dataString");
+				dataString = new String[6];
 				tempDataString.toArray(dataString);
 				
 				ArrayList<Integer> tempDataInt = (ArrayList<Integer>) graduate.get("dataInt");
+				dataInt = new int[3];
 				if(tempDataInt != null) {
 					
 					for(int i = 0; i < 3; i++) {
