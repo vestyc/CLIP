@@ -53,6 +53,7 @@ public class HealthDiet extends ListActivity implements OnItemClickListener, OnI
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getListView().setBackgroundColor(Color.GRAY);
+		
 		this.createEmptyList();
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_health_diet, 
 				R.id.healthDiet_list, dietList);

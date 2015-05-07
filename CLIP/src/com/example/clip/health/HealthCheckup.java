@@ -14,6 +14,7 @@ import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,12 +26,12 @@ public class HealthCheckup extends Activity {
 	TextView goodChol, badChol, totalChol, bp, glucose, other, date;
 	int[] lastUpdate;	//hour, minute, month, day, year
 	String bp0, bp1;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_health_checkup);
-		
+
 		goodChol = (TextView) this.findViewById(R.id.healthCheckup_detailCholHDL);
 		badChol = (TextView) this.findViewById(R.id.healthCheckup_detailCholLDL);
 		totalChol = (TextView) this.findViewById(R.id.healthCheckup_detailCholTotal);

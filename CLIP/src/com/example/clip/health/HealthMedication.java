@@ -17,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +56,7 @@ public class HealthMedication extends ListActivity implements OnItemClickListene
 		listViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_health_medication, 
 				R.id.healthMedication_list, medicationList);
 		this.setListAdapter(listViewAdapter);
+		getListView().setBackgroundColor(Color.GRAY);
 		
 		//initiate pop-up list (edit/remove)
 		popUp = new ListPopupWindow(this);
